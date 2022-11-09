@@ -1,3 +1,33 @@
+## Install Guide
+<pre><code>sudo apt-get purge php7.*
+
+sudo apt-get autoclean
+sudo apt-get autoremove
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+
+sudo apt-get install php8.1
+
+sudo apt-get install php-zip
+sudo apt-get install php-xml
+sudo apt-get install php-curl
+sudo apt-get install php-mysql
+
+composer update
+
+curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Waarschijnlijk niet nodig
+# composer require laravel/breeze --dev
+# php artisan breeze:install react
+
+php artisan migrate
+npm install
+npm run dev
+php artisan serve
+</code></pre>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

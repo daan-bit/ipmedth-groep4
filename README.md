@@ -1,5 +1,9 @@
 ## Install Guide
-<pre><code>sudo apt-get purge php7.*
+<pre><code>#Basis update ubuntu, recommended
+sudo apt-get update -y && sudo apt-get upgrade -y
+
+#Install php 8.1 for laravel 9
+sudo apt-get purge php7.*
 
 sudo apt-get autoclean
 sudo apt-get autoremove
@@ -8,13 +12,16 @@ sudo apt-get update
 
 sudo apt-get install php8.1
 
+#Install dependencies for composer
 sudo apt-get install php-zip
 sudo apt-get install php-xml
 sudo apt-get install php-curl
 sudo apt-get install php-mysql
 
+#update composer
 composer update
 
+# Install/updates nodejs
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
@@ -22,6 +29,8 @@ sudo apt-get install -y nodejs
 # composer require laravel/breeze --dev
 # php artisan breeze:install react
 
+#run commands to prepare laravel
+#dont forget to add a database and user in the .env file
 php artisan migrate
 npm install
 npm run dev

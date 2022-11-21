@@ -1,3 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+p, h1, h2, h3, h4, h5, h6, button, input{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+h1{
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+h2{
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+p, input, button{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+h3{
+    font-size: 0.8rem;
+    font-weight: 400;
+}

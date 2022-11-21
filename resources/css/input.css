@@ -1,0 +1,12 @@
+@import 'colors.css';
+
+.input{
+    padding: 0.3rem;
+    border-radius: 5px;
+    border: none
+}
+
+input:focus{
+    outline: none;
+    box-shadow: 0 3px 0 0 var(--color-blue);
+}

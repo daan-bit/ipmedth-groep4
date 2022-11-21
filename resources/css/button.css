@@ -1,0 +1,37 @@
+@import 'colors.css';
+
+.button{
+    padding: 1rem 3rem;
+    
+    border-style: none;
+    color: var(--character-light);
+    border-radius: 5px;
+}
+
+.button-primary{
+    background-color: var(--color-blue);
+}
+
+.button-secundary{
+    background-color: var(--color-dark-blue);
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.button-primary:hover{
+    background-color: var(--color-primary-hover);
+}
+
+.button-secundary:hover{
+    background-color: var(--color-secundary-hover);
+}
+
+.button-primary:active{
+    border-color: var(--color-primary-active);
+}
+
+.button-secundary:active{
+    border-color: var(--color-secundary-active);
+}

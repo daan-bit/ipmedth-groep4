@@ -33,6 +33,7 @@ return new class extends Migration
      */
     public function down()
     {
+        //test
         $table->dropForeign('results_exercise_id_foreign');
         $table->dropForeign('results_student_id_foreign');
         $table->dropForeign('results_drawing_id_foreign');

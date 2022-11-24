@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('drawings', function (Blueprint $table) {
             $table->id();
             $table->string('image');
-            $table->unsignedBigInteger('exercise_id');
+            $table->unsignedBigInteger('assignment_id');
             $table->unsignedBigInteger('student_id');
-            $table->foreign('exercise_id')->references('id')->on('exercises');
+            $table->foreign('assignment_id')->references('id')->on('assignments');
             $table->foreign('student_id')->references('id')->on('students');
         });
     }
@@ -30,7 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
-        $table->dropForeign('drawings_exercise_id_foreign');
+        $table->dropForeign('drawings_assignment_id_foreign');
         $table->dropForeign('drawings_student_id_foreign');
         Schema::dropIfExists('drawings');
     }

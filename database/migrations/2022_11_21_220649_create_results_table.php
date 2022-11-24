@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('status');
-            $table->unsignedBigInteger('exercise_id');
+            $table->unsignedBigInteger('assignment_id');
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('drawing_id');
-            $table->foreign('exercise_id')->references('id')->on('exercises');
+            $table->foreign('assignment_id')->references('id')->on('assignments');
             $table->foreign('student_id')->references('id')->on('students');
             $table->foreign('drawing_id')->references('id')->on('drawings');
             $table->timestamps();
@@ -33,8 +33,7 @@ return new class extends Migration
      */
     public function down()
     {
-        //test of git naam al werkt
-        $table->dropForeign('results_exercise_id_foreign');
+        $table->dropForeign('results_assignment_id_foreign');
         $table->dropForeign('results_student_id_foreign');
         $table->dropForeign('results_drawing_id_foreign');
         Schema::dropIfExists('results');

@@ -31,4 +31,49 @@ Route::get('/dashboard', function () {
 //Testpagina
 Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
+//LEERLINGEN
+//Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /login
+// Route::get('/', [], '')
+
+//Studenten login > hier kan student inloggen > redirect naar /
+// Route::get('/login', [], '')
+
+//Pagina van bepaalde wereld
+// Route::get('/{world_id}', [], '')
+
+//Pagina van opdracht binnnen een bepaalde wereld
+// Route::get('/{world_id}/{level_id}', [], '')
+
+//Vrij tekenen
+// Route::get('/sandbox', [], '')
+
+//Tekeningen bekijken
+// Route::get('/album', [], '')
+
+
+//DOCENTEN
+//Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
+// Route::get('/docent/overview', [], '')
+
+//Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
+// Route::get('/admin/overview', [], '')
+
+//Zelfde inlogpagina's > alleen redirect naar andere pagina
+// Route::get('/docent/login', [], '')
+// Route::get('/admin/login', [], '')
+
+//Overzicht klas 
+// Route::get('/docent/{school_class_id}', [], '')
+
+//Instellingenpagina van docent
+// Route::get('/docent/instellingen', [], '')
+
+
+
+
+
+
+
+
+
 require __DIR__.'/auth.php';

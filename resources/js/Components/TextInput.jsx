@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/input.css'
+import '../../css/components/input.css'
 
 function TextInput(props) {
   return (

@@ -29,7 +29,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Testpagina
-Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
+//Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //LEERLINGEN
 //Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /login
@@ -52,7 +52,6 @@ Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 //Tekeningen bekijken
 // Route::get('/album', [], '')
 
-
 //DOCENTEN
 //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
 // Route::get('/docent/overview', [], '')
@@ -69,13 +68,5 @@ Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //Instellingenpagina van docent
 // Route::get('/docent/instellingen', [], '')
-
-
-
-
-
-
-
-
 
 require __DIR__.'/auth.php';

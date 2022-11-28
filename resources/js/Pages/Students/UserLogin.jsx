@@ -11,8 +11,8 @@ import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
 export default function Login () {
     const { data, setData, post, errors, reset } = useForm({
-        id: '3',
-        password: 'VogelBoom',
+        id: '',
+        password: '',
         remember: '',
     });
     useEffect(() => {
@@ -48,7 +48,7 @@ export default function Login () {
 
                     <TextInput
                         type="text"
-                        name="user_id"
+                        name="id"
                         value={data.id}
                         className="mt-1 block w-full"
                         autoComplete="username"
@@ -78,7 +78,7 @@ export default function Login () {
                 <div className="flex items-center justify-end mt-4">
 
 
-                <button  className="button button-primary" type="submit">Login</button>
+                <PrimaryButton  className="button button-primary" type="submit">Login</PrimaryButton>
                 </div>
             </form>
                     <table>

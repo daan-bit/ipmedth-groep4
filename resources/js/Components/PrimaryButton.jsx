@@ -3,7 +3,7 @@ import '../../css/components/button.css'
 
 function PrimaryButton(props) {
   return (
-    <button  className="button button-primary" type="button">{props.text}</button>
+    <button  className="button button-primary" type="submit">{props.text}</button>
   )
 }
 

@@ -33,7 +33,9 @@ Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //LEERLINGEN
 //Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /login
-// Route::get('/', [], '')
+ Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
+ Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get']);
+ Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
 //Studenten login > hier kan student inloggen > redirect naar /
 // Route::get('/login', [], '')

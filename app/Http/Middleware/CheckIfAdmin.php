@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Teacher;
 use Illuminate\Support\Facades\Auth;
 
-class ChekcIfTeacher
+class CheckIfAdmin
 {
     /**
      * Handle an incoming request.
@@ -18,12 +18,11 @@ class ChekcIfTeacher
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Teacher::where('user_id', '=', Auth::user()->id)->exists()){
+        if(!Teacher::where('user_id', '=', Auth::user()->id)->exists()){
             return $next($request);
         }else{
             //Als geen teacher, dan is het een admin
-            return redirect()->intended('/admin/overview');
+            return redirect()->intended('/docent/overview');
         }
-        
     }
 }

@@ -1,13 +1,13 @@
 import React from 'react'
 
 function Overview(props) {
-    console.log(props.auth.user);
-
+  
   return (
     <section>
-        <p>Username: {props.auth.user.username}</p>
-        <p>E-mail: {props.auth.user.email}</p>
-        <p>Id: {props.auth.user.id}</p>
+        <h1>Docentenpagina</h1>
+        <p>Username: {props.teacher.username}</p>
+        <p>E-mail: {props.teacher.email}</p>
+        <p>Id: {props.teacher.id}</p>
     </section>
   )
 }

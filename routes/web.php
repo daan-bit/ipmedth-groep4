@@ -32,7 +32,7 @@ Route::get('/dashboard', function () {
 //Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //LEERLINGEN
-//Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /login
+//Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /students/login
  Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
  Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get']);
  Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
@@ -55,13 +55,17 @@ Route::middleware(['auth', 'teacher'])->group(function(){
     Route::get('/docent/overview', [App\Http\Controllers\TeacherController::class, 'get']);
 });
 
-//Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
-// Route::get('/admin/overview', [], '')
-
 //Overzicht klas 
 // Route::get('/docent/{school_class_id}', [], '')
 
 //Instellingenpagina van docent
 // Route::get('/docent/instellingen', [], '')
+
+//ADMIN
+//Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
+Route::middleware(['auth', 'admin'])->group(function(){
+    Route::get('/admin/overview', [App\Http\Controllers\AdminController::class, 'get']);
+});
+
 
 require __DIR__.'/auth.php';

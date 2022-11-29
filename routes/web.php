@@ -37,9 +37,6 @@ Route::get('/dashboard', function () {
  Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get']);
  Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
-//Studenten login > hier kan student inloggen > redirect naar /
-// Route::get('/login', [], '')
-
 //Pagina van bepaalde wereld
 // Route::get('/{world_id}', [], '')
 
@@ -54,14 +51,12 @@ Route::get('/dashboard', function () {
 
 //DOCENTEN
 //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
-// Route::get('/docent/overview', [], '')
+Route::middleware(['auth', 'teacher'])->group(function(){
+    Route::get('/docent/overview', [App\Http\Controllers\TeacherController::class, 'get']);
+});
 
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
 // Route::get('/admin/overview', [], '')
-
-//Zelfde inlogpagina's > alleen redirect naar andere pagina
-// Route::get('/docent/login', [], '')
-// Route::get('/admin/login', [], '')
 
 //Overzicht klas 
 // Route::get('/docent/{school_class_id}', [], '')

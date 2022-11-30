@@ -20,5 +20,11 @@
         "react-dom": "^18.2.0",
         "tailwindcss": "^3.2.1",
         "vite": "^3.0.0"
+    },
+    "dependencies": {
+        "@tensorflow/tfjs": "^4.1.0",
+        "canvas": "^2.10.2",
+        "fabric": "^6.0.0-rc.0",
+        "fabricjs-react": "^1.1.1"
     }
 }

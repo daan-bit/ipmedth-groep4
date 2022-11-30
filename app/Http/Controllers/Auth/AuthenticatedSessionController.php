@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended('/docent/overview');
         }else{
             //Dan is het een admin
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended('/admin/overview');
         }
     }
 

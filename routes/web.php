@@ -29,14 +29,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Testpagina
-Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
+//Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //LEERLINGEN
 //Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /login
-// Route::get('/', [], '')
-
-//Studenten login > hier kan student inloggen > redirect naar /
-// Route::get('/login', [], '')
+ Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
+ Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get']);
+ Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
 //Pagina van bepaalde wereld
 // Route::get('/{world_id}', [], '')
@@ -50,30 +49,19 @@ Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 //Tekeningen bekijken
 // Route::get('/album', [], '')
 
-
 //DOCENTEN
 //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
-// Route::get('/docent/overview', [], '')
+Route::middleware(['auth', 'teacher'])->group(function(){
+    Route::get('/docent/overview', [App\Http\Controllers\TeacherController::class, 'get']);
+});
 
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
 // Route::get('/admin/overview', [], '')
-
-//Zelfde inlogpagina's > alleen redirect naar andere pagina
-// Route::get('/docent/login', [], '')
-// Route::get('/admin/login', [], '')
 
 //Overzicht klas 
 // Route::get('/docent/{school_class_id}', [], '')
 
 //Instellingenpagina van docent
 // Route::get('/docent/instellingen', [], '')
-
-
-
-
-
-
-
-
 
 require __DIR__.'/auth.php';

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\StudentRequest;
@@ -30,10 +31,12 @@ class StudentController extends Controller
 
     public function store(StudentRequest $request)
     {
-            error_log('hoi');
-                $request->authenticate();
-                $request->session()->regenerate();
-                return redirect()->intended('/');
-            }
-        }
-            
+        $request->authenticate();
+        $request->session()->regenerate();
+        return redirect()->intended('/');
+    }
+
+    public function sandbox(){
+        return Inertia::render('Students/Sandbox');
+    }
+}

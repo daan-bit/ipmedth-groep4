@@ -38,16 +38,16 @@ Route::get('/dashboard', function () {
  Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
 //Pagina van bepaalde wereld
-// Route::get('/{world_id}', [], '')
+// Route::get('/{world_id}', [], '');
 
 //Pagina van opdracht binnnen een bepaalde wereld
-// Route::get('/{world_id}/{level_id}', [], '')
+// Route::get('/{world_id}/{level_id}', [], '');
 
 //Vrij tekenen
-// Route::get('/sandbox', [], '')
+Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);
 
 //Tekeningen bekijken
-// Route::get('/album', [], '')
+// Route::get('/album', [], '');
 
 //DOCENTEN
 //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
@@ -56,10 +56,10 @@ Route::middleware(['auth', 'teacher'])->group(function(){
 });
 
 //Overzicht klas 
-// Route::get('/docent/{school_class_id}', [], '')
+// Route::get('/docent/{school_class_id}', [], '');
 
 //Instellingenpagina van docent
-// Route::get('/docent/instellingen', [], '')
+// Route::get('/docent/instellingen', [], '');
 
 //ADMIN
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)

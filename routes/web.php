@@ -52,7 +52,7 @@ Route::get('/dashboard', function () {
 //DOCENTEN
 //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
 Route::middleware(['auth', 'teacher'])->group(function(){
-    Route::get('/docent/overview', [App\Http\Controllers\TeacherController::class, 'get']);
+    Route::get('/docent/overview', [App\Http\Controllers\EmployeeController::class, 'getTeacher']);
 });
 
 //Overzicht klas 
@@ -63,9 +63,10 @@ Route::middleware(['auth', 'teacher'])->group(function(){
 
 //ADMIN
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
-Route::middleware(['auth', 'admin'])->group(function(){
-    Route::get('/admin/overview', [App\Http\Controllers\AdminController::class, 'get']);
-});
+
+// Route::middleware(['auth', 'admin'])->group(function(){
+//    Route::get('/admin/overview', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
+// });
 
 
 require __DIR__.'/auth.php';

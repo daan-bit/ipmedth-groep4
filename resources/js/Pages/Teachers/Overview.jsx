@@ -1,13 +1,13 @@
 import React from 'react'
 
 function Overview(props) {
-  
+  console.log(props);
   return (
     <section>
         <h1>Docentenpagina</h1>
-        <p>Username: {props.teacher.username}</p>
-        <p>E-mail: {props.teacher.email}</p>
-        <p>Id: {props.teacher.id}</p>
+        <p>Firstname: {props.employee.first_name}</p>
+        <p>E-mail: {props.employee.email}</p>
+        <p>Id: {props.employee.id}</p>
     </section>
   )
 }

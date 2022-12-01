@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Log;
-use App\Models\Teacher;
+use App\Models\Employee;
+use App\Models\Role;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -39,12 +40,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if(Teacher::where('user_id', '=', Auth::user()->id)->exists()){
-            return redirect()->intended('/docent/overview');
-        }else{
-            //Dan is het een admin
+        $employee = Employee::where('user_id', '=', Auth::user()->id);
+        Log::info(print_r($employee, true));
+
+        if(Employee::where('role_id', '=', '1')->exists()){
             return redirect()->intended('/admin/overview');
         }
+        // else if(Employee::where('roles_id', '=', '2')->exists()){
+        //     return redirect()->intended('/docent/overview');
+        // }
     }
 
     /**

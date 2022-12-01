@@ -4,10 +4,11 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\Teacher;
+use App\Models\Employee;
+use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 
-class ChekcIfTeacher
+class CheckIfTeacher
 {
     /**
      * Handle an incoming request.
@@ -18,12 +19,12 @@ class ChekcIfTeacher
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Teacher::where('user_id', '=', Auth::user()->id)->exists()){
+        $teacher = Employee::where('user_id', '=', Auth::user()->id)->first();
+
+        if(Role::where($teacher->role_id, '=', '2')){
             return $next($request);
         }else{
-            //Als geen teacher, dan is het een admin
             return redirect()->intended('/admin/overview');
         }
-        
     }
 }

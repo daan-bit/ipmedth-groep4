@@ -5,11 +5,10 @@ import * as tf from '@tensorflow/tfjs';
 
 //variables
 let model;
+let canvas;
 let classNames = [];
 let coords = [];
 let mousePressed = false;
-let canvas;
-let names;
 
 const styles = {
     section: {
@@ -19,6 +18,9 @@ const styles = {
         justifyContent: "center",
         alignItems: "center",
         flexdirection: "column",
+    },
+    canvas: {
+        border: "3px black solid",
     }
 }
 
@@ -36,16 +38,16 @@ function recordCoor(event) {
 //get the best bounding box by trimming around the drawing
 function getMinBox() {
     //get coordinates 
-    var [coorX, coorY] = coords.map(function (p) {
+    let [coorX, coorY] = coords.map(function (p) {
         return [p.x, p.y];
     });
 
     //find top left and bottom right corners 
-    var min_coords = {
+    const min_coords = {
         x: Math.min.apply(null, coorX),
         y: Math.min.apply(null, coorY)
     }
-    var max_coords = {
+    const max_coords = {
         x: Math.max.apply(null, coorX),
         y: Math.max.apply(null, coorY)
     }
@@ -66,6 +68,7 @@ function getImageData() {
     const dpi = window.devicePixelRatio
     const imgData = canvas.contextContainer.getImageData(mbb.min.x * dpi, mbb.min.y * dpi,
         (mbb.max.x - mbb.min.x) * dpi, (mbb.max.y - mbb.min.y) * dpi);
+    
     return imgData
 }
 
@@ -82,8 +85,8 @@ function getFrame() {
         const pred = model.predict(preprocess(imgData)).dataSync()
 
         //find the top 5 predictions 
-        const indices = findIndicesOfMax(pred, 10)
-        const probs = findTopValues(pred, 10)
+        const indices = findIndicesOfMax(pred, 5)
+        const probs = findTopValues(pred, 5)
         const names = getClassNames(indices)
 
         getTop5(names, probs)
@@ -201,14 +204,14 @@ export default function Sandbox(props) {
             fireRightClick: true,
             fireMiddleClick: true,
             stopContextMenu: true,
-            backgroundColor: "red",
+            backgroundColor: "#fff",
             backgroundImage: undefined,
             isDrawingMode: false,
         });
 
         //INIT the brush
         let pencilBrush = new fabric.PencilBrush(canvas);
-        pencilBrush.color = '#fff';
+        pencilBrush.color = '#000';
         pencilBrush.width = 7;
         canvas.freeDrawingBrush = pencilBrush;
         canvas.requestRenderAll();
@@ -231,7 +234,7 @@ export default function Sandbox(props) {
     return (
         <section style={styles.section}>
             <Head title="🏖️ Sandbox" />
-            <canvas id="canvas" />
+            <canvas style={styles.canvas} id="canvas" />
         </section>
     )
 }

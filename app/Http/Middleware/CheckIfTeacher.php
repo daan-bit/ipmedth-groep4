@@ -19,12 +19,15 @@ class CheckIfTeacher
      */
     public function handle(Request $request, Closure $next)
     {
-        $teacher = Employee::where('user_id', '=', Auth::user()->id)->first();
+        $employee_role_id = Employee::where('user_id', '=', Auth::user()->id)->first()->role_id;
+        $teacher_id = Role::where('name', '=', 'docent')->first()->id;
 
-        if(Role::where($teacher->role_id, '=', '2')){
+        if($employee_role_id == $teacher_id){
             return $next($request);
         }else{
             return redirect()->intended('/admin/overview');
         }
+       
+
     }
 }

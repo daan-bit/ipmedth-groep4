@@ -40,15 +40,14 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $employee = Employee::where('user_id', '=', Auth::user()->id);
-        Log::info(print_r($employee, true));
+        $employee_role_id = Employee::where('user_id', '=', Auth::user()->id)->first()->role_id;
+        $admin_id = Role::where('name', '=', 'admin')->first()->id;
 
-        if(Employee::where('role_id', '=', '1')->exists()){
+        if($employee_role_id == $admin_id){
             return redirect()->intended('/admin/overview');
+        }else{
+            return redirect()->intended('/docent/overview');
         }
-        // else if(Employee::where('roles_id', '=', '2')->exists()){
-        //     return redirect()->intended('/docent/overview');
-        // }
     }
 
     /**

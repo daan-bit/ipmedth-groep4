@@ -28,8 +28,10 @@ return new class extends Migration
      */
     public function down()
     {
-        $table->dropForeign('employee_has_classes_employee_id_foreign');
-        $table->dropForeign('employee_has_classes_class_id_foreign');
+        Schema::table('employee_has_classes', function (Blueprint $table) {
+            $table->dropForeign('employee_has_classes_employee_id_foreign');
+            $table->dropForeign('employee_has_classes_class_id_foreign');
+        });
         Schema::dropIfExists('employee_has_classes');
     }
 };

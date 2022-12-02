@@ -1,4 +1,5 @@
 import React from 'react'
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 
 function Overview(props) {
   console.log(props);
@@ -8,6 +9,10 @@ function Overview(props) {
         <p>Firstname: {props.employee.first_name}</p>
         <p>E-mail: {props.employee.email}</p>
         <p>Id: {props.employee.id}</p>
+
+        <ResponsiveNavLink method="post" href={route('logout')} as="button">
+            Log Out
+        </ResponsiveNavLink>
     </section>
   )
 }

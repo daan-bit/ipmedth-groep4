@@ -24,16 +24,14 @@ class StudentController extends Controller
     public function get($id)
     {
         $students = Student::where('id', '=', $id)->get();
-
         return Inertia::render('Students/UserLogin', ['students' => $students]);
     }
 
     public function store(StudentRequest $request)
     {
-            error_log('hoi');
-                $request->authenticate();
-                $request->session()->regenerate();
-                return redirect()->intended('/');
-            }
-        }
+        $request->authenticate();
+        $request->session()->regenerate();
+        return redirect()->intended('/');
+    }
+}
             

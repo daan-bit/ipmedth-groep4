@@ -15,13 +15,18 @@ use Inertia\Inertia;
 |
 */
 
+// Deze laten staan, later gebruiken voor wachtwoord reset/register
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect()->intended('students/login');;
 });
 
 Route::get('/dashboard', function () {
@@ -29,13 +34,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Testpagina
-//Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
+Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //LEERLINGEN
 //Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /students/login
- Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
- Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get']);
- Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
+Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
+Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get']);
+Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
 //Pagina van bepaalde wereld
 // Route::get('/{world_id}', [], '');
@@ -49,10 +54,18 @@ Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox'
 //Tekeningen bekijken
 // Route::get('/album', [], '');
 
+
+//==========================================
+//================EMPLOYEES=================
+//==========================================
+
+Route::get('/login', [App\Http\Controllers\AuthenticatedSessionController::class, 'store']);
+//Register route
+
 //DOCENTEN
 //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
 Route::middleware(['auth', 'teacher'])->group(function(){
-    Route::get('/docent/overview', [App\Http\Controllers\TeacherController::class, 'get']);
+    Route::get('/docent/overview', [App\Http\Controllers\EmployeeController::class, 'getTeacher']);
 });
 
 //Overzicht klas 
@@ -63,8 +76,9 @@ Route::middleware(['auth', 'teacher'])->group(function(){
 
 //ADMIN
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
+
 Route::middleware(['auth', 'admin'])->group(function(){
-    Route::get('/admin/overview', [App\Http\Controllers\AdminController::class, 'get']);
+   Route::get('/admin/overview', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
 });
 
 

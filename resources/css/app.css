@@ -1,14 +1,10 @@
-@tailwind base;
-@tailwind components; 
-@tailwind utilities; 
-
 *, *::before, *::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-p, h1, h2, h3, h4, h5, h6, button, input{
+p, h1, h2, h3, h4, h5, h6, button, input, label, .normal_text{
     font-family: 'Montserrat', sans-serif;
     margin: 0;
 }
@@ -23,12 +19,20 @@ h2{
     font-weight: 400;
 }
 
-p, input, button{
+p, input, button, label, .normal_text{
     font-size: 1.2rem;
     font-weight: 400;
 }
 
-h3{
+.small_text{
     font-size: 0.8rem;
     font-weight: 400;
+}
+
+a{
+    color: var(--color-blue);
+}
+
+.a:active{
+    color: var(--color-dark-blue);
 }

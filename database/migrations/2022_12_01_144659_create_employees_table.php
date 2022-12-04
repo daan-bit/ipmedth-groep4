@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('teachers', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('first_name', 100);
             $table->string('last_name', 100);
@@ -34,9 +34,11 @@ return new class extends Migration
      */
     public function down()
     {
-        $table->dropForeign('teachers_school_id_foreign');
-        $table->dropForeign('teachers_user_id_foreign');
-        $table->dropForeign('teachers_role_id_foreign');
-        Schema::dropIfExists('teachers');
+        Schema::table('employees', function (Blueprint $table) {
+            $table->dropForeign('employees_school_id_foreign');
+            $table->dropForeign('employees_user_id_foreign');
+            $table->dropForeign('employees_role_id_foreign');
+        });
+        Schema::dropIfExists('employees');
     }
 };

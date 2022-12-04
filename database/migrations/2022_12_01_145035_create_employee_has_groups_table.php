@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employee_has_classes', function (Blueprint $table) {
-            $table->unsignedBigInteger('class_id');
+        Schema::create('employee_has_groups', function (Blueprint $table) {
+            $table->unsignedBigInteger('group_id');
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('class_id')->references('id')->on('classes');
+            $table->foreign('group_id')->references('id')->on('groups');
             $table->foreign('employee_id')->references('id')->on('employees');
         });
     }
@@ -28,10 +28,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('employee_has_classes', function (Blueprint $table) {
-            $table->dropForeign('employee_has_classes_employee_id_foreign');
-            $table->dropForeign('employee_has_classes_class_id_foreign');
+        Schema::table('employee_has_groups', function (Blueprint $table) {
+            $table->dropForeign('employee_has_groups_employee_id_foreign');
+            $table->dropForeign('employee_has_groups_class_id_foreign');
         });
-        Schema::dropIfExists('employee_has_classes');
+        Schema::dropIfExists('employee_has_groups');
     }
 };

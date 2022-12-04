@@ -5,13 +5,12 @@ export default function ImageAsPassword({
     className,
     src,
     data,
-    buttondata,
     divClassName = 'student__login__images__block'
 }) {
 
     return (
-        <div id={id} className={divClassName}>
-        <img className={className} src={src} data={data} buttondata={buttondata} id={id}></img>
+        <div className={divClassName}>
+        <img className={className} src={src} data={data} id={id}></img>
         </div> 
     );
 }

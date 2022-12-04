@@ -6,13 +6,11 @@ import TextInput from '@/Components/TextInput';
 import { useForm } from '@inertiajs/inertia-react';
 import './UserLogin.css';
 import ImageAsPassword from '@/Components/ImageAsPassword';
+import { FiArrowRight } from "react-icons/fi";
 
 const UserLogin = () => {
-
     const [counter, setCounter] = useState(0);
     const incrementCounter = () => setCounter(counter + 1);
-    let decrementCounter = () => setCounter(counter - 1);
-
     const { data, setData, post, errors, reset } = useForm({
         id: String(usePage().props.students[0].user_id),
         password: '',
@@ -20,25 +18,26 @@ const UserLogin = () => {
 
     useEffect(() => {
         if (errors.id) {
+            setCounter(0);
             //hier komt straks model waar het kind ziet dat het wachtword fout was
             console.log('error bekend, modal popup');
         }
     }, [errors]);
 
-    
+
     useEffect(() => {
         Array.from(document.getElementsByClassName("student__login__images__picture")).forEach(function (element) {
             element.addEventListener('click', image);
             element.addEventListener('click', incrementCounter);
         });
-    },[incrementCounter]);
+    });
 
     function image() {
-            let string = this.getAttribute('data');
-            if (!data.password.includes(string)) {
-                data.password += string;
-                this.className += " active";
-            }
+        let string = this.getAttribute('data');
+        if (!data.password.includes(string)) {
+            data.password += string;
+            this.className += " active";
+        }
     }
 
     const onHandleChange = (event) => {
@@ -47,10 +46,9 @@ const UserLogin = () => {
 
     const resetPasswordOnSubmit = () => {
         const data = document.getElementsByClassName('active');
-        while (data.length)  { 
+        while (data.length) {
             data[0].className = "student__login__images__picture";
         }
-        setCounter(0);
     }
 
     const submit = (e) => {
@@ -96,15 +94,15 @@ const UserLogin = () => {
 
                     <h2 className="student__login__images__title">Kies twee plaatjes die van jou zijn</h2>
                     <article className="student__login__images">
-                        <ImageAsPassword buttondata={"1"} className={'student__login__images__picture'} src={'https://e7.pngegg.com/pngimages/1017/336/png-clipart-sparrow-bird-cartoon-illustration-cartoon-sparrow-cartoon-character-painted-thumbnail.png'} data={"Vogel"} />
-                        <ImageAsPassword buttondata={"2"} className={'student__login__images__picture'} src={'https://e7.pngegg.com/pngimages/1017/336/png-clipart-sparrow-bird-cartoon-illustration-cartoon-sparrow-cartoon-character-painted-thumbnail.png'} data={"Boom"} />
-                        <ImageAsPassword buttondata={"3"} className={'student__login__images__picture'} src={'https://e7.pngegg.com/pngimages/1017/336/png-clipart-sparrow-bird-cartoon-illustration-cartoon-sparrow-cartoon-character-painted-thumbnail.png'} data={"Tijger"} />
-                        <ImageAsPassword buttondata={"4"} className={'student__login__images__picture'} src={'https://e7.pngegg.com/pngimages/1017/336/png-clipart-sparrow-bird-cartoon-illustration-cartoon-sparrow-cartoon-character-painted-thumbnail.png'} data={"Auto"} />
-                        <ImageAsPassword buttondata={"5"} className={'student__login__images__picture'} src={'https://e7.pngegg.com/pngimages/1017/336/png-clipart-sparrow-bird-cartoon-illustration-cartoon-sparrow-cartoon-character-painted-thumbnail.png'} data={"Fiets"} />
-                        <ImageAsPassword buttondata={"6"} className={'student__login__images__picture'} src={'https://e7.pngegg.com/pngimages/1017/336/png-clipart-sparrow-bird-cartoon-illustration-cartoon-sparrow-cartoon-character-painted-thumbnail.png'} data={"Jongen"} />
-                        <ImageAsPassword buttondata={"7"} className={'student__login__images__picture'} src={'https://e7.pngegg.com/pngimages/1017/336/png-clipart-sparrow-bird-cartoon-illustration-cartoon-sparrow-cartoon-character-painted-thumbnail.png'} data={"Meisje"} />
-                        <ImageAsPassword buttondata={"8"} className={'student__login__images__picture'} src={'https://e7.pngegg.com/pngimages/1017/336/png-clipart-sparrow-bird-cartoon-illustration-cartoon-sparrow-cartoon-character-painted-thumbnail.png'} data={"Olifant"} />
-                        <ImageAsPassword buttondata={"9"} className={'student__login__images__picture'} src={'https://e7.pngegg.com/pngimages/1017/336/png-clipart-sparrow-bird-cartoon-illustration-cartoon-sparrow-cartoon-character-painted-thumbnail.png'} data={"Leeuw"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/vogel.jpg'} data={"Vogel"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/boom.png'} data={"Boom"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/dog.jpg'} data={"Hondje"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/kat.png'} data={"Katje"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/fiets.png'} data={"Fiets"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/jongen.webp'} data={"Jongen"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/meisje.jpg'} data={"Meisje"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/olifant.webp'} data={"Olifant"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/leeuw.webp'} data={"Leeuw"} />
                     </article>
 
                     <TextInput
@@ -117,9 +115,9 @@ const UserLogin = () => {
                         isFocused={true}
                         handleChange={onHandleChange}
                     />
-                    <div className="student__login__buttons">
-                        <PrimaryButton className="student__login__buttons__button" type="submit">Submit</PrimaryButton>
-                    </div>
+                        <div className="student__login__buttons">
+                            <PrimaryButton className="student__login__buttons__button" type="submit"><h2>{<FiArrowRight />}</h2></PrimaryButton>
+                        </div>
                 </form>
             </section>
         </article>

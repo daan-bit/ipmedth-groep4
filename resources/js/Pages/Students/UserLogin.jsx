@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { usePage } from "@inertiajs/inertia-react";
+import {usePage } from "@inertiajs/inertia-react";
+import Checkbox from '@/Components/Checkbox';
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';

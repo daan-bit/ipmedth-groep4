@@ -17,12 +17,12 @@ class StudentsTableSeeder extends Seeder
         DB::table('students')->insert([
             'first_name' => 'Pietje',
             'user_id' => 3,
-            'class_id' => 1
+            'group_id' => 1
         ]);
         DB::table('students')->insert([
             'first_name' => 'Jasmine',
             'user_id' => 4,
-            'class_id' => 2
+            'group_id' => 2
         ]);
    
     }

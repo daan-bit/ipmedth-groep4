@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import './Student.css';
+import {usePage } from "@inertiajs/inertia-react";
+import Checkbox from '@/Components/Checkbox';
+import InputError from '@/Components/InputError';
+import InputLabel from '@/Components/InputLabel';
+import PrimaryButton from '@/Components/PrimaryButton';
+import TextInput from '@/Components/TextInput';
+import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
 const Login = () => {
     const { students } = usePage().props;

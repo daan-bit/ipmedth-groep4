@@ -15,13 +15,18 @@ use Inertia\Inertia;
 |
 */
 
+// Deze laten staan, later gebruiken voor wachtwoord reset/register
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect()->intended('students/login');;
 });
 
 Route::get('/dashboard', function () {
@@ -39,43 +44,48 @@ Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //Studenten login > hier kan student inloggen > redirect naar /
 // Route::get('/login', [], '')
+//Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /students/login
+Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
+Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get']);
+Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
 //Pagina van bepaalde wereld
-// Route::get('/{world_id}', [], '')
+// Route::get('/{world_id}', [], '');
 
 //Pagina van opdracht binnnen een bepaalde wereld
-// Route::get('/{world_id}/{level_id}', [], '')
+// Route::get('/{world_id}/{level_id}', [], '');
 
 //Vrij tekenen
-// Route::get('/sandbox', [], '')
+Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);
 
 //Tekeningen bekijken
-// Route::get('/album', [], '')
+// Route::get('/album', [], '');
 
+
+//==========================================
+//================EMPLOYEES=================
+//==========================================
+
+Route::get('/login', [App\Http\Controllers\AuthenticatedSessionController::class, 'store']);
+//Register route
 
 //DOCENTEN
-//Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
-// Route::get('/docent/overview', [], '')
+Route::middleware(['auth', 'teacher'])->group(function(){
+    //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
+    Route::get('/docent/overview', [App\Http\Controllers\EmployeeController::class, 'getTeacher']);
 
+    //Overzicht klas 
+    Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
+    
+    //Instellingenpagina van docent
+    // Route::get('/docent/instellingen', [], '');
+});
+
+//ADMIN
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
-// Route::get('/admin/overview', [], '')
-
-//Zelfde inlogpagina's > alleen redirect naar andere pagina
-// Route::get('/docent/login', [], '')
-// Route::get('/admin/login', [], '')
-
-//Overzicht klas 
-// Route::get('/docent/{school_class_id}', [], '')
-
-//Instellingenpagina van docent
-// Route::get('/docent/instellingen', [], '')
-
-
-
-
-
-
-
+Route::middleware(['auth', 'admin'])->group(function(){
+   Route::get('/admin/overview', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
+});
 
 
 require __DIR__.'/auth.php';

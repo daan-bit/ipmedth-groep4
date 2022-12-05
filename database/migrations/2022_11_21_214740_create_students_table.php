@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('first_name', 100);
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('group_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('class_id')->references('id')->on('classes');
+            $table->foreign('group_id')->references('id')->on('groups');
         });
     }
 
@@ -30,8 +30,10 @@ return new class extends Migration
      */
     public function down()
     {
-        $table->dropForeign('students_user_id_foreign');
-        $table->dropForeign('students_class_id_foreign');
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropForeign('students_user_id_foreign');
+            $table->dropForeign('students_group_id_foreign');
+        });
         Schema::dropIfExists('students');
     }
 };

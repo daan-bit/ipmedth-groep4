@@ -15,6 +15,8 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
+        // id 2 = docent
+        // id 1 = admin
         $roles = ['admin', 'docent'];
         foreach($roles as $role) {
             DB::table('roles')->insert([

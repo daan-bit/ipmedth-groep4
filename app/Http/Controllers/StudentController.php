@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use DB;
 use App\Models\Student;
 use App\Models\User;
+use App\Models\Assignment;
 use Illuminate\Support\Facades\Log;
 
 class StudentController extends Controller
@@ -36,7 +37,19 @@ class StudentController extends Controller
         return redirect()->intended('/');
     }
 
-    public function sandbox(){
+/**
+ * > This function returns the `Students/Sandbox` view
+ * 
+ * @return Inertia::render('Students/Sandbox');
+ */
+    public function sandbox()
+    {
         return Inertia::render('Students/Sandbox');
+    }
+
+    public function getLevel($world_id, $level_id){
+        $level = Assignment::where([['world', '=', $world_id], ['level', '=', $level_id]])->first();
+
+        return Inertia::render('Students/Level', ['level' => $level]);
     }
 }

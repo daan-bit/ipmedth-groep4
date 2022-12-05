@@ -46,7 +46,7 @@ Route::post('students/login', [App\Http\Controllers\StudentController::class, 's
 // Route::get('/{world_id}', [], '');
 
 //Pagina van opdracht binnnen een bepaalde wereld
-// Route::get('/{world_id}/{level_id}', [], '');
+Route::get('level/{world_id}/{level_id}', [App\Http\Controllers\StudentController::class, 'getLevel']);
 
 //Vrij tekenen
 Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);

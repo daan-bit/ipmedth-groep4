@@ -50,10 +50,11 @@ Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class
 Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
 //Pagina van bepaalde wereld - Alex
-Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'get'])->name('world.page');
-
+Route::middleware(['auth', 'student'])->group(function(){
+    Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'get'])->name('world.page');
+    // Route::get('/{world_id}/{level_id}', [], '');
+});
 //Pagina van opdracht binnnen een bepaalde wereld
-// Route::get('/{world_id}/{level_id}', [], '');
 
 //Vrij tekenen
 Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);

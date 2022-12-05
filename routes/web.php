@@ -63,20 +63,19 @@ Route::get('/login', [App\Http\Controllers\AuthenticatedSessionController::class
 //Register route
 
 //DOCENTEN
-//Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
 Route::middleware(['auth', 'teacher'])->group(function(){
+    //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
     Route::get('/docent/overview', [App\Http\Controllers\EmployeeController::class, 'getTeacher']);
+
+    //Overzicht klas 
+    Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
+    
+    //Instellingenpagina van docent
+    // Route::get('/docent/instellingen', [], '');
 });
-
-//Overzicht klas 
-// Route::get('/docent/{school_class_id}', [], '');
-
-//Instellingenpagina van docent
-// Route::get('/docent/instellingen', [], '');
 
 //ADMIN
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
-
 Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin/overview', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
 });

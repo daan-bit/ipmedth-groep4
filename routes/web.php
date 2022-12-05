@@ -42,8 +42,8 @@ Route::get('students/login', [App\Http\Controllers\StudentController::class, 'in
 Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get']);
 Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
-//Pagina van bepaalde wereld
-// Route::get('/{world_id}', [], '');
+//Pagina van bepaalde wereld - Alex
+Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'get'])->name('world.page');
 
 //Pagina van opdracht binnnen een bepaalde wereld
 // Route::get('/{world_id}/{level_id}', [], '');

@@ -1,0 +1,13 @@
+@import "../../components/colors.css";
+
+.container {
+    background-color: var(--background-light);
+    background-image: url("/public/images/background/table.svg");
+    background-position: left;
+    background-repeat: repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -2,6 +2,8 @@ import React, { useLayoutEffect } from "react";
 import { fabric } from 'fabric';
 import * as tf from '@tensorflow/tfjs';
 
+import "../../../css/components/Student/AICanvas.css";
+
 const styles = {
     canvas: {
         border: "3px black solid",
@@ -223,6 +225,6 @@ export default function AICanvas({ }) {
 
     }, []);
     return (
-        <canvas style={styles.canvas} id="canvas" />
+        <canvas className="canvas" id="canvas" />
     )
 }

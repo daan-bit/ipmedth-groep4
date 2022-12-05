@@ -11,8 +11,4 @@ class Employee extends Model
 
     protected $table = 'employees';
 
-    public function isWhatRole(){
-        return $this->hasOne(\App\Models\Role::class);
-    }
-
 }

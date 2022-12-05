@@ -24,6 +24,7 @@
     "dependencies": {
         "@tensorflow/tfjs": "^4.1.0",
         "canvas": "^2.10.2",
-        "fabric": "^6.0.0-rc.0"
+        "fabric": "^6.0.0-rc.0",
+        "react-collapsible": "^2.10.0"
     }
 }

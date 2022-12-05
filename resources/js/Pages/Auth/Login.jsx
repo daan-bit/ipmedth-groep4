@@ -38,7 +38,7 @@ export default function Login({ status, canResetPassword }) {
                 <form onSubmit={submit}>
                     <section>
                         <InputLabel forInput="input" value="Gebruikersnaam" />
-
+                        {/* Deze TextInput vervangen voor normale input en importeren darkmode input css + verwijderen component uit compononents */}
                         <TextInput
                             type="text"
                             name="username"

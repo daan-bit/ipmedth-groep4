@@ -58,12 +58,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        $employee_role_id = Employee::where('user_id', '=', Auth::user()->id)->first()->role_id;
+        $admin_id = Role::where('name', '=', 'admin')->first()->id;
+        $teacher_id = Role::where('name', '=', 'docent')->first()->id;
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
-        return redirect('/');
+       
+        if($employee_role_id == $admin_id || $employee_role_id == $teacher_id){
+            return redirect()->intended('/login');
+        }else{
+            return redirect()->intended('/');
+        }
     }
 }

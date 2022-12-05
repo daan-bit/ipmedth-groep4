@@ -33,6 +33,11 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware(['auth'])->group(function(){
+    Route::get('/change-password', [App\Http\Controllers\PasswordController::class, 'changePassword']);
+    Route::post('/change-password', [App\Http\Controllers\PasswordController::class, 'updatePassword']);
+});
+
 //Testpagina
 Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
@@ -78,6 +83,7 @@ Route::middleware(['auth', 'teacher'])->group(function(){
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
 Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin/overview', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
+   Route::get('/admin/instellingen', [App\Http\Controllers\EmployeeController::class, 'getAdminSettings']);
 });
 
 

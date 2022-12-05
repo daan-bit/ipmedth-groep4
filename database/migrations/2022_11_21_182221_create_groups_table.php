@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->string('school_class', 20); // bijv Klas 4c
+            $table->string('school_group', 20); // bijv Klas 4c
             $table->string('school_year', 10); //bijv 2019-2020
             $table->unsignedBigInteger('school_id');
             $table->foreign('school_id')->references('id')->on('schools');
@@ -29,9 +29,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('classes', function (Blueprint $table) {
-            $table->dropForeign('classes_school_id_foreign');
+        Schema::table('groups', function (Blueprint $table) {
+            $table->dropForeign('groups_school_id_foreign');
         });
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('groups');
     }
 };

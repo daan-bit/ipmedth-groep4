@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use DB;
 
-class EmployeeHasClassesTableSeeder extends Seeder
+class EmployeeHasGroupsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,18 +16,18 @@ class EmployeeHasClassesTableSeeder extends Seeder
     public function run()
     {
         //een klas kan bijv 2 docenten hebben die werkzaam zijn op verschillende dagen
-        DB::table('employee_has_classes')->insert([
-         'class_id' => 1,
+        DB::table('employee_has_groups')->insert([
+         'group_id' => 1,
          'employee_id' => 1,
         ]);
 
-        DB::table('employee_has_classes')->insert([
-            'class_id' => 2,
+        DB::table('employee_has_groups')->insert([
+            'group_id' => 2,
             'employee_id' => 1,
         ]);
         
-        DB::table('employee_has_classes')->insert([
-            'class_id' => 2,
+        DB::table('employee_has_groups')->insert([
+            'group_id' => 2,
             'employee_id' => 2,
         ]);
     }

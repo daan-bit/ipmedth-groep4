@@ -1,12 +1,30 @@
 @import "../../components/colors.css";
 
-.container {
+.level__container {
     background-color: var(--background-light);
     background-image: url("/public/images/background/table.svg");
-    background-position: left;
+    background-position: center;
     background-repeat: repeat;
     width: 100vw;
     height: 100vh;
+    overflow: auto;
+}
+
+.level__description{
+    padding: 1rem;
+    margin: 2rem 0 0 2rem;
+    width: fit-content;
+    color: var(--character-light);
+    background-color: rgba(54, 55, 64, 0.5);
+    border-radius: 5px;
+}
+
+.canvas__container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;

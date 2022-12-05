@@ -1,7 +1,7 @@
 @import 'colors.css';
 
 .button{
-    padding: 1rem 3rem;
+    padding: 0.4rem 2.8rem;
     
     border-style: none;
     color: var(--character-light);

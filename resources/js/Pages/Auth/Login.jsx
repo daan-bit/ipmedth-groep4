@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import Checkbox from '@/Components/Checkbox';
-import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import '../../../css/pages/loginpage.css';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -31,66 +31,69 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <GuestLayout>
-            <Head title="Log in" />
+        <article className='loginpage'>
+            <section className='loginpage__inputfieldsContainer'>
+                <Head title="Log in" />
 
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+                <form onSubmit={submit}>
+                    <section>
+                        <InputLabel forInput="input" value="Gebruikersnaam" />
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel forInput="input" value="username" />
+                        <TextInput
+                            type="text"
+                            name="username"
+                            value={data.username}
+                            autoComplete="username"
+                            isFocused={true}
+                            handleChange={onHandleChange}
+                            placeholder={'Gebruikersnaam'}
+                        />
 
-                    <TextInput
-                        type="text"
-                        name="username"
-                        value={data.username}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        isFocused={true}
-                        handleChange={onHandleChange}
-                    />
+                        <InputError message={errors.username}/>
+                    </section>
 
-                    <InputError message={errors.username} className="mt-2" />
-                </div>
+                    <section className="inputfieldsContainer__lower">
+                        <InputLabel forInput="password" value="Wachtwoord" />
 
-                <div className="mt-4">
-                    <InputLabel forInput="password" value="Password" />
+                        <TextInput
+                            type="password"
+                            name="password"
+                            value={data.password}
+                            autoComplete="current-password"
+                            handleChange={onHandleChange}
+                            placeholder={'Wachtwoord'}
+                        />
 
-                    <TextInput
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="current-password"
-                        handleChange={onHandleChange}
-                    />
+                        <InputError message={errors.password} />
+                    </section>
 
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
+                    {/* Comment laten staat. Eventueel later terug bijvoegen */}
+                    {/* <div className="block mt-4">
+                        <label className="flex items-center">
+                            <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
 
-                <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
+                            <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                        </label>
+                    </div> */}
 
-                        <span className="ml-2 text-sm text-gray-600">Remember me</span>
-                    </label>
-                </div>
+                    <section className="inputfieldsContainer__passwordResetContainer">
+                        {canResetPassword && (
+                            <Link
+                                href={route('password.request')}
+                                className="normal_text"
+                            >
+                                Wachtwoord vergeten?
+                            </Link>
+                        )}
+                    </section>
 
-                <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-
-                    <PrimaryButton className="ml-4" processing={processing}>
-                        Log in
-                    </PrimaryButton>
-                </div>
-            </form>
-        </GuestLayout>
+                    <section className="inputfieldsContainer__loginButtonContainer">
+                        <PrimaryButton processing={processing}>
+                            Log in
+                        </PrimaryButton>
+                    </section>
+                </form>
+            </section>
+        </article>
     );
 }

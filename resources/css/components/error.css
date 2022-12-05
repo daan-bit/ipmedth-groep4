@@ -1,0 +1,6 @@
+@import 'colors.css';
+
+.error{
+    color: var(--color-red);
+    margin-top: 0.5rem;
+}

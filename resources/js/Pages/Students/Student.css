@@ -1,0 +1,39 @@
+    .students__list {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-column-gap: 2rem;
+        grid-row-gap: 2rem;
+        width: 100%;
+        padding: 3rem;
+        margin: 0;
+        background: #3E4049;
+        border-radius: .5rem;
+    }
+
+    .students__list__item {
+        background: #3E4049;
+        box-shadow: -0.2rem 0rem 1.7rem 1.3rem rgb(88 196 246 / 19%);
+        border-radius: 3rem;
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .students__list__item__figure {
+
+        background: linear-gradient(180deg, #FFD166 0%, #DB3069 100%);
+        backdrop-filter: blur(2px);
+        border-radius: 5rem;
+    }
+
+    .students__list__item__figure__picture {
+        height: 6rem;
+        margin-left: 2rem;
+    }
+
+    .students__list__item__name {
+        font-size: 3rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }

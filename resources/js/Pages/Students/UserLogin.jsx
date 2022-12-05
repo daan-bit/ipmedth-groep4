@@ -1,116 +1,130 @@
 import React, { useState, useEffect } from 'react';
+import { usePage } from "@inertiajs/inertia-react";
 import {usePage } from "@inertiajs/inertia-react";
 import Checkbox from '@/Components/Checkbox';
 import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import { useForm } from '@inertiajs/inertia-react';
+import './UserLogin.css';
+import ImageAsPassword from '@/Components/ImageAsPassword';
+import { FiArrowRight } from "react-icons/fi";
 
-
-export default function Login () {
+const UserLogin = () => {
+    const [counter, setCounter] = useState(0);
+    const incrementCounter = () => setCounter(counter + 1);
     const { data, setData, post, errors, reset } = useForm({
-        id: '',
+        id: String(usePage().props.students[0].user_id),
         password: '',
-        remember: '',
     });
+
     useEffect(() => {
-        return () => {
-            reset('password');
-        };
-    }, []);
+        if (errors.id) {
+            setCounter(0);
+            //hier komt straks model waar het kind ziet dat het wachtword fout was
+            console.log('error bekend, modal popup');
+        }
+    }, [errors]);
+
+
+    useEffect(() => {
+        Array.from(document.getElementsByClassName("student__login__images__picture")).forEach(function (element) {
+            element.addEventListener('click', image);
+            element.addEventListener('click', incrementCounter);
+        });
+    });
+
+    function image() {
+        let string = this.getAttribute('data');
+        if (!data.password.includes(string)) {
+            data.password += string;
+            this.className += " active";
+        }
+    }
 
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 
+    const resetPasswordOnSubmit = () => {
+        const data = document.getElementsByClassName('active');
+        while (data.length) {
+            data[0].className = "student__login__images__picture";
+        }
+    }
+
     const submit = (e) => {
         e.preventDefault();
         post(route('students.login'));
-        console.log(data.user_id, data.password);
-        console.log('gesubmit');
+        //reset wachtwoord mocht het wachtwoord fout zijn, zodat kind weer 2 afbeeldingen kan kiezen.
+        data.password = '';
+        resetPasswordOnSubmit();
     };
-
-
     const { students } = usePage().props;
-    console.log(students);
     return (
-        <section className="students__section">
-            <h1 className="students__section__h1">Aanmelden</h1>
-        <div className="students__section__div">
+        <article className="student">
+            <section className="student__header">
+                <h1 className="student__header__title">Aanmelden</h1>
+            </section>
+            <section className="students__list">
+                {students.map(({ id, first_name, user_id }) => (
+                    <article className="students__list__item" key={id}>
+                        <figure className="students__list__item__figure">
+                            <img className="students__list__item__figure__picture" src={`https://avatars.dicebear.com/api/bottts/${user_id}.svg`} alt={`Avatar van ${first_name}`}></img>
+                        </figure>
+                        <article className="students__list__item__header">
+                            <h2 className="students__list__item__header__name">{first_name}</h2>
+                        </article>
+                    </article>
+                ))}
+            </section>
+            <section className="student__login">
+                <form className="student__login__form" onSubmit={submit}>
+                    <div className="student__login__form__input">
+                        <TextInput
+                            type="hidden"
+                            name="id"
+                            value={data.id}
+                            className="student__login__form__input__text"
+                            autoComplete="username"
+                            isFocused={true}
+                            handleChange={onHandleChange}
+                        />
 
-        </div>
+                        <InputError message={errors.id} className="student__login__form__input__error" />
+                    </div>
 
-        <form onSubmit={submit}>
-                <div>
-                    <InputLabel forInput="text" value="id" />
+                    <h2 className="student__login__images__title">Kies twee plaatjes die van jou zijn</h2>
+                    <article className="student__login__images">
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/vogel.png'} data={"Vogel"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/boom.png'} data={"Boom"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/dog.png'} data={"Hondje"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/kat.png'} data={"Katje"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/fiets.png'} data={"Fiets"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/jongen.png'} data={"Jongen"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/meisje.png'} data={"Meisje"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/olifant.png'} data={"Olifant"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/leeuw.png'} data={"Leeuw"} />
+                    </article>
 
                     <TextInput
-                        type="text"
-                        name="id"
-                        value={data.id}
-                        className="mt-1 block w-full"
+                        type="hidden"
+                        name="password"
+                        id="password"
+                        value={data.password}
+                        className="student__login__form__input__text"
                         autoComplete="username"
                         isFocused={true}
                         handleChange={onHandleChange}
                     />
-
-                    <InputError message={errors.id} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel forInput="password" value="Password" />
-
-                    <TextInput
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="current-password"
-                        handleChange={onHandleChange}
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-
-                <div className="flex items-center justify-end mt-4">
-
-
-                <PrimaryButton  className="button button-primary" type="submit">Login</PrimaryButton>
-                </div>
-            </form>
-                    <table>
-                        <tbody>
-                            {students.map(({ id, first_name, user_id }) => (
-                                <tr key={id}>
-                                <td className="border-t">
-                                     {id}
-                                    </td>
-                                    <td className="border-t">
-                                    </td>
-                                        <td className="border-t">
-                                     {first_name}
-                                    </td>
-                                    
-                                    <td className="border-t">
-                                     {user_id}
-                                    </td>
-                                </tr>
-                            ))}
-                            {students.length === 0 && (
-                                <tr>
-                                    <td
-                                        className="px-6 py-4 border-t"
-                                        colSpan="4"
-                                    >
-                                        Geen student gevonden met deze id.
-                                    </td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </section>
+                        <div className="student__login__buttons">
+                            <PrimaryButton className="student__login__buttons__button" type="submit"><h2>{<FiArrowRight />}</h2></PrimaryButton>
+                        </div>
+                </form>
+            </section>
+        </article>
     );
 }
+
+export default UserLogin;
 

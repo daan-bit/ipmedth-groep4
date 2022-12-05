@@ -5,6 +5,8 @@ export default function TextInput({
     type = 'text',
     name,
     value,
+    id,
+    className,
     placeholder,
     autoComplete,
     required,
@@ -25,6 +27,7 @@ export default function TextInput({
             	className='input'
                 type={type}
                 name={name}
+                id={id}
                 value={value}
                 ref={input}
                 autoComplete={autoComplete}

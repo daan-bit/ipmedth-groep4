@@ -94,15 +94,15 @@ const UserLogin = () => {
 
                     <h2 className="student__login__images__title">Kies twee plaatjes die van jou zijn</h2>
                     <article className="student__login__images">
-                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/vogel.jpg'} data={"Vogel"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/vogel.png'} data={"Vogel"} />
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/boom.png'} data={"Boom"} />
-                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/dog.jpg'} data={"Hondje"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/dog.png'} data={"Hondje"} />
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/kat.png'} data={"Katje"} />
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/fiets.png'} data={"Fiets"} />
-                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/jongen.webp'} data={"Jongen"} />
-                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/meisje.jpg'} data={"Meisje"} />
-                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/olifant.webp'} data={"Olifant"} />
-                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/leeuw.webp'} data={"Leeuw"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/jongen.png'} data={"Jongen"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/meisje.png'} data={"Meisje"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/olifant.png'} data={"Olifant"} />
+                        <ImageAsPassword className={'student__login__images__picture'} src={'/images/leeuw.png'} data={"Leeuw"} />
                     </article>
 
                     <TextInput

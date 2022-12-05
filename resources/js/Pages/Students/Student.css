@@ -1,4 +1,3 @@
-@supports (display: grid) {
     .students__list {
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -38,4 +37,3 @@
     h1 {
         font-size: 4rem;
     }
-}

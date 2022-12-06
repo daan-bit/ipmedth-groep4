@@ -5,10 +5,11 @@
   }
   
   .Collapsible__contentInner {
-    height: 20rem;
+    height: auto;
+    padding: 2rem 0 2rem 0;
     border: 1px solid lightGrey;
     border-top: 0;
-    background-color: var(--color-card-white);
+    background-color: var(--background-light);
   }
   
   .Collapsible__trigger{

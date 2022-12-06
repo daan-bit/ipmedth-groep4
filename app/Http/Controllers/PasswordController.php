@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Auth;
 class PasswordController extends Controller
 {
     
-    public function changePassword()
-    {
-        return Inertia::render('Auth/ChangePassword');
-    }
-
     public function updatePassword(Request $request){
         $request->validate([
             'old_password' => 'required',
@@ -24,7 +19,9 @@ class PasswordController extends Controller
         ]);
 
         if(!Hash::check($request->old_password, auth()->user()->password)){
-            return back()->with("error", "Old Password Doesn't match!");
+            return inertia('Admin/Settings', [
+                'message' => 'Wachtwoord onjuist',
+            ]);
         }
 
         User::whereId(auth()->user()->id)->update([

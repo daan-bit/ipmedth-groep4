@@ -15,28 +15,13 @@ use Inertia\Inertia;
 |
 */
 
-// Deze laten staan, later gebruiken voor wachtwoord reset/register
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
 Route::get('/', function () {
-    return redirect()->intended('students/login');;
+    return redirect()->intended('students/login');
 });
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware(['auth'])->group(function(){
-    Route::get('/change-password', [App\Http\Controllers\PasswordController::class, 'changePassword']);
-    Route::post('/change-password', [App\Http\Controllers\PasswordController::class, 'updatePassword']);
-});
 
 //Testpagina
 Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
@@ -65,7 +50,10 @@ Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox'
 //==========================================
 
 Route::get('/login', [App\Http\Controllers\AuthenticatedSessionController::class, 'store']);
-//Register route
+
+Route::middleware(['auth'])->group(function(){
+    Route::post('/change-password', [App\Http\Controllers\PasswordController::class, 'updatePassword']);
+});
 
 //DOCENTEN
 Route::middleware(['auth', 'teacher'])->group(function(){

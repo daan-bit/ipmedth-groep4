@@ -33,6 +33,13 @@ function allowDrawing() {
     canvas.isDrawingMode = true;
 }
 
+//Undo the last move of the user
+export function undoLastMove(){
+    //TODO make it only remove the last stroke
+    canvas.clear();
+    canvas.backgroundColor = "#fff";
+}
+
 export default function AICanvas({mode, prompt = null}) {
     if (mode != "level" && mode != "sandbox") {
         console.error(`mode is ${mode}, it should be level or sandbox`);

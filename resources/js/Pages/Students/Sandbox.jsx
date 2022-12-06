@@ -1,6 +1,6 @@
 import React from "react";
 import { Head } from '@inertiajs/inertia-react';
-import AICanvas from "@/Components/Student/AICanvas";
+import AICanvas from "@/Components/Student/AICanvas/AICanvas";
 
 const styles = {
     section: {

@@ -5,6 +5,7 @@ use App\Models\Student;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CheckIfStudent
 {
@@ -17,12 +18,10 @@ class CheckIfStudent
      */
     public function handle(Request $request, Closure $next)
     {
-        $student = Student::where('user_id', '=', Auth::user()->id)->first();
-        if($student) {
+        if(Student::where('user_id', '=', Auth::user()->id)->exists()){
             return $next($request);
         } else {
-            //Student niet ingelogd? Redirecten naar login
-            return redirect()->intended('/students/login');
+            return redirect()->intended('/admin/overview');
         }
     }
 }

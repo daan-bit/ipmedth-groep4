@@ -1,21 +1,22 @@
+import Navbar from '@/Components/World/NavBar';
 import Route from '@/Components/World/Route';
+import { Head } from '@inertiajs/inertia-react';
 import React from 'react'
 import '../../../css/pages/worldoverview.css';
 
 function Overview(props) {
-    console.log(props.world);
   return (
     <section className="world">
-        <section className="world__navigation">
-           <h2>Navigatie</h2> 
-        </section>
+      <Head title="🏖️ Wereld" />
+      <Navbar></Navbar>
 
-        <section className="world__route">
-        {props.world.map(({ id}) => (
-            <Route className={`world__route__island assignment_${id}`} key={id}>
+      <section className="world__route">
+        {props.world.map(({ id }) => (
+          <Route className={`world__route__island assignment_${id}`} key={id}>
             /</Route>
+          
         ))}
-        </section>
+      </section>
     </section>
   )
 }

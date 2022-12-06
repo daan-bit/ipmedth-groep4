@@ -32,7 +32,7 @@ class StudentController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        return redirect()->intended('/');
+        return redirect()->intended('/world/1');
     }
     
     public function sandbox(){

@@ -26,7 +26,7 @@ use Inertia\Inertia;
 // });
 
 Route::get('/', function () {
-    return redirect()->intended('students/login');;
+    return redirect()->intended('students/login');
 });
 
 Route::get('/dashboard', function () {
@@ -37,24 +37,17 @@ Route::get('/dashboard', function () {
 Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //LEERLINGEN
-//Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /login
- Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
- Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get'])->name('student.login');
- Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
-
-//Studenten login > hier kan student inloggen > redirect naar /
-// Route::get('/login', [], '')
 //Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /students/login
-Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
+Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index'])->name('student.overview');
 Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get'])->name('student.login');
 Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
 //Pagina van bepaalde wereld - Alex
-Route::middleware(['auth', 'student'])->group(function(){
+Route::middleware(['AuthStudent', 'student'])->group(function(){
     Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'get'])->name('world.page');
+    //Pagina van opdracht binnen een bepaalde wereld
     // Route::get('/{world_id}/{level_id}', [], '');
 });
-//Pagina van opdracht binnnen een bepaalde wereld
 
 //Vrij tekenen
 Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);

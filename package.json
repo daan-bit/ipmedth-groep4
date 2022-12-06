@@ -22,7 +22,7 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
-        "react-icons": "^4.7.1"
+        "react-icons": "^4.7.1",
         "@tensorflow/tfjs": "^4.1.0",
         "canvas": "^2.10.2",
         "fabric": "^6.0.0-rc.0"

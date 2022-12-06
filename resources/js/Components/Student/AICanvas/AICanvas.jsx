@@ -11,11 +11,11 @@ let canvas;
 let ai;
 
 //load the model
-async function start() {
+async function start(mode, prompt) {
     //load the model 
     model = await tf.loadLayersModel('/model/model.json');
 
-    ai = new PredictionModel(model, canvas);
+    ai = new PredictionModel(model, canvas, mode, prompt);
 
     //warm up 
     ai.model.predict(tf.zeros([1, 28, 28, 1]));
@@ -39,6 +39,7 @@ export default function AICanvas({mode, prompt = null}) {
         document.write(`<h1 style='color: red;'>mode is ${mode}, it should be level or sandbox</h1>`);
         return;
     }
+
     useLayoutEffect(() => {
         //INIT the canvas
         canvas = new fabric.Canvas('canvas', {
@@ -71,7 +72,7 @@ export default function AICanvas({mode, prompt = null}) {
             ai.recordCoor(e);
         });
         // INIT the AI
-        start();
+        start(mode, prompt);
 
     }, []);
     return (

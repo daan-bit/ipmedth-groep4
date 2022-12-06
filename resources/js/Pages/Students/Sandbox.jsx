@@ -17,7 +17,7 @@ export default function Sandbox(props) {
     return (
         <section style={styles.section}>
             <Head title="🏖️ Sandbox" />
-            <AICanvas style={styles.canvas} id="canvas" />
+            <AICanvas style={styles.canvas} mode="sandbox" id="canvas" />
         </section>
     )
 }

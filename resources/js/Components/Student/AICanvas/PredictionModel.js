@@ -1,12 +1,14 @@
 import * as tf from '@tensorflow/tfjs';
 
 export class PredictionModel {
-    constructor(model, canvas) {
+    constructor(model, canvas, mode, prompt) {
         this.model = model;
         this.canvas = canvas;
         this.classNames = [];
         this.coords = [];
         this.mousePressed = false;
+        this.mode = mode;
+        this.prompt = prompt;
     }
     //record the current drawing coordinates
     recordCoor(event) {
@@ -66,14 +68,17 @@ export class PredictionModel {
             const imgData = this.getImageData()
 
             //get the prediction 
-            const pred = this.model.predict(this.preprocess(imgData)).dataSync()
+            const pred = this.model.predict(this.preprocess(imgData)).dataSync();
 
-            //find the top 5 predictions 
             const indices = this.findIndicesOfMax(pred, 5)
             const probs = this.findTopValues(pred, 5)
             const names = this.getClassNames(indices)
-
-            this.getTop5(names, probs)
+            //find the top 5 predictions
+            if (this.mode == "sandbox") {
+                this.getTop5(names, probs)
+            } else if (this.mode == "level") {
+                this.findSpecificPrompt(pred, this.prompt);
+            }
         }
     }
 
@@ -88,10 +93,11 @@ export class PredictionModel {
 
     //get the the class names 
     getClassNames(indices) {
-        var outp = []
-        for (var i = 0; i < indices.length; i++)
-            outp[i] = this.classNames[indices[i]]
-        return outp
+        let outp = [];
+        for (let i = 0; i < indices.length; i++) {
+            outp[i] = this.classNames[indices[i]];
+        }
+        return outp;
     }
 
     //load the class names 
@@ -114,10 +120,17 @@ export class PredictionModel {
         }
     }
 
+    findSpecificPrompt(inp, prompt){
+        const indexPrompt = this.classNames.indexOf(prompt);
+        const guessPrompt = Math.round(inp[indexPrompt] * 100);
+        const className = this.classNames[indexPrompt];
+        console.log(`${className} : ${guessPrompt}`);
+    }
+
     //get indices of the top probs
     findIndicesOfMax(inp, count) {
         var outp = [];
-        for (var i = 0; i < inp.length; i++) {
+        for (let i = 0; i < inp.length; i++) {
             outp.push(i); // add index to output array
             if (outp.length > count) {
                 outp.sort(function (a, b) {
@@ -134,7 +147,7 @@ export class PredictionModel {
         var outp = [];
         let indices = this.findIndicesOfMax(inp, count)
         // show 5 greatest scores
-        for (var i = 0; i < indices.length; i++)
+        for (let i = 0; i < indices.length; i++)
             outp[i] = inp[indices[i]]
         return outp
     }

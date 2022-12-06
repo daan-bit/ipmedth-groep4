@@ -13,7 +13,7 @@ export default function Sandbox() {
             <Head title={level.name} />
             <h2 className="level__description">{level.description}</h2>
             <section className="canvas__container">
-                <AICanvas id="canvas" />
+                <AICanvas id="canvas" mode="level" prompt="vogel" />
             </section>
         </article>
     )

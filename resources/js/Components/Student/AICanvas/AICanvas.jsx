@@ -33,7 +33,12 @@ function allowDrawing() {
     canvas.isDrawingMode = true;
 }
 
-export default function AICanvas({ }) {
+export default function AICanvas({mode, prompt = null}) {
+    if (mode != "level" && mode != "sandbox") {
+        console.error(`mode is ${mode}, it should be level or sandbox`);
+        document.write(`<h1 style='color: red;'>mode is ${mode}, it should be level or sandbox</h1>`);
+        return;
+    }
     useLayoutEffect(() => {
         //INIT the canvas
         canvas = new fabric.Canvas('canvas', {

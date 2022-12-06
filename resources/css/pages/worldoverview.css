@@ -64,3 +64,7 @@ body {
 .island__figure__image {
     width: 40%;
 }
+
+.world__route__island {
+    margin-left: 3rem;
+}

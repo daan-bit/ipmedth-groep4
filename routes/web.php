@@ -45,6 +45,9 @@ Route::post('students/login', [App\Http\Controllers\StudentController::class, 's
 //Pagina van bepaalde wereld - Alex
 Route::middleware(['AuthStudent', 'student'])->group(function(){
     Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'get'])->name('world.page');
+    //Tekeningen bekijken
+    Route::get('/album/{student_id}', [App\Http\Controllers\WorldController::class, 'get'])->name('album.page');
+    
     //Pagina van opdracht binnen een bepaalde wereld
     // Route::get('/{world_id}/{level_id}', [], '');
 });
@@ -52,8 +55,6 @@ Route::middleware(['AuthStudent', 'student'])->group(function(){
 //Vrij tekenen
 Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);
 
-//Tekeningen bekijken
-// Route::get('/album', [], '');
 
 
 //==========================================

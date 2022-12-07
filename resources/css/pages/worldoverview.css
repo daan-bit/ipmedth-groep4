@@ -1,0 +1,71 @@
+.world {
+    background: linear-gradient(180deg, #0292C1 0%, #41BDE5 29.17%, #6BD2F4 49.98%, #6BD3F5 49.99%, #6CD3F5 50%, #41BDE6 68.75%, #0292C1 100%);
+    min-height: 100vh;
+    min-width: 100vh;
+}
+
+.world__navigation {
+    margin: 5rem;
+}
+
+.world__route {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    height: 50rem;
+    width: 100%;
+    padding: 3rem;
+    margin: 0;
+    border-radius: .5rem;
+}
+
+.assignment_1 {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.assignment_2 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.assignment_3 {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.assignment_4 {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.assignment_5 {
+    grid-column: 5;
+    grid-row: 1;
+}
+
+.island {
+    width: 15rem;
+    height: 5rem;
+    left: 7.7rem;
+    top: 13.4rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: #FBE9BF;
+    box-shadow: inset 0rem .4rem 5rem rgba(255, 209, 102, 0.5);
+    margin-top: 10rem;
+
+}
+
+.island__figure {
+    position: absolute;
+    margin-top: -5rem;
+}
+
+.island__figure__image {
+    width: 75%;
+}
+
+

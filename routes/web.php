@@ -27,29 +27,24 @@ Route::get('/dashboard', function () {
 Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //LEERLINGEN
-//Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /login
- Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
- Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get'])->name('student.login');
- Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
-
-//Studenten login > hier kan student inloggen > redirect naar /
-// Route::get('/login', [], '')
 //Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /students/login
-Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
+Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index'])->name('student.overview');
 Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get'])->name('student.login');
 Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 
-//Pagina van bepaalde wereld
-// Route::get('/{world_id}', [], '');
-
+//Pagina van bepaalde wereld - Alex
+Route::middleware(['AuthStudent', 'student'])->group(function(){
+    Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'getWorld'])->name('world.page');
+    //Tekeningen bekijken
+    Route::get('/album/{student_id}', [App\Http\Controllers\WorldController::class, 'getWorld'])->name('album.page');
+    //bovenstaande Route album  controller wordt nog aangepast wanneer aan album wordt gewerkt.
+});
 //Pagina van opdracht binnnen een bepaalde wereld
 Route::get('level/{world_id}/{level_id}', [App\Http\Controllers\StudentController::class, 'getLevel']);
 
 //Vrij tekenen
 Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);
 
-//Tekeningen bekijken
-// Route::get('/album', [], '');
 
 
 //==========================================
@@ -67,9 +62,9 @@ Route::middleware(['auth', 'teacher'])->group(function(){
     //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
     Route::get('/docent/overview', [App\Http\Controllers\EmployeeController::class, 'getTeacher']);
 
-    //Overzicht klas 
+    //Overzicht klas
     Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
-    
+
     //Instellingenpagina van docent
     // Route::get('/docent/instellingen', [], '');
 });

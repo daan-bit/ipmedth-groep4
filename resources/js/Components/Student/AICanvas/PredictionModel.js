@@ -12,9 +12,9 @@ export class PredictionModel {
     }
     //record the current drawing coordinates
     recordCoor(event) {
-        var pointer = this.canvas.getPointer(event.e);
-        var posX = pointer.x;
-        var posY = pointer.y;
+        let pointer = this.canvas.getPointer(event.e);
+        let posX = pointer.x;
+        let posY = pointer.y;
 
         if (posX >= 0 && posY >= 0 && this.mousePressed) {
             this.coords.push(pointer);

@@ -12,8 +12,6 @@ export default function TextInput({
     required,
     isFocused,
     handleChange,
-    className,
-    id
 }) {
     const input = useRef();
 
@@ -30,7 +28,6 @@ export default function TextInput({
             	className={`input ${className}`}
                 type={type}
                 name={name}
-                id={id}
                 value={value}
                 ref={input}
                 autoComplete={autoComplete}

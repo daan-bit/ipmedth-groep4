@@ -57,7 +57,7 @@ function Settings(props) {
                             <label htmlFor="old_password">Oude wachtwoord:</label>
                             <TextInput
                                 id='old_password'
-                                type="text"
+                                type="password"
                                 name="old_password"
                                 autoComplete={'old_password'}
                                 value={values.old_password}

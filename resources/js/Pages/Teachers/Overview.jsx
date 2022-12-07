@@ -10,7 +10,7 @@ function Overview(props) {
         <p>E-mail: {props.employee.email}</p>
         <p>Id: {props.employee.id}</p>
 
-        <ResponsiveNavLink method="post" href={route('logout')} as="button">
+        <ResponsiveNavLink method="post" href={route('logout')} as="button" className={"button-secundary"}>
             Log Out
         </ResponsiveNavLink>
     </section>

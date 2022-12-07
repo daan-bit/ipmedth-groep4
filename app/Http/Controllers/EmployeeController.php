@@ -46,4 +46,8 @@ class EmployeeController extends Controller
 
         return Inertia::render('Admin/Overview', ['employee' => $employee]);
     }
+
+    public function getAdminSettings(){
+        return Inertia::render('Admin/Settings');
+    }
 }

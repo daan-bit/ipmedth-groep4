@@ -38,7 +38,6 @@ export default function Login({ status, canResetPassword }) {
                 <form onSubmit={submit}>
                     <section>
                         <InputLabel forInput="input" value="Gebruikersnaam" />
-
                         <TextInput
                             type="text"
                             name="username"

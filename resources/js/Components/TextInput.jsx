@@ -12,6 +12,8 @@ export default function TextInput({
     required,
     isFocused,
     handleChange,
+    className,
+    id
 }) {
     const input = useRef();
 
@@ -24,7 +26,8 @@ export default function TextInput({
     return (
         <div>
             <input
-            	className='input'
+                id={id}
+            	className={`input ${className}`}
                 type={type}
                 name={name}
                 id={id}

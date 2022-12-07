@@ -15,18 +15,8 @@ use Inertia\Inertia;
 |
 */
 
-// Deze laten staan, later gebruiken voor wachtwoord reset/register
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
 Route::get('/', function () {
-    return redirect()->intended('students/login');;
+    return redirect()->intended('students/login');
 });
 
 Route::get('/dashboard', function () {
@@ -67,7 +57,10 @@ Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox'
 //==========================================
 
 Route::get('/login', [App\Http\Controllers\AuthenticatedSessionController::class, 'store']);
-//Register route
+
+Route::middleware(['auth'])->group(function(){
+    Route::post('/change-password', [App\Http\Controllers\PasswordController::class, 'updatePassword']);
+});
 
 //DOCENTEN
 Route::middleware(['auth', 'teacher'])->group(function(){
@@ -85,6 +78,7 @@ Route::middleware(['auth', 'teacher'])->group(function(){
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
 Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin/overview', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
+   Route::get('/admin/instellingen', [App\Http\Controllers\EmployeeController::class, 'getAdminSettings']);
 });
 
 

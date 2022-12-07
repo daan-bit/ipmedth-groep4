@@ -21,7 +21,7 @@ class CheckIfStudent
         if(Student::where('user_id', '=', Auth::user()->id)->exists()){
             return $next($request);
         } else {
-            return redirect()->intended('/admin/overview');
+            return redirect()->intended('/students/login');
         }
     }
 }

@@ -15,16 +15,6 @@ use Inertia\Inertia;
 |
 */
 
-// Deze laten staan, later gebruiken voor wachtwoord reset/register
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
 Route::get('/', function () {
     return redirect()->intended('students/login');
 });
@@ -48,10 +38,9 @@ Route::middleware(['AuthStudent', 'student'])->group(function(){
     //Tekeningen bekijken
     Route::get('/album/{student_id}', [App\Http\Controllers\WorldController::class, 'getWorld'])->name('album.page');
     //bovenstaande Route album  controller wordt nog aangepast wanneer aan album wordt gewerkt.
-
-    //Pagina van opdracht binnen een bepaalde wereld
-    // Route::get('/{world_id}/{level_id}', [], '');
 });
+//Pagina van opdracht binnnen een bepaalde wereld
+Route::get('level/{world_id}/{level_id}', [App\Http\Controllers\StudentController::class, 'getLevel']);
 
 //Vrij tekenen
 Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);
@@ -63,7 +52,10 @@ Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox'
 //==========================================
 
 Route::get('/login', [App\Http\Controllers\AuthenticatedSessionController::class, 'store']);
-//Register route
+
+Route::middleware(['auth'])->group(function(){
+    Route::post('/change-password', [App\Http\Controllers\PasswordController::class, 'updatePassword']);
+});
 
 //DOCENTEN
 Route::middleware(['auth', 'teacher'])->group(function(){
@@ -81,6 +73,7 @@ Route::middleware(['auth', 'teacher'])->group(function(){
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
 Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin/overview', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
+   Route::get('/admin/instellingen', [App\Http\Controllers\EmployeeController::class, 'getAdminSettings']);
 });
 
 

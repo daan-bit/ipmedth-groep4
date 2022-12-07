@@ -24,10 +24,10 @@ export default function TextInput({
     return (
         <div>
             <input
-            	className='input'
+                id={id}
+            	className={`input ${className}`}
                 type={type}
                 name={name}
-                id={id}
                 value={value}
                 ref={input}
                 autoComplete={autoComplete}

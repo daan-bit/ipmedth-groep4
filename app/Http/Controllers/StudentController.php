@@ -26,7 +26,6 @@ class StudentController extends Controller
     public function get($id)
     {
         $students = Student::where('id', '=', $id)->get();
-
         return Inertia::render('Students/UserLogin', ['students' => $students]);
     }
 

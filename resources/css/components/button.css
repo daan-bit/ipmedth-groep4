@@ -11,7 +11,9 @@
 }
 
 .button-secundary{
-    background-color: var(--color-dark-blue);
+    border: 3px solid var(--color-dark-blue);
+    background-color: transparent;
+    color: var(--character-dark);
 }
 
 .button:hover{
@@ -24,6 +26,7 @@
 
 .button-secundary:hover{
     background-color: var(--color-secundary-hover);
+    color: var(--character-light);
 }
 
 .button-primary:active{

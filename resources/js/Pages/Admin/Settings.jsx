@@ -73,7 +73,7 @@ function Settings(props) {
                             <label htmlFor="new_password">Nieuwe wachtwoord:</label>
                             <TextInput
                                 id='new_password'
-                                type="text"
+                                type="password"
                                 name="new_password"
                                 value={values.new_password}
                                 handleChange={handleChange}
@@ -85,7 +85,7 @@ function Settings(props) {
                             <label htmlFor="new_password_confirm">Herhaal wachtwoord:</label>
                             <TextInput
                                 id="new_password_confirm"
-                                type="text"
+                                type="password"
                                 name="new_password_confirm"
                                 value={values.new_password_password}
                                 handleChange={handleChange}

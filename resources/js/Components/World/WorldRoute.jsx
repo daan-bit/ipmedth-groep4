@@ -11,7 +11,6 @@ export default function Route({ className, assignmentId, linkClassName }) {
                 href={`/world/assignment/` + assignmentId}
                 className={linkClassName}
             >
-
                 <Island className={"world__route__island"}></Island>
             </Link>
         </div>

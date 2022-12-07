@@ -2,7 +2,7 @@
 
 .world__navbar {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
     width: 100%;
@@ -26,6 +26,7 @@
 .world__navbar__buttons__album:hover,
 .world__navbar__buttons__logout:hover {
     cursor: pointer;
+    background: var(--color-yellow);
 }
 
 .world__navbar__buttons__logout {

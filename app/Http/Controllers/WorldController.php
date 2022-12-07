@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Log;
 
 class WorldController extends Controller
 {
-    public function get($id)
+    public function getWorld($id)
     {
-        $world = World::where('world', '=', $id)->get(); 
+        $world = World::where('world', '=', $id)->get();
         $student = Student::where('user_id','=', Auth::user()->id)->first();
         {
             return Inertia::render('Worlds/World', ['world' => $world, 'student' => $student]);

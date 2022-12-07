@@ -44,10 +44,11 @@ Route::post('students/login', [App\Http\Controllers\StudentController::class, 's
 
 //Pagina van bepaalde wereld - Alex
 Route::middleware(['AuthStudent', 'student'])->group(function(){
-    Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'get'])->name('world.page');
+    Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'getWorld'])->name('world.page');
     //Tekeningen bekijken
-    Route::get('/album/{student_id}', [App\Http\Controllers\WorldController::class, 'get'])->name('album.page');
-    
+    Route::get('/album/{student_id}', [App\Http\Controllers\WorldController::class, 'getWorld'])->name('album.page');
+    //bovenstaande Route album  controller wordt nog aangepast wanneer aan album wordt gewerkt.
+
     //Pagina van opdracht binnen een bepaalde wereld
     // Route::get('/{world_id}/{level_id}', [], '');
 });
@@ -69,9 +70,9 @@ Route::middleware(['auth', 'teacher'])->group(function(){
     //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
     Route::get('/docent/overview', [App\Http\Controllers\EmployeeController::class, 'getTeacher']);
 
-    //Overzicht klas 
+    //Overzicht klas
     Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
-    
+
     //Instellingenpagina van docent
     // Route::get('/docent/instellingen', [], '');
 });

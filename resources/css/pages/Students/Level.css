@@ -1,5 +1,3 @@
-@import "../../components/colors.css";
-
 .level__container {
     background-color: var(--background-light);
     background-image: url("/public/images/background/table.svg");

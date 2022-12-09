@@ -17,9 +17,9 @@ class AssignmentsTableSeeder extends Seeder
     {
         DB::table('assignments')->insert([
             'name' => 'Opdracht 1',
-            'description' => 'Teken een kat',
+            'description' => 'Teken de zon',
+            'prompt' => 'zon',
             'images' => json_encode(['afbeelding_1' => 'afbeelding1.png', 'afbeelding_2' => 'afbeelding_2.png']),
-            'timer' => 60,
             'world' => 1,
             'level' => 1
         ]);
@@ -27,34 +27,34 @@ class AssignmentsTableSeeder extends Seeder
         DB::table('assignments')->insert([
             'name' => 'Opdracht 2',
             'description' => 'Teken een Hond',
+            'prompt' => 'vis',
             'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
-            'timer' => 90,
             'world' => 1,
             'level' => 2
         ]);
         DB::table('assignments')->insert([
             'name' => 'Opdracht 3',
-            'description' => 'Teken een Hond',
+            'description' => 'Teken een zwaard',
+            'prompt' => 'zwaard',
             'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
-            'timer' => 90,
             'world' => 1,
-            'level' => 2
+            'level' => 3
         ]);
         DB::table('assignments')->insert([
             'name' => 'Opdracht 4',
-            'description' => 'Teken een Hond',
+            'description' => 'Teken een hoed',
+            'prompt' => 'hoed',
             'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
-            'timer' => 90,
             'world' => 1,
-            'level' => 2
+            'level' => 4
         ]);
         DB::table('assignments')->insert([
             'name' => 'Opdracht 5',
-            'description' => 'Teken een Hond',
+            'description' => 'Teken een kanon',
+            'prompt' => 'kanon',
             'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
-            'timer' => 90,
             'world' => 1,
-            'level' => 2
+            'level' => 5
         ]);
     }
 }

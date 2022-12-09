@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('description');
+            $table->string('prompt');
             $table->json('images')->nullable();
-            $table->tinyInteger('timer');
             $table->tinyInteger('world');
             $table->tinyInteger('level');
             $table->timestamps();

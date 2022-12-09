@@ -32,5 +32,29 @@ class AssignmentsTableSeeder extends Seeder
             'world' => 1,
             'level' => 2
         ]);
+        DB::table('assignments')->insert([
+            'name' => 'Opdracht 3',
+            'description' => 'Teken een Hond',
+            'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
+            'timer' => 90,
+            'world' => 1,
+            'level' => 2
+        ]);
+        DB::table('assignments')->insert([
+            'name' => 'Opdracht 4',
+            'description' => 'Teken een Hond',
+            'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
+            'timer' => 90,
+            'world' => 1,
+            'level' => 2
+        ]);
+        DB::table('assignments')->insert([
+            'name' => 'Opdracht 5',
+            'description' => 'Teken een Hond',
+            'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
+            'timer' => 90,
+            'world' => 1,
+            'level' => 2
+        ]);
     }
 }

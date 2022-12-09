@@ -1,0 +1,33 @@
+
+.world__navbar {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    width: 100%;
+    padding: 3rem;
+    margin: 0;
+}
+
+.world__navbar__buttons {
+    grid-column: 6;
+}
+
+.world__navbar__buttons__album,
+.world__navbar__buttons__logout {
+    background: var(--color-green);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
+    border: none;
+}
+
+.world__navbar__buttons__album:hover,
+.world__navbar__buttons__logout:hover {
+    cursor: pointer;
+    background: var(--color-yellow);
+}
+
+.world__navbar__buttons__logout {
+    margin-left: 2.5rem;
+}

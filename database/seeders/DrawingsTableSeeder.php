@@ -19,7 +19,11 @@ class DrawingsTableSeeder extends Seeder
             'assignment_id' => 1,
             'student_id' => 1
         ]);
-
+        DB::table('drawings')->insert([
+            'image' => 'result_13132345.png',
+            'assignment_id' => 2,
+            'student_id' => 1
+        ]);
         DB::table('drawings')->insert([
             'image' => 'result_1313232345.png',
             'assignment_id' => 1,

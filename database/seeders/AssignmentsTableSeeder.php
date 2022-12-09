@@ -26,7 +26,7 @@ class AssignmentsTableSeeder extends Seeder
 
         DB::table('assignments')->insert([
             'name' => 'Opdracht 2',
-            'description' => 'Teken een Hond',
+            'description' => 'Teken een Vis',
             'prompt' => 'vis',
             'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
             'world' => 1,

@@ -40,6 +40,16 @@ export function undoLastMove(){
     canvas.backgroundColor = "#fff";
 }
 
+/**
+ * It returns the SVG code for the current canvas
+ * @returns The canvas is being returned as an SVG.
+ */
+export function save(){
+    return canvas.toSVG({
+        suppressPreamble: true,
+    });
+}
+
 export default function AICanvas({mode, prompt = null}) {
     if (mode != "level" && mode != "sandbox") {
         console.error(`mode is ${mode}, it should be level or sandbox`);

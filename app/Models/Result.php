@@ -9,6 +9,6 @@ use App\Models\Student;
 class Result extends Model
 {
     use HasFactory;
+    
     protected $table = 'results';
-
 }

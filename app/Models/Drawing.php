@@ -9,7 +9,9 @@ use App\Models\Student;
 class Drawing extends Model
 {
     use HasFactory;
+
     protected $table = 'drawings';
 
-
+    //Disable the updatet_at and created_at
+    public $timestamps = false;
 }

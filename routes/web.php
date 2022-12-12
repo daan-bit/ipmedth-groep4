@@ -27,6 +27,9 @@ Route::get('/dashboard', function () {
 Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 
 //LEERLINGEN
+//Studenten login > hier kan student inloggen > redirect naar /
+// Route::get('/login', [], '')
+Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
 //Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /students/login
 Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index'])->name('student.overview');
 Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get'])->name('student.login');
@@ -39,7 +42,8 @@ Route::middleware(['AuthStudent', 'student'])->group(function(){
     Route::get('/album', [App\Http\Controllers\DrawingController::class, 'getDrawings'])->name('album.page');
 });
 //Pagina van opdracht binnnen een bepaalde wereld
-Route::get('level/{world_id}/{level_id}', [App\Http\Controllers\StudentController::class, 'getLevel']);
+Route::get('/level/{world_id}/{level_id}', [App\Http\Controllers\StudentController::class, 'getLevel']);
+Route::post('/level/insert-drawing', [App\Http\Controllers\StudentController::class, 'insertDrawing']);
 
 //Vrij tekenen
 Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);

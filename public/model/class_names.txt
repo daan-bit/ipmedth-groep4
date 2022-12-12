@@ -1,20 +1,5 @@
-appel
-paard
-bijl
-kat
-kasteel
-gevangenis
-vogel
-kaars
-duikplank
-De Eiffeltoren
-papegaai
-bus
-boek
-cirkel
-brood
-kroon
+kanon
+hoed
+zon
 zwaard
-driehoek
-kaart
-palmboom
+vis

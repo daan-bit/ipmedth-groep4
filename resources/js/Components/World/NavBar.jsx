@@ -5,9 +5,9 @@ import { BiPhotoAlbum } from 'react-icons/bi';
 import { Inertia } from '@inertiajs/inertia';
 
 
-export default function Navbar({student_id}) {
+export default function Navbar() {
     const goToAlbum = () => {
-        Inertia.get(route('album.page', student_id));
+        Inertia.get(route('album.page'));
     }
 
     const logOut = () => {

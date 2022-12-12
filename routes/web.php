@@ -39,8 +39,7 @@ Route::post('students/login', [App\Http\Controllers\StudentController::class, 's
 Route::middleware(['AuthStudent', 'student'])->group(function(){
     Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'getWorld'])->name('world.page');
     //Tekeningen bekijken
-    Route::get('/album/{student_id}', [App\Http\Controllers\WorldController::class, 'getWorld'])->name('album.page');
-    //bovenstaande Route album  controller wordt nog aangepast wanneer aan album wordt gewerkt.
+    Route::get('/album', [App\Http\Controllers\DrawingController::class, 'getDrawings'])->name('album.page');
 });
 //Pagina van opdracht binnnen een bepaalde wereld
 Route::get('/level/{world_id}/{level_id}', [App\Http\Controllers\StudentController::class, 'getLevel']);

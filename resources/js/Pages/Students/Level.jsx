@@ -38,7 +38,7 @@ export default function Sandbox() {
             <Head title={level.name} />
             <h2 className="level__description u__z_index2">{level.description}</h2>
             <section className="canvas__container">
-                <AICanvas id="canvas" mode="level" prompt="vogel" />
+                <AICanvas id="canvas" mode="level" prompt={level.prompt} />
             </section>
             <button className="u__z_index2" onClick={undoLastMove}>undoLastMove</button>
             <form method="post" onSubmit={updateImage} enctype="multipart/form-data">

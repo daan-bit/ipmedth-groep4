@@ -24,6 +24,11 @@ class StudentsTableSeeder extends Seeder
             'user_id' => 4,
             'group_id' => 2
         ]);
+        DB::table('students')->insert([
+            'first_name' => 'Daan',
+            'user_id' => 5,
+            'group_id' => 1
+        ]);
    
     }
 }

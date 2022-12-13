@@ -42,7 +42,7 @@ class ResultsTableSeeder extends Seeder
             'drawing_id' => 2
         ]);
         DB::table('results')->insert([
-            'status' => 1,
+            'status' => 0,
             'assignment_id' => 5,
             'student_id' => 1,
             'drawing_id' => 2

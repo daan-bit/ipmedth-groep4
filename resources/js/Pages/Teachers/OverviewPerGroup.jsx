@@ -7,56 +7,82 @@ import '../../../css/pages/Teachers/OverviewPerGroup.css'
 function OverviewPerGroup(props) {
     const [average, setAverage] = useState();
     const [median, setMedian] = useState();
+    const [mode, setMode] = useState();
     const [min, setMin] = useState();
     const [max, setMax] = useState();
 
-    const [opdracht1, setOpdracht1] = useState([]);
-    const [opdracht2, setOpdracht2] = useState([]);
-    const [opdracht3, setOpdracht3] = useState([]);
-    const [opdracht4, setOpdracht4] = useState([]);
-    const [opdracht5, setOpdracht5] = useState([]);
+    let allMadeAssignmentIds = [];
 
-    let allAssignmentIds = [];
-    let amountStudents = props.students.length;
-    let amountAssignments = props.assignments.length;
+    const [rightArray, setRightArray] = useState([[0], [0], [0], [0], [0]]);
+    const [wrongArray, setWrongArray] = useState([[0], [0], [0], [0], [0]]);
+    const [unFinishedArray, setUnfinishedArray] = useState([[0], [0], [0], [0], [0]]);
 
     useEffect(() => {
-        setOpdracht1([]);
-        setOpdracht2([]);
-        setOpdracht3([]);
-        setOpdracht4([]);
-        setOpdracht5([]);
+        refreshData();
+        calculateStatistics();
+
+      }, [props]);
+    
+    function refreshData(){
+        setRightArray([[0], [0], [0], [0], [0]]);
+        setWrongArray([[0], [0], [0], [0], [0]]);
+        setUnfinishedArray([[0], [0], [0], [0], [0]]);
 
         for (let i = 0; i < props.allResults.length; i++) {
             let resultPerStudent = props.allResults[i];
     
             for (let i = 0; i < resultPerStudent.length; i++){
-                allAssignmentIds.push(resultPerStudent[i]['assignment_id']);
-                
-                if(resultPerStudent[i]['assignment_id'] == 1){
-                    setOpdracht1(oud => [...oud, resultPerStudent[i]['status']]);
-                }else if(resultPerStudent[i]['assignment_id'] == 2){
-                    setOpdracht2(oud => [...oud, resultPerStudent[i]['status']]);
-                }else if(resultPerStudent[i]['assignment_id'] == 3){
-                    setOpdracht3(oud => [...oud, resultPerStudent[i]['status']]);
-                }else if(resultPerStudent[i]['assignment_id'] == 4){
-                    setOpdracht4(oud => [...oud, resultPerStudent[i]['status']]);
-                }else if(resultPerStudent[i]['assignment_id'] == 5){
-                    setOpdracht5(oud => [...oud, resultPerStudent[i]['status']]);
+                if(resultPerStudent[i]['status'] != 0){
+                    allMadeAssignmentIds.push(resultPerStudent[i]['assignment_id']);
                 }
-  
+                
+                switch(resultPerStudent[i]['assignment_id']){
+                    case 1:
+                        //ResultsPerExcersise[0].push(resultPerStudent[i]['status']);
+                        updateArrays(0, resultPerStudent[i]['status']);
+                        break;
+                    case 2:
+                        //ResultsPerExcersise[1].push(resultPerStudent[i]['status']);
+                        updateArrays(1, resultPerStudent[i]['status']);
+                        break;
+                    case 3:
+                        //ResultsPerExcersise[2].push(resultPerStudent[i]['status']);
+                        updateArrays(2, resultPerStudent[i]['status']);
+                        break;
+                    case 4:
+                        //ResultsPerExcersise[3].push(resultPerStudent[i]['status']);
+                        updateArrays(3, resultPerStudent[i]['status']);
+                        break;
+                    case 5:
+                        //ResultsPerExcersise[4].push(resultPerStudent[i]['status']);
+                        updateArrays(4, resultPerStudent[i]['status']);
+                        break;
+                } 
             }
-        } 
-        // console.log('amountStudents: ', amountStudents);
-        // console.log('allAssignmentIds: ', allAssignmentIds);
-        // console.log('amountAssignements: ', amountAssignments);
+            console.log("All made assigments: ", allMadeAssignmentIds)
+        }
+        // console.log("Wrong array: ", wrongArray); 
+        // console.log("Right array: ", rightArray); 
+        // console.log("Unfinished array: ", unFinishedArray); 
+    }
 
-        setAverage(Math.round(allAssignmentIds.reduce((a, b) => a + b, 0) / allAssignmentIds.length));
-        setMedian(Math.round(calculateMedian(allAssignmentIds)));
-        setMin(Math.min.apply(Math, allAssignmentIds));
-        setMax(Math.max.apply(Math, allAssignmentIds));
+    function updateArrays(placeInArray, statusOfExcercise){
+        if(statusOfExcercise == 1){
+            rightArray[placeInArray][0] += 1;
+        }else if(statusOfExcercise == -1){
+            wrongArray[placeInArray][0] += 1;
+        }else if(statusOfExcercise == 0){
+            unFinishedArray[placeInArray][0] += 1;
+        }
+    }
 
-      }, [props]);
+    function calculateStatistics(){
+        setAverage(Math.round(allMadeAssignmentIds.reduce((a, b) => a + b, 0) / allMadeAssignmentIds.length));
+        setMedian(Math.round(calculateMedian(allMadeAssignmentIds)));
+        setMode(calculateMode(allMadeAssignmentIds))
+        setMin(Math.min.apply(Math, allMadeAssignmentIds));
+        setMax(Math.max.apply(Math, allMadeAssignmentIds));
+    }
 
     function calculateMedian(arr) {
         if (arr.length == 0) {
@@ -70,17 +96,37 @@ function OverviewPerGroup(props) {
         return median;
     }
 
-    
+    function calculateMode(arr){
+            const mode = {};
+            let max = 0, count = 0;
+          
+            for(let i = 0; i < arr.length; i++) {
+              const item = arr[i];
+              
+              if(mode[item]) {
+                mode[item]++;
+              } else {
+                mode[item] = 1;
+              }
+              
+              if(count < mode[item]) {
+                max = item;
+                count = mode[item];
+              }
+            }
+            return max;
+    }
 
   return (
     <article className='OverviewPerGroupPage'>
         <section className='OverviewPerGroupPage__statisticContainer'>
             <section className='statisticContainer__statistic'><p>{average}</p></section>
             <section className='statisticContainer__statistic'><p>{median}</p></section>
+            <section className='statisticContainer__statistic'><p>{mode}</p></section>
             <section className='statisticContainer__statistic'><p>{min} / {max}</p></section>
         </section>
         <section className='OverviewPerGroupPage__chart'>
-            <StackedBarChart opdr1={opdracht1} opdr2={opdracht2} opdr3={opdracht3} opdr4={opdracht4} opdr5={opdracht5}/>
+            <StackedBarChart rightArray={rightArray} wrongArray={wrongArray} unFinishedArray={unFinishedArray} Assignments={props.assignments}/>
         </section>
     </article>
   )

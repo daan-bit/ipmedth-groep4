@@ -66,7 +66,7 @@ Route::middleware(['auth', 'teacher'])->group(function(){
     Route::get('/docent/overview', [App\Http\Controllers\EmployeeController::class, 'getTeacher']);
 
     //Deze route later samenvoegen met /docent/overview/{id}
-    Route::get('/docent/overview/dashboard/{group_id}', [App\Http\Controllers\EmployeeController::class, 'getResultsPerGroup']);
+    Route::get('/docent/overzicht/dashboard/{group_id}', [App\Http\Controllers\EmployeeController::class, 'getResultsPerGroup']);
 
     //Overzicht klas
     Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);

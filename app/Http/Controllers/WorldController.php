@@ -11,6 +11,8 @@ use DB;
 use App\Models\World;
 use App\Models\Student;
 use Illuminate\Support\Facades\Log;
+use App\Models\Result;
+
 
 class WorldController extends Controller
 {
@@ -18,8 +20,10 @@ class WorldController extends Controller
     {
         $world = World::where('world', '=', $id)->get();
         $student = Student::where('user_id','=', Auth::user()->id)->first();
+        $assignments = Result::where('student_id', '=', $student->id)->where('status', '=' , 1)->get();
+
         {
-            return Inertia::render('Worlds/World', ['world' => $world, 'student' => $student]);
+            return Inertia::render('Worlds/World', ['world' => $world, 'student' => $student, 'assignments' => $assignments]);
         }
     }
 }

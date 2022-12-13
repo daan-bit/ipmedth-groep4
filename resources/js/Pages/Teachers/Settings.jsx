@@ -53,7 +53,7 @@ function Settings(props) {
                 <CustomCollapsible trigger={'Wijzig wachtwoord'}>
                     <form onSubmit={handleSubmit} className='content__form'>
                         <section className='form__contentBlock'>
-                            <label htmlFor="old_password">Oude wachtwoord:</label>
+                            <label htmlFor="old_password">Huidig wachtwoord:</label>
                             <TextInput
                                 id='old_password'
                                 type="password"
@@ -69,7 +69,7 @@ function Settings(props) {
                         </section>
                        
                         <section className='form__contentBlock'>
-                            <label htmlFor="new_password">Nieuwe wachtwoord:</label>
+                            <label htmlFor="new_password">Nieuw wachtwoord:</label>
                             <TextInput
                                 id='new_password'
                                 type="password"
@@ -81,7 +81,7 @@ function Settings(props) {
                         </section>
                         
                         <section className='form__contentBlock'>
-                            <label htmlFor="new_password_confirm">Herhaal wachtwoord:</label>
+                            <label htmlFor="new_password_confirm">Herhaal nieuw wachtwoord:</label>
                             <TextInput
                                 id="new_password_confirm"
                                 type="password"

@@ -64,12 +64,10 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth', 'teacher'])->group(function(){
     //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
     Route::get('/docent/overview', [App\Http\Controllers\EmployeeController::class, 'getTeacher']);
+    Route::get('/docent/instellingen', [App\Http\Controllers\EmployeeController::class, 'getTeacherSettings']);
 
     //Overzicht klas
     Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
-
-    //Instellingenpagina van docent
-    // Route::get('/docent/instellingen', [], '');
 });
 
 //ADMIN

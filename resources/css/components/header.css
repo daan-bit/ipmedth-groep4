@@ -1,0 +1,46 @@
+.teacherOverview__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+    padding: 0 2rem;
+    background-color: var(--background-dark-primary);
+}
+
+.teacherOverview__headerSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.header__logo {
+    height: 60%;
+    width: auto;
+    margin-right: 1rem;
+}
+
+.teacherOverview__headerSection--right {
+    cursor: pointer;
+}
+
+.header__name {
+    margin-right: 1rem;
+    color: var(--character-light);
+}
+
+.header__profileImg__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    border: .2rem solid var(--color-grey-border);
+}
+
+.header__profileImg {
+    height: 80%;
+    width: 80%;
+}

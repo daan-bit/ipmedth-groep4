@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 if(Employee::where('user_id', '=', Auth::user()->id)->exists()){
-                    return redirect()->intended('docent/overview');
+                    return redirect()->intended('docent/overzicht');
                 }else{
                     //Dan is het een student
                     return redirect()->intended('world/1');

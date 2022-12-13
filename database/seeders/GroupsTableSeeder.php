@@ -16,7 +16,7 @@ class GroupsTableSeeder extends Seeder
     {
         DB::table('groups')->insert([
             'school_group' => 'Klas 3A',
-            'school_year' => '2022-2023',
+            'school_year' => '2021-2022',
             'school_id' => 1,
         ]);
         DB::table('groups')->insert([

@@ -10,7 +10,7 @@ function World(props) {
   const [currentLevel, setCurrentLevel] = useState(0);
   useEffect(() => {
       //definieer laatste assignment oftewel level_id die in results table naarvoren is gekomen.
-    setCurrentLevel(assignments[assignments.length - 1].assignment_id);
+    setCurrentLevel(assignments.length > 0 ? assignments[assignments.length - 1].assignment_id : 0);
 }, [setCurrentLevel]);
 
   console.log(currentLevel)
@@ -20,7 +20,7 @@ function World(props) {
       <Navbar student_id={props.student.id} />
       <section className="world__route">
         {world.map((item, key) => (
-          <WorldRoute className={`world__route__island assignment_${item.id}`} currentIslandLevel={item.id == currentLevel + 1 ? (true) : (false)} assignmentStatus={assignments[item.id] ? assignments[item.id - 1].status : '0'} assignmentId={item.id} key={key} linkClassName="world__route__island__link" />
+          <WorldRoute className={`world__route__island assignment_${item.id}`} currentIslandLevel={item.id == currentLevel + 1 ? (true) : (false)} assignmentStatus={assignments[item.id - 1] ? assignments[item.id - 1].status : '0'} assignmentId={item.id} key={key} linkClassName="world__route__island__link" />
         ))}
       </section>
     </section>

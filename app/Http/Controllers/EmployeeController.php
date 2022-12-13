@@ -28,6 +28,10 @@ class EmployeeController extends Controller
         return Inertia::render('Teachers/Overview', ['employee' => $employee, 'groups' => $groups]);
     }
 
+    public function getTeacherSettings(){
+        return Inertia::render('Teachers/Settings');
+    }
+
     public function getGroup($id)
     {
         $group = Group::where('id', '=', $id)->first();

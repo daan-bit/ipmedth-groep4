@@ -21,7 +21,7 @@ class EmployeeController extends Controller
     public function getOverview()
     {
         $employee = Employee::where('user_id', '=', Auth::user()->id)->first();
-        $groups = $employee->groups->sortByDesc('school_year')->sortBy('name');
+        $groups = $employee->groups;
 
         error_log($employee);
 

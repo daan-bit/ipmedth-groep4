@@ -33,7 +33,7 @@ function Settings(props) {
 
     function handleSubmit(e) {
         if(values.new_password != values.new_password_confirm){
-            setpasswordConfirmError("Wachtwoorden zij niet gelijk");
+            setpasswordConfirmError("De ingevoerde wachtwoorden komen niet overeen, probeer het opnieuw");
             e.preventDefault();
             return;
         }

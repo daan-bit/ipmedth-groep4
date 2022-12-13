@@ -25,7 +25,7 @@ class CheckIfAdmin
         if($employee_role_id == $admin_id){
             return $next($request);
         }else{
-            return redirect()->intended('/docent/overview');
+            return redirect()->intended('/docent/overzicht');
         }
         
         }

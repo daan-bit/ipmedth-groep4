@@ -11,4 +11,9 @@ class Employee extends Model
 
     protected $table = 'employees';
 
+    // get all the groups that belong to the teacher from the employees_has_groups table
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'employee_has_groups', 'employee_id', 'group_id');
+    }
 }

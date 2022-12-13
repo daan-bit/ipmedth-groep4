@@ -63,19 +63,22 @@ Route::middleware(['auth'])->group(function(){
 //DOCENTEN
 Route::middleware(['auth', 'teacher'])->group(function(){
     //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
-    Route::get('/docent/overview', [App\Http\Controllers\EmployeeController::class, 'getTeacher']);
+    Route::get('/docent/overzicht', [App\Http\Controllers\EmployeeController::class, 'getOverview'])->name('docent.overzicht');
 
-    //Overzicht klas
-    Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
-
+    
     //Instellingenpagina van docent
     // Route::get('/docent/instellingen', [], '');
+});
+
+Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function(){
+    //Overzicht van klas
+    Route::get('/docent/overzicht/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
 });
 
 //ADMIN
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
 Route::middleware(['auth', 'admin'])->group(function(){
-   Route::get('/admin/overview', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
+   Route::get('/admin/overzicht', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
    Route::get('/admin/instellingen', [App\Http\Controllers\EmployeeController::class, 'getAdminSettings']);
 });
 

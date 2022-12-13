@@ -18,7 +18,7 @@ class EmployeeController extends Controller
     //=================TEACHER==================
     //==========================================
 
-    public function getOverview()
+    public function getTeacherOverview()
     {
         $employee = Employee::where('user_id', '=', Auth::user()->id)->first();
         $groups = $employee->groups;

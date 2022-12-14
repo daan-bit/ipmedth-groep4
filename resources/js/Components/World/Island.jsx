@@ -14,6 +14,10 @@ export default function Island({ level, assignmentId, className, assignmentStatu
                     </Link>
                 ) : assignmentStatus == '0' && currentIslandLevel == false ? (
                     <img className="island__figure__image" src="/images/world/island__locked.svg" alt="island"></img>
+                ) : assignmentStatus == '-1' ? (
+                    <Link method="get" href={`/level/${level}/${assignmentId}`} className="island__figure__link">
+                        <img className="island__figure__image" src="/images/world/island__declined.svg" alt="island"></img>
+                    </Link>
                 ) : (
                     <img className="island__figure__image" src="/images/world/island__current.svg" alt="island"></img>
                 )}

@@ -23,8 +23,6 @@ class EmployeeController extends Controller
         $employee = Employee::where('user_id', '=', Auth::user()->id)->first();
         $groups = $employee->groups;
 
-        error_log($employee);
-
         return Inertia::render('Teachers/Overview', ['employee' => $employee, 'groups' => $groups]);
     }
 
@@ -38,6 +36,24 @@ class EmployeeController extends Controller
         $students = Student::where('group_id', '=', $id)->get();
 
         return Inertia::render('Teachers/Group', ['group' => $group, 'students' => $students]);
+    }
+
+    // create a new group
+    public function createGroup(Request $request)
+    {
+        $group = new Group();
+        $group->school_group = $request->school_group;
+        $group->school_year = $request->school_year;
+        $group->school_id = $request->school_id;
+        $group->save();
+
+        // Link the group to the teacher with the employee_has_groups table
+        DB::table('employee_has_groups')->insert([
+            'group_id' => $group->id,
+            'employee_id' => $request->employee_id,
+        ]);
+
+        return redirect()->back();
     }
 
 

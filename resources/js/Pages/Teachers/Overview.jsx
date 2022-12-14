@@ -2,11 +2,12 @@ import React from "react";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import Header from "@/Components/Teacher/Header";
 import "../../../css/pages/Teachers/overview.css";
+import AddGroupModel from "@/Components/Teacher/AddGroupModel";
 
 function Overview(props) {
     console.log(props);
-
-    const groups = Object.keys(props.groups).map(key => props.groups[key]);
+    const [showAddGroupModel, setShowAddGroupModel] = React.useState(false);
+    const groups = Object.keys(props.groups).map((key) => props.groups[key]);
 
     // sort groups by school_year and name
     let sortGroups = (a, b) => {
@@ -31,12 +32,25 @@ function Overview(props) {
     };
     groups.sort(sortGroups);
 
+    const openAddGroupModel = (e) => {
+        e.preventDefault();
+        setShowAddGroupModel(true);
+    };
+
+    const closeAddGroupModel = () => {
+        setShowAddGroupModel(false);
+    };
+
     return (
         <section className="teacherOverview">
             <Header first_name={props.employee.first_name} />
             <div className="page__title__wrapper">
                 <h1 className="page__title">Overzicht</h1>
+                <button className="addGroup__button" onClick={(e) => openAddGroupModel(e)}>
+                    + Nieuwe groep
+                </button>
             </div>
+            { showAddGroupModel ? <AddGroupModel closeModel={closeAddGroupModel} school_id={props.employee.school_id} employee_id={props.employee.id}/> : null}
             <section className="groups__overview">
                 {/* if there are no groups in props.groups array render this: */}
                 {props.groups.length === 0 ? (

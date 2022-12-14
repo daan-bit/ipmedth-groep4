@@ -11,6 +11,8 @@ class Group extends Model
 
     protected $table = 'groups';
 
+    public $timestamps = false;
+
     // add student count property to group
     protected $appends = ['student_count'];
 

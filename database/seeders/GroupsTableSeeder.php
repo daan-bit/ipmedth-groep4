@@ -15,12 +15,12 @@ class GroupsTableSeeder extends Seeder
     public function run()
     {
         DB::table('groups')->insert([
-            'school_group' => 'Klas 3A',
+            'school_group' => 'Groep 3A',
             'school_year' => '2021-2022',
             'school_id' => 1,
         ]);
         DB::table('groups')->insert([
-            'school_group' => 'Klas 3B',
+            'school_group' => 'Groep 3B',
             'school_year' => '2022-2023',
             'school_id' => 1,
         ]);

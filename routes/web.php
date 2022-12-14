@@ -65,13 +65,17 @@ Route::middleware(['auth', 'teacher'])->group(function(){
     //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
     Route::get('/docent/overzicht', [App\Http\Controllers\EmployeeController::class, 'getTeacherOverview'])->name('docent.overzicht');
     Route::get('/docent/instellingen', [App\Http\Controllers\EmployeeController::class, 'getTeacherSettings']);
+
+    // Docenten kunnen een groep maken met een post request
+    Route::post('/docent/groep/add', [App\Http\Controllers\EmployeeController::class, 'createGroup']);
+
 });
 
 Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function(){
-    //Overzicht van klas
+    //Overzicht van groep
     Route::get('/docent/overzicht/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
     
-    //Overzicht klas
+    //Overzicht groep
     Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
 });
 

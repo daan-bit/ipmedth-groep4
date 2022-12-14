@@ -1,0 +1,134 @@
+.addGroup__modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addGroup__modal__overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.addGroup__modal__content {
+    min-width: 500px;
+    width: 50%;
+    max-width: 700px;
+    min-height: 300px;
+    height: 50%;
+    max-height: 450px;
+    position: relative;
+    background-color: var(--color-card-white);
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.addGroup__modal__closeButton {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--character-dark);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.addGroup__modal__body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.addGroup__modal__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.addGroup__modal__form__group {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.addGroup__modal__form__group:not(:first-child) {
+    margin-top: 1rem;
+}
+
+.addGroup__modal__form__label {
+    margin-bottom: .1rem;
+    font-size: 1.2rem;
+    color: var(--character-dark);
+}
+
+.addGroup__modal__form__input {
+    width: 100%;
+    height: 2rem;
+    border: none;
+    border-bottom: .2rem solid var(--color-grey-border);
+    outline: none;
+    font-size: 1rem;
+    color: var(--character-dark);
+}
+
+.addGroup__modal__form__input:focus {
+    border-bottom: .2rem solid var(--color-blue);
+}
+
+.addGroup__modal__form__input::placeholder {
+    color: var(--character-dark);
+    font-size: 1rem;
+    opacity: 0.5;
+}
+
+.addGroup__modal__form__input.invalid {
+    border-bottom: .2rem solid var(--color-red);
+}
+
+.addGroup__modal__form__input.invalid::placeholder {
+    color: var(--color-red);
+}
+
+.addGroup__modal__form__error {
+    width: 100%;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: .8rem;
+    color: var(--color-red);
+}
+
+.addGroup__modal__submit {
+    width: 100%;
+    border: none;
+    border-radius: .5rem;
+    padding: .4rem 2.8rem;
+    font-size: 1.2rem;
+    color: var(--color-card-white);
+    background-color: var(--color-blue);
+    cursor: pointer;
+}

@@ -18,13 +18,13 @@ class ResultsTableSeeder extends Seeder
         //Student 1 - Pietje
         //================================
         DB::table('results')->insert([
-            'status' => 1,
+            'status' => 0,
             'assignment_id' => 1,
             'student_id' => 1,
             'drawing_id' => 1,
         ]);
         DB::table('results')->insert([
-            'status' => -1,
+            'status' => 0,
             'assignment_id' => 2,
             'student_id' => 1,
             'drawing_id' => 1,
@@ -57,12 +57,36 @@ class ResultsTableSeeder extends Seeder
             'student_id' => 2,
             'drawing_id' => 2
         ]);
+        DB::table('results')->insert([
+            'status' => -1,
+            'assignment_id' => 2,
+            'student_id' => 2,
+            'drawing_id' => 2
+        ]);
+        DB::table('results')->insert([
+            'status' => 1,
+            'assignment_id' => 3,
+            'student_id' => 2,
+            'drawing_id' => 2
+        ]);
+        DB::table('results')->insert([
+            'status' => -1,
+            'assignment_id' => 4,
+            'student_id' => 2,
+            'drawing_id' => 2
+        ]);
+        DB::table('results')->insert([
+            'status' => 1,
+            'assignment_id' => 5,
+            'student_id' => 2,
+            'drawing_id' => 2
+        ]);
 
         //================================
         //Student 3 - Daan
         //================================
         DB::table('results')->insert([
-            'status' => 1,
+            'status' => 0,
             'assignment_id' => 1,
             'student_id' => 3,
             'drawing_id' => 2

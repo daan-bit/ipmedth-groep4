@@ -1,33 +1,33 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, defaults} from 'chart.js';
 import { Bar} from 'react-chartjs-2'; 
  
-function StackedBarChart({rightArray, wrongArray, unFinishedArray, Assignments}) {
+function StackedBarChart({rightArray, wrongArray, unFinishedArray, Assignments, refreshData, calculateStatistics}) {
 
     const [labels, setLabels] = useState([]);
 
-    //=======================================
-    //=======================================
-    //=======================================
-    //=======================================
-    //Alleen nog data in chart krijgen!!!!!!
-    //=======================================
-    //=======================================
-    //=======================================
-    //=======================================
-       
+    const [graphData] = useState({
+        rightList: [],
+        wrongList: [],
+        unfinishedList: [],
+      });
+    
     useEffect(() => {
         setLabels([]);
         for(let i = 0; i < Assignments.length; i++){
             setLabels(old => [...old, Assignments[i]['name']]);
         } 
+        refreshData();
+        calculateStatistics();
         
-        console.log("Wrong array: ", wrongArray); 
-        console.log("Right array: ", rightArray); 
-        console.log("Unfinished array: ", unFinishedArray); 
-      
-      }, []);
+        for(let i = 0; i < Assignments.length; i++){
+            graphData.rightList.push(rightArray[i][0]);
+            graphData.wrongList.push(wrongArray[i][0]);
+            graphData.unfinishedList.push(unFinishedArray[i][0]);
+        }
 
+      }, []);
+    
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -62,17 +62,17 @@ function StackedBarChart({rightArray, wrongArray, unFinishedArray, Assignments})
         datasets: [
             {
             label: 'Goed',
-            data: [],
+            data: graphData.rightList,
             backgroundColor: '#06D6A0',
             },
             {
             label: 'Fout',
-            data: [wrongArray.values()],
+            data: graphData.wrongList,
             backgroundColor: '#DB3069',
             },
             {
             label: 'Niet gemaakt',
-            data: [unFinishedArray.values()],
+            data: graphData.unfinishedList,
             backgroundColor: '#787879',
             },
         ],
@@ -82,7 +82,7 @@ function StackedBarChart({rightArray, wrongArray, unFinishedArray, Assignments})
     defaults.font.size = '15px';
 
     return (
-        <section  style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '75vh', padding: '2rem'}}>
+        <section  style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', maxHeight: '70vh', padding: '2rem'}}>
             <Bar className="BarChartContainer__chart" options={options} data={data} style={{width: '100%', height: '100%', border: '1px solid red', fontFamily: 'Montserrat'}}/>
         </section>
         

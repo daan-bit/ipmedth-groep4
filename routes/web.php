@@ -67,8 +67,8 @@ Route::middleware(['auth', 'teacher'])->group(function(){
     Route::get('/docent/instellingen', [App\Http\Controllers\EmployeeController::class, 'getTeacherSettings']);
 
     // Docenten kunnen een groep maken met een post request
-    Route::post('/docent/groep/add', [App\Http\Controllers\EmployeeController::class, 'createGroup']);
-
+    Route::post('/docent/groep', [App\Http\Controllers\EmployeeController::class, 'createGroup']);
+    
 });
 
 Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function(){
@@ -77,6 +77,9 @@ Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function(){
     
     //Overzicht groep
     Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
+    
+    // Docenten kunnen een groep verwijderen met een delete request
+    Route::delete('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'deleteGroup']);
 });
 
 //ADMIN

@@ -38,7 +38,6 @@ class EmployeeController extends Controller
         return Inertia::render('Teachers/Group', ['group' => $group, 'students' => $students]);
     }
 
-    // create a new group
     public function createGroup(Request $request)
     {
         $group = new Group();
@@ -53,6 +52,21 @@ class EmployeeController extends Controller
             'employee_id' => $request->employee_id,
         ]);
 
+        return redirect()->back();
+    }
+
+    public function deleteGroup($id)
+    {
+        // get the students in the group
+        $students = Student::where('group_id', '=', $id)->get();
+        
+        foreach($students as $student){
+            User::where('id', '=', $student->user_id)->first()->delete();
+        }
+        
+        // Delete the group
+        Group::where('id', '=', $id)->first()->delete();
+        
         return redirect()->back();
     }
 

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('image');
             $table->unsignedBigInteger('assignment_id');
             $table->unsignedBigInteger('student_id');
-            $table->foreign('assignment_id')->references('id')->on('assignments');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }
 

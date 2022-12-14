@@ -20,7 +20,7 @@ class WorldController extends Controller
     {
         $world = World::where('world', '=', $id)->get();
         $student = Student::where('user_id','=', Auth::user()->id)->first();
-        $assignments = Result::where('student_id', '=', $student->id)->where('status', '=' , 1)->get();
+        $assignments = Result::where('student_id', '=', $student->id)->get();
 
         {
             return Inertia::render('Worlds/World', ['world' => $world, 'student' => $student, 'assignments' => $assignments]);

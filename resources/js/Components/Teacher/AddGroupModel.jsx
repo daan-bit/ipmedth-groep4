@@ -34,16 +34,12 @@ export default function AddGroupModel({ closeModel, school_id, employee_id }) {
         } 
         
         if (schoolYearIsValid && schoolGroupIsValid) {
-            Inertia.post("/docent/groep/add", {
+            Inertia.post("/docent/groep", {
                 school_year,
                 school_group,
                 school_id,
                 employee_id,
             });
-            console.log("school_year: ", school_year);
-            console.log("school_group: ", school_group);
-            console.log("school_id: ", school_id);
-            console.log("employee_id: ", employee_id);
             closeModel();
         }
     };

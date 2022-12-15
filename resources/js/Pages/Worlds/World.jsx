@@ -5,7 +5,10 @@ import { abs } from "@tensorflow/tfjs";
 import React, { useState, useEffect } from "react";
 import "../../../css/pages/worldoverview.css";
 
+//NOTE: the lines do not disapear when the pages reloads, to change the lines refresh the page
+//Make the dashed-lines between the islands/levels
 function drawLine() {
+    //get the islands and put the x and y center in a dict
     const islands = document.getElementsByClassName("world__route__island");
     let dictIslands = {};
     for (let index = 0; index < islands.length; index++) {
@@ -15,15 +18,18 @@ function drawLine() {
         dictIslands[index] = { x: centerX, y: centerY };
     }
 
+    //loop through the dict minus one beacuse the line needs to connect 2 islands 
     for (let index = 0; index < Object.keys(dictIslands).length-1; index++) {
 
-        //Checks if the index is even
+        //Checks if the index is even (al even islands are below)
         let indexEven = false;
         if (index % 2 == 0) indexEven = true; 
 
+        //calculate the width and height between the 2 center points (x and y) of 2 islands 
         const width = Math.abs(dictIslands[index].x - dictIslands[index + 1].x);
         const height = Math.abs(dictIslands[index].y - dictIslands[index + 1].y);
 
+        //create svg and add styling
         let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
         
@@ -34,6 +40,7 @@ function drawLine() {
         svg.setAttribute("width", width);
         svg.setAttribute("height", height);
 
+        //create line and add styling
         let newLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
         newLine.setAttribute("id", "line2");
         newLine.setAttribute("x1", 0);
@@ -51,8 +58,8 @@ function drawLine() {
         newLine.setAttribute("stroke-width", "4");
         newLine.setAttribute("stroke-dasharray", "25,10,15,10,15,10");
 
-        svg.append(newLine);
-        document.getElementById("world").append(svg);
+        svg.append(newLine); //add the line to the svg
+        document.getElementById("world").append(svg); //add the svg with the line to the map
     }
 }
 

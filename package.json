@@ -27,6 +27,7 @@
         "@tensorflow/tfjs": "^4.1.0",
         "canvas": "^2.10.2",
         "chart.js": "^4.0.1",
+        "esbuild": "^0.16.4",
         "fabric": "^5.2.4",
         "react-chartjs-2": "^5.0.1",
         "react-collapsible": "^2.10.0",

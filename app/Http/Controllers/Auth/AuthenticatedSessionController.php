@@ -44,9 +44,9 @@ class AuthenticatedSessionController extends Controller
         $admin_id = Role::where('name', '=', 'admin')->first()->id;
 
         if($employee_role_id == $admin_id){
-            return redirect()->intended('/admin/overview');
+            return redirect()->intended('/admin/overzicht');
         }else{
-            return redirect()->intended('/docent/overview');
+            return redirect()->intended('/docent/overzicht');
         }
     }
 

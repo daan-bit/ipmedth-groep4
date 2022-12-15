@@ -10,4 +10,19 @@ class Group extends Model
     use HasFactory;
 
     protected $table = 'groups';
+
+    // add student count property to group
+    protected $appends = ['student_count'];
+
+    // get the students for the group, from foreign key to group_id in the students table
+    public function students()
+    {
+        return $this->hasMany(Student::class, 'group_id');
+    }
+
+    // get the student count for the group, from foreign key to group_id in the students table
+    public function getStudentCountAttribute()
+    {
+        return $this->students()->count();
+    }
 }

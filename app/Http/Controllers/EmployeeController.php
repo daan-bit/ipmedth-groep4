@@ -20,13 +20,18 @@ class EmployeeController extends Controller
     //=================TEACHER==================
     //==========================================
 
-    public function getTeacher()
+    public function getTeacherOverview()
     {
         $employee = Employee::where('user_id', '=', Auth::user()->id)->first();
+        $groups = $employee->groups;
 
         error_log($employee);
 
-        return Inertia::render('Teachers/Overview', ['employee' => $employee]);
+        return Inertia::render('Teachers/Overview', ['employee' => $employee, 'groups' => $groups]);
+    }
+
+    public function getTeacherSettings(){
+        return Inertia::render('Teachers/Settings');
     }
 
     public function getGroup($id)

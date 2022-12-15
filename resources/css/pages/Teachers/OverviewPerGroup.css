@@ -1,6 +1,6 @@
 .OverviewPerGroupPage{
-    max-height: 100vh;
-    max-width: 100vw;
+    height: 100vh;
+    width: 100vw;
     background-color: var(--background-light);
     padding: 2rem;
     display: flex;
@@ -10,21 +10,39 @@
 
 .OverviewPerGroupPage__statisticContainer{
     width: 100%;
+    height: 25%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid black;
-    padding: 1rem;
+    gap: 1rem;
 }
 
 .statisticContainer__statistic{
-    width: 20rem;
-    height: 8rem;
-    border: 3px solid red;
+    width: 25%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    border-radius: 15px;
+    background-color: var(--color-card-white);
 }
 
-.OverviewPerGroupPage__chart{
-    height: 100%;
+.statistic__titleContainer{
     width: 100%;
-    border: 1px solid black;
+    padding: 1rem;
+}
+
+.statistic__contentContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.OverviewPerGroupPage__chartContainer{
+    border-radius: 15px;
+    background-color: var(--color-card-white);
+    height: 75%;
+    width: 100%;
+    padding: 0.5rem;
 }

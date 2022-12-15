@@ -79,11 +79,11 @@ function StackedBarChart({rightArray, wrongArray, unFinishedArray, Assignments, 
     };
 
     defaults.font.family = 'Montserrat';
-    defaults.font.size = '15px';
+    defaults.font.size = '20rem';
 
     return (
-        <section  style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', maxHeight: '70vh', padding: '2rem'}}>
-            <Bar className="BarChartContainer__chart" options={options} data={data} style={{width: '100%', height: '100%', border: '1px solid red', fontFamily: 'Montserrat'}}/>
+        <section  style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%', padding: '1rem'}}>
+            <Bar className="BarChartContainer__chart" options={options} data={data} style={{maxWidth: '100%', Height: '100%', fontFamily: 'Montserrat'}}/>
         </section>
         
     )

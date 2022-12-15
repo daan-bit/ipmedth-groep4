@@ -48,7 +48,6 @@ function OverviewPerGroup(props) {
                         break;
                 } 
             }
-            console.log("All made assigments: ", allMadeAssignmentIds)
         }
     }
 
@@ -106,12 +105,24 @@ function OverviewPerGroup(props) {
   return (
     <article className='OverviewPerGroupPage'>
         <section className='OverviewPerGroupPage__statisticContainer'>
-            <section className='statisticContainer__statistic'><p>Gemiddelde</p><p>{average}</p></section>
-            <section className='statisticContainer__statistic'><p>Mediaan</p><p>{median}</p></section>
-            <section className='statisticContainer__statistic'><p>Modus</p><p>{mode}</p></section>
-            <section className='statisticContainer__statistic'><p>Min / Max</p><p>{min} / {max}</p></section>
+            <section className='statisticContainer__statistic'>
+                <section className='statistic__titleContainer'><h3 className='bold'>Gemiddelde</h3></section>
+                <section className='statistic__contentContainer'><h3>{average}</h3></section>
+            </section>
+            <section className='statisticContainer__statistic'>
+                <section className='statistic__titleContainer'><h3 className='bold'>Mediaan</h3></section>
+                <section className='statistic__contentContainer'><h3>{median}</h3></section>
+            </section>
+            <section className='statisticContainer__statistic'>
+                <section className='statistic__titleContainer'><h3 className='bold'>Modus</h3></section>
+                <section className='statistic__contentContainer'><h3>{mode}</h3></section>
+            </section>
+            <section className='statisticContainer__statistic'>
+                <section className='statistic__titleContainer'><h3 className='bold'>Min / Max</h3></section>
+                <section className='statistic__contentContainer'><h3>{min} / {max}</h3></section>
+            </section>
         </section>
-        <section className='OverviewPerGroupPage__chart'>
+        <section className='OverviewPerGroupPage__chartContainer'>
             <StackedBarChart refreshData={refreshData} calculateStatistics={calculateStatistics} rightArray={rightArray} wrongArray={wrongArray} unFinishedArray={unFinishedArray} Assignments={props.assignments}/>
         </section>
     </article>

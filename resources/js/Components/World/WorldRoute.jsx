@@ -1,14 +1,12 @@
 import React from 'react';
 import Island from '@/Components/World/Island';
-import { Link } from '@inertiajs/inertia-react';
 
 export default function Route({ className, assignmentId, level = 1, assignmentStatus = 0, currentIslandLevel}) {
     return (
-        <div
+        <section
             className={className}
         >
-
                 <Island level={level} assignmentId={assignmentId} className={"world__route__island"} assignmentStatus={assignmentStatus} currentIslandLevel={currentIslandLevel}></Island>
-        </div>
+        </section>
     );
 }

@@ -4,7 +4,6 @@ import { Link } from '@inertiajs/inertia-react';
 
 export default function Island({ level, assignmentId, className, assignmentStatus, currentIslandLevel }) {
     return (
-        <article className={className}>
             <figure className="island__figure">
                 {assignmentStatus == '1' &&  currentIslandLevel == false ? (
                 <img className="island__figure__image" src="/images/world/island__finished.svg" alt="island"></img>
@@ -18,6 +17,5 @@ export default function Island({ level, assignmentId, className, assignmentStatu
                     <img className="island__figure__image" src="/images/world/island__current.svg" alt="island"></img>
                 )}
             </figure>
-        </article>
     );
 }

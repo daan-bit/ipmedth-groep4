@@ -1,7 +1,7 @@
 .world {
     background: linear-gradient(180deg, #0292C1 0%, #41BDE5 29.17%, #6BD2F4 49.98%, #6BD3F5 49.99%, #6CD3F5 50%, #41BDE6 68.75%, #0292C1 100%);
-    min-height: 100vh;
-    min-width: 100vh;
+    height: 100vh;
+    width: 100vw;
 }
 
 .world__navigation {
@@ -19,6 +19,11 @@
     padding: 3rem;
     margin: 0;
     border-radius: .5rem;
+    position: relative;
+}
+
+.world__route__island{
+    z-index: 2;
 }
 
 .assignment_1 {
@@ -67,5 +72,3 @@
 .island__figure__image {
     width: 75%;
 }
-
-

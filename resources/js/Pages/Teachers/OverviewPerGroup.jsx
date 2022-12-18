@@ -24,29 +24,17 @@ function OverviewPerGroup(props) {
 
         for (let i = 0; i < props.allResults.length; i++) {
             let resultPerStudent = props.allResults[i];
-    
-            for (let i = 0; i < resultPerStudent.length; i++){
-                if(resultPerStudent[i]['status'] != 0){
+            
+            for (let i = 0; i < props.assignments.length; i++){
+                let indexOfExcercise = props.assignments[i]['id'] - 1;
+
+                if(resultPerStudent[i] == undefined){
+                    updateArrays(indexOfExcercise, 0);
+
+                }else if (props.assignments[i]['id'] == resultPerStudent[i]['assignment_id']){
                     allMadeAssignmentIds.push(resultPerStudent[i]['assignment_id']);
+                    updateArrays(indexOfExcercise, resultPerStudent[i]['status']);
                 }
-                
-                switch(resultPerStudent[i]['assignment_id']){
-                    case 1:
-                        updateArrays(0, resultPerStudent[i]['status']);
-                        break;
-                    case 2:
-                        updateArrays(1, resultPerStudent[i]['status']);
-                        break;
-                    case 3:
-                        updateArrays(2, resultPerStudent[i]['status']);
-                        break;
-                    case 4:
-                        updateArrays(3, resultPerStudent[i]['status']);
-                        break;
-                    case 5:
-                        updateArrays(4, resultPerStudent[i]['status']);
-                        break;
-                } 
             }
         }
     }

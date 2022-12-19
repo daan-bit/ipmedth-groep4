@@ -23,7 +23,7 @@ const Login = () => {
                                 <img className="students__list__item__figure__picture" src={`https://avatars.dicebear.com/api/bottts/${user_id}.svg`} alt={`Avatar van ${first_name}`}></img>
                             </figure>
                             <article className="students__list__item__name">
-                                <h2>{first_name}</h2>
+                                <h2 className="students__list__item__name__text">{first_name}</h2>
                             </article>
                         </InertiaLink>
                     </article>

@@ -1,28 +1,66 @@
-h1 {
-    font-size: 5rem;
+.student {
+    background-color: var(--background-light);
+    background-image: url("/public/images/background/table.svg");
+    background-position: center;
+    background-repeat: repeat;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
 }
 
-.students__list__item {
+.student__item {
     background: #3E4049;
     box-shadow: -2px 0px 17px 13px rgb(88 196 246 / 19%);
     border-radius: 3rem;
     width: 10rem;
     height: 10rem;
+    margin-top: 30%;
 }
 
-.students__list__item__figure {
+.student__item__figure {
     background: linear-gradient(180deg, #FFD166 0%, #DB3069 100%);
     backdrop-filter: blur(2px);
     border-radius: 5rem;
 }
 
-.students__list__item__figure__picture {
+.student__item__figure__picture {
     height: 6rem;
     margin-left: 2rem;
 }
 
-.students__list__item__name {
-    font-size: 3rem;
+.student__item__name__text {
+    text-decoration: none;
+}
+
+.student__section {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    height: 15rem;
+
+}
+
+.student__login__buttons {
+    grid-column: 3;
+}
+.student__login__buttons__button {
+    width: 30%;
+    margin-left: 20%;
+}
+
+.student__title {
+    grid-column: 2;
+    margin-top: 50%
+}
+.student__item {
+    grid-column: 6;
+}
+
+
+.students__item__header__name {
+    color: var(--color-blue);
+    font-size: 1.5rem;
+    text-align: center;
+
 }
 
 .student__login__images {
@@ -44,6 +82,10 @@ h1 {
     object-fit: fill;
 }
 
+.student__login__images__title {
+    margin-left: 10%;
+}
+
 
 
 .student__login__images__picture:hover {
@@ -51,10 +93,6 @@ h1 {
 }
 
 .active {
-    border: .5rem solid black; 
+    border: .5rem solid var(--color-dark-blue); 
 
-}
-
-h2 {
-    font-size: 3rem;
 }

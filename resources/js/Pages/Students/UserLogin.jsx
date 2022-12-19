@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {usePage } from "@inertiajs/inertia-react";
-import Checkbox from '@/Components/Checkbox';
+import { usePage } from "@inertiajs/inertia-react";
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
@@ -9,13 +8,36 @@ import './UserLogin.css';
 import ImageAsPassword from '@/Components/ImageAsPassword';
 import { FiArrowRight } from "react-icons/fi";
 
-const UserLogin = () => {
+function UserLogin(props) {
     const [counter, setCounter] = useState(0);
-    const incrementCounter = () => setCounter(counter + 1);
-    const { data, setData, post, errors, reset } = useForm({
-        id: String(usePage().props.students[0].user_id),
+    const [passwordArrayLogin, setPasswordArrayLogin] = useState([]);
+    const [userId, setUserId] = useState(0);
+
+
+    useEffect(() => {
+        setUserId(String(props.students[0].user_id))
+        console.log(userId + " dit is user id")
+    }, [userId]);
+
+
+    const { data, setData, post, errors } = useForm({
+        id: '',
         password: '',
     });
+
+    const getPasswordLength = () => {
+        return passwordArrayLogin.length;
+    }
+
+    const resetPassword = () => {
+        return passwordArrayLogin.length = 0;
+    }
+
+    const setPassword = () => {
+        let password = passwordArrayLogin[0] + passwordArrayLogin[1];
+        return password;
+    }
+
 
     useEffect(() => {
         if (errors.id) {
@@ -29,18 +51,25 @@ const UserLogin = () => {
     useEffect(() => {
         Array.from(document.getElementsByClassName("student__login__images__picture")).forEach(function (element) {
             element.addEventListener('click', image);
-            element.addEventListener('click', incrementCounter);
         });
-    });
+    }, [passwordArrayLogin]);
 
     function image() {
+        //get data attribute from image
         let string = this.getAttribute('data');
-        if (!data.password.includes(string)) {
-            data.password += string;
+        //a password string is not already in array?
+        if (!passwordArrayLogin.includes(string)) {
+            //add password string to array
+            setPasswordArrayLogin(passwordArrayLogin.concat(string))
             this.className += " active";
+        } else {
+            //remove password string from array
+            setPasswordArrayLogin(passwordArrayLogin.filter(e => e !== string))
+            this.className = "student__login__images__picture";
         }
     }
 
+    console.log(passwordArrayLogin);
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
@@ -53,26 +82,29 @@ const UserLogin = () => {
     }
 
     const submit = (e) => {
+        data.id = userId;
+        data.password = setPassword();
         e.preventDefault();
+        console.log(data);
+        setPassword();
         post(route('students.login'));
         //reset wachtwoord mocht het wachtwoord fout zijn, zodat kind weer 2 afbeeldingen kan kiezen.
-        data.password = '';
         resetPasswordOnSubmit();
+        data.password = '';
+        passwordArrayLogin.length = 0;
     };
     const { students } = usePage().props;
     return (
         <article className="student">
-            <section className="student__header">
-                <h1 className="student__header__title">Aanmelden</h1>
-            </section>
-            <section className="students__list">
+            <section className="student__section">
+            <h1 className="student__title">Aanmelden</h1>
                 {students.map(({ id, first_name, user_id }) => (
-                    <article className="students__list__item" key={id}>
-                        <figure className="students__list__item__figure">
-                            <img className="students__list__item__figure__picture" src={`https://avatars.dicebear.com/api/bottts/${user_id}.svg`} alt={`Avatar van ${first_name}`}></img>
+                    <article className="student__item" key={id}>
+                        <figure className="student__item__figure">
+                            <img className="student__item__figure__picture" src={`https://avatars.dicebear.com/api/bottts/${user_id}.svg`} alt={`Avatar van ${first_name}`}></img>
                         </figure>
-                        <article className="students__list__item__header">
-                            <h2 className="students__list__item__header__name">{first_name}</h2>
+                        <article className="student__item__header">
+                            <h2 className="students__item__header__name">{first_name}</h2>
                         </article>
                     </article>
                 ))}
@@ -93,6 +125,9 @@ const UserLogin = () => {
                         <InputError message={errors.id} className="student__login__form__input__error" />
                     </div>
 
+                    <div class="reset">
+                        <button onClick={resetPassword}>Reset</button>
+                    </div>
                     <h2 className="student__login__images__title">Kies twee plaatjes die van jou zijn</h2>
                     <article className="student__login__images">
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/vogel.png'} data={"Vogel"} />
@@ -104,6 +139,9 @@ const UserLogin = () => {
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/meisje.png'} data={"Meisje"} />
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/olifant.png'} data={"Olifant"} />
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/leeuw.png'} data={"Leeuw"} />
+                        <div className="student__login__buttons">
+                        <PrimaryButton processing={getPasswordLength() == 2 ? false : true} className="student__login__buttons__button" type="submit"><h2>{<FiArrowRight />}</h2></PrimaryButton>
+                    </div>
                     </article>
 
                     <TextInput
@@ -116,9 +154,6 @@ const UserLogin = () => {
                         isFocused={true}
                         handleChange={onHandleChange}
                     />
-                        <div className="student__login__buttons">
-                            <PrimaryButton className="student__login__buttons__button" type="submit"><h2>{<FiArrowRight />}</h2></PrimaryButton>
-                        </div>
                 </form>
             </section>
         </article>

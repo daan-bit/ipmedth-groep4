@@ -7,6 +7,8 @@ use App\Models\Employee;
 use App\Models\Group;
 use App\Models\Student;
 use App\Models\User;
+use App\Models\Result;
+use App\Models\Assignment;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -38,6 +40,22 @@ class EmployeeController extends Controller
         return Inertia::render('Teachers/Group', ['group' => $group, 'students' => $students]);
     }
 
+    //Deze functie later samenvoegen met getGroup functie hierboven.
+    public function getResultsPerGroup($group_id){
+        $students = Student::where('group_id', '=', $group_id)->get();
+
+        $allResults = [];
+        foreach ($students as $student) {
+            $results = $student->StudentResults;
+
+            array_push($allResults,$results);
+        }
+
+        $assignments = Assignment::all();
+
+        return Inertia::render('Teachers/OverviewPerGroup', ['allResults' => $allResults, 'students' => $students, 'assignments' => $assignments]);
+    }
+    
     public function createGroup(Request $request)
     {
         $group = new Group();

@@ -1,5 +1,5 @@
-kanon
-hoed
-zon
 zwaard
 vis
+hoed
+kanon
+zon

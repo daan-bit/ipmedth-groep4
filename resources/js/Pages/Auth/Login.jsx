@@ -75,7 +75,8 @@ export default function Login({ status, canResetPassword }) {
                         </label>
                     </div> */}
 
-                    <section className="inputfieldsContainer__passwordResetContainer">
+                    {/* Comment laten staat. Eventueel later terug bijvoegen */}
+                    {/* <section className="inputfieldsContainer__passwordResetContainer">
                         {canResetPassword && (
                             <Link
                                 href={route('password.request')}
@@ -84,7 +85,7 @@ export default function Login({ status, canResetPassword }) {
                                 Wachtwoord vergeten?
                             </Link>
                         )}
-                    </section>
+                    </section> */}
 
                     <section className="inputfieldsContainer__loginButtonContainer">
                         <PrimaryButton processing={processing}>

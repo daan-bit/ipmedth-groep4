@@ -1,0 +1,17 @@
+.background{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(54, 55, 64, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container{
+    background-color: var(--background-light);
+    cursor: default;
+}

@@ -80,6 +80,9 @@ Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function(){
     
     // Docenten kunnen een groep verwijderen met een delete request
     Route::delete('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'deleteGroup']);
+
+    // Docenten kunnen een groep updaten met een put request
+    Route::put('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'updateGroup']);
 });
 
 //ADMIN

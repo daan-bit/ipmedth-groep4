@@ -1,12 +1,19 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import "../../../css/components/Teacher/GroupModel.css";
-import ResponsiveNavLink from "../ResponsiveNavLink";
 
-export default function AddGroupModel({ closeModel, school_id, employee_id }) {
+export default function EditGroupModel({
+    closeModel,
+    school_id,
+    school_year,
+    school_group,
+    group_id,
+}) {
     const addGroupModelForm = React.useRef();
     const [schoolYearError, setSchoolYearError] = React.useState(false);
     const [schoolGroupError, setSchoolGroupError] = React.useState(false);
+    const [year, setYear] = React.useState(school_year);
+    const [group, setGroup] = React.useState(school_group);
 
     const getFormData = () => {
         const formData = new FormData(addGroupModelForm.current);
@@ -21,27 +28,34 @@ export default function AddGroupModel({ closeModel, school_id, employee_id }) {
         setSchoolGroupError(false);
 
         const schoolYearIsValid = school_year.match(/^\d{4}-\d{4}$/);
-        const schoolGroupIsValid = school_group.match(/^Groep \d{1,2}[a-zA-Z]{0,2}$/);
+        const schoolGroupIsValid = school_group.match(
+            /^Groep \d{1,2}[a-zA-Z]{0,2}$/
+        );
 
         if (!schoolYearIsValid) {
             setSchoolYearError(
                 "Het schooljaar moet er als volgt uitzien: 2022-2023"
             );
-        } 
-        
+        }
+
         if (!schoolGroupIsValid) {
             setSchoolGroupError("De groep moet er als volgt uitzien: Groep 3A");
-        } 
-        
+        }
+
         if (schoolYearIsValid && schoolGroupIsValid) {
-            Inertia.post("/docent/groep", {
+            Inertia.put(`/docent/groep/${group_id}`, {
                 school_year,
                 school_group,
                 school_id,
-                employee_id,
             });
             closeModel();
         }
+    };
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        Inertia.delete(`/docent/groep/${group_id}`);
+        closeModel();
     };
 
     let oldSchoolYearValue = "";
@@ -115,8 +129,13 @@ export default function AddGroupModel({ closeModel, school_id, employee_id }) {
             <div className="group__modal__overlay" onClick={closeModel}></div>
             <div className="group__modal__content">
                 <div className="group__modal__header">
-                    <h2 className="group__modal__title">Nieuwe groep</h2>
-                    <button className="group__modal__closeButton" onClick={closeModel}>X</button>
+                    <h2 className="group__modal__title">Wijzig groep</h2>
+                    <button
+                        className="group__modal__closeButton"
+                        onClick={closeModel}
+                    >
+                        X
+                    </button>
                 </div>
                 <div className="group__modal__body">
                     <form
@@ -133,20 +152,21 @@ export default function AddGroupModel({ closeModel, school_id, employee_id }) {
                             </label>
                             {/* school_year need to be formatted like 2022-2023 use a mask for this */}
                             <input
-                                className={`group__modal__form__input ${schoolYearError && "invalid"}`}
+                                className={`group__modal__form__input ${
+                                    schoolYearError && "invalid"
+                                }`}
                                 type="text"
                                 name="school_year"
                                 id="school_year"
                                 onChange={(e) => {
-                                    e.target.value = school_year_mask(
-                                        e.target.value
-                                    );
+                                    setYear(school_year_mask(e.target.value));
                                 }}
                                 placeholder={
                                     new Date().getFullYear() +
                                     "-" +
                                     (new Date().getFullYear() + 1)
                                 }
+                                value={year}
                             />
                             {/* Add a place for a error message, and render only when there is something wrong in this form field */}
                             {schoolYearError && (
@@ -163,15 +183,15 @@ export default function AddGroupModel({ closeModel, school_id, employee_id }) {
                                 Groep
                             </label>
                             <input
-                                className={`group__modal__form__input ${schoolGroupError && "invalid"}`}
+                                className={`group__modal__form__input ${
+                                    schoolGroupError && "invalid"
+                                }`}
                                 type="text"
                                 name="school_group"
                                 id="school_group"
                                 placeholder="Groep 3A"
                                 onChange={(e) => {
-                                    e.target.value = school_group_mask(
-                                        e.target.value
-                                    );
+                                    setGroup(school_group_mask(e.target.value));
                                 }}
                                 onClick={(e) => {
                                     if (e.target.value.length == 0) {
@@ -188,6 +208,7 @@ export default function AddGroupModel({ closeModel, school_id, employee_id }) {
                                         e.target.value = "";
                                     }
                                 }}
+                                value={group}
                             />
                             {schoolGroupError && (
                                 <div className="group__modal__form__error">
@@ -199,11 +220,18 @@ export default function AddGroupModel({ closeModel, school_id, employee_id }) {
                 </div>
                 <div className="group__modal__footer">
                     <button
+                        className="group__modal__delete button-secondary"
+                        onClick={handleDelete}
+                        as="button"
+                    >
+                        Verwijder groep
+                    </button>
+                    <button
                         className="group__modal__submit button-primary"
                         onClick={handleSubmit}
                         as="button"
                     >
-                        Toevoegen
+                        Wijzig groep
                     </button>
                 </div>
             </div>

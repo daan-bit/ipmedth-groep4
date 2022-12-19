@@ -1,4 +1,4 @@
-.addGroup__modal {
+.group__modal {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -10,7 +10,7 @@
     justify-content: center;
 }
 
-.addGroup__modal__overlay {
+.group__modal__overlay {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -20,7 +20,7 @@
     cursor: pointer;
 }
 
-.addGroup__modal__content {
+.group__modal__content {
     min-width: 500px;
     width: 50%;
     max-width: 700px;
@@ -38,7 +38,7 @@
     padding: 1rem;
 }
 
-.addGroup__modal__closeButton {
+.group__modal__closeButton {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -50,7 +50,7 @@
     padding: 0;
 }
 
-.addGroup__modal__body {
+.group__modal__body {
     width: 100%;
     height: 100%;
     display: flex;
@@ -59,7 +59,7 @@
     justify-content: center;
 }
 
-.addGroup__modal__form {
+.group__modal__form {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -67,24 +67,24 @@
     justify-content: space-around;
 }
 
-.addGroup__modal__form__group {
+.group__modal__form__group {
     width: 75%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.addGroup__modal__form__group:not(:first-child) {
+.group__modal__form__group:not(:first-child) {
     margin-top: 1rem;
 }
 
-.addGroup__modal__form__label {
+.group__modal__form__label {
     margin-bottom: .1rem;
     font-size: 1.2rem;
     color: var(--character-dark);
 }
 
-.addGroup__modal__form__input {
+.group__modal__form__input {
     width: 100%;
     height: 2rem;
     border: none;
@@ -94,25 +94,25 @@
     color: var(--character-dark);
 }
 
-.addGroup__modal__form__input:focus {
+.group__modal__form__input:focus {
     border-bottom: .2rem solid var(--color-blue);
 }
 
-.addGroup__modal__form__input::placeholder {
+.group__modal__form__input::placeholder {
     color: var(--character-dark);
     font-size: 1rem;
     opacity: 0.5;
 }
 
-.addGroup__modal__form__input.invalid {
+.group__modal__form__input.invalid {
     border-bottom: .2rem solid var(--color-red);
 }
 
-.addGroup__modal__form__input.invalid::placeholder {
+.group__modal__form__input.invalid::placeholder {
     color: var(--color-red);
 }
 
-.addGroup__modal__form__error {
+.group__modal__form__error {
     width: 100%;
     height: 1rem;
     display: flex;
@@ -122,13 +122,26 @@
     color: var(--color-red);
 }
 
-.addGroup__modal__submit {
+.group__modal__footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.group__modal__submit,
+.group__modal__delete {
     width: 100%;
     border: none;
     border-radius: .5rem;
     padding: .4rem 2.8rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--color-card-white);
     background-color: var(--color-blue);
     cursor: pointer;
+}
+
+.group__modal__delete {
+    margin-right: 2rem;
+    background-color: var(--color-red);
 }

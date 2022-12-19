@@ -55,6 +55,17 @@ class EmployeeController extends Controller
         return redirect()->back();
     }
 
+    public function updateGroup(Request $request, $id)
+    {
+        $group = Group::where('id', '=', $id)->first();
+        $group->school_group = $request->school_group;
+        $group->school_year = $request->school_year;
+        $group->school_id = $request->school_id;
+        $group->save();
+
+        return redirect()->back();
+    }
+
     public function deleteGroup($id)
     {
         // get the students in the group

@@ -61,7 +61,28 @@ class StudentController extends Controller
         $level = Assignment::where([['world', '=', $world_id], ['level', '=', $level_id]])->first();
         $student = Student::where('user_id', '=', Auth::user()->id)->first();
 
-        return Inertia::render('Students/Level', ['level' => $level, 'student' => $student]);
+        //Get 3 diffrent images in a random order
+        $images = Drawing::select('image')
+        ->where('assignment_id', '=', $level_id)
+        ->inRandomOrder()
+        ->take(3)
+        ->distinct()
+        ->get();
+
+        //add a slash before the url
+        for ($i=0; $i < $images->count(); $i++) { 
+            $images[$i]->image = "/" . $images[$i]->image;
+        }
+
+        //If there are less than 3 images get more images from the example folder
+        if ($images->count() < 3){
+            $extraNeededImages = 3-$images->count();
+            for ($i=0; $i < $extraNeededImages; $i++) { 
+                $images->push(['image' => '/images/example_drawings/' . $level->prompt . '/' . $level->prompt . '_' . $i +1 . '.svg']); //Sets the example image
+            }
+        }
+
+        return Inertia::render('Students/Level', ['level' => $level, 'student' => $student, 'images' => $images]);
     }
 
     public function insertDrawing(Request $request)

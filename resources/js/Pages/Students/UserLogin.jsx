@@ -6,17 +6,20 @@ import TextInput from '@/Components/TextInput';
 import { useForm } from '@inertiajs/inertia-react';
 import './UserLogin.css';
 import ImageAsPassword from '@/Components/ImageAsPassword';
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
+import { AiOutlineClose } from "react-icons/ai";
+import { Inertia } from '@inertiajs/inertia';
+
+import Modal from '@/Components/Modal';
 
 function UserLogin(props) {
-    const [counter, setCounter] = useState(0);
+    const [modelState, setModelState] = useState(false);
     const [passwordArrayLogin, setPasswordArrayLogin] = useState([]);
     const [userId, setUserId] = useState(0);
 
 
     useEffect(() => {
         setUserId(String(props.students[0].user_id))
-        console.log(userId + " dit is user id")
     }, [userId]);
 
 
@@ -30,7 +33,12 @@ function UserLogin(props) {
     }
 
     const resetPassword = () => {
+        
         return passwordArrayLogin.length = 0;
+    }
+    const backToStudentsLogin = (e) => {
+        e.preventDefault();
+         Inertia.get(route('student.overview'));
     }
 
     const setPassword = () => {
@@ -41,9 +49,10 @@ function UserLogin(props) {
 
     useEffect(() => {
         if (errors.id) {
-            setCounter(0);
+            setModelState(true);
+            console.log('error ontstaan');
             //hier komt straks model waar het kind ziet dat het wachtword fout was
-            console.log('error bekend, modal popup');
+
         }
     }, [errors]);
 
@@ -57,8 +66,8 @@ function UserLogin(props) {
     function image() {
         //get data attribute from image
         let string = this.getAttribute('data');
-        //a password string is not already in array?
-        if (!passwordArrayLogin.includes(string)) {
+        //a password string is not already in array && password length is smaller than 2?
+        if (!passwordArrayLogin.includes(string) && getPasswordLength() < 2) {
             //add password string to array
             setPasswordArrayLogin(passwordArrayLogin.concat(string))
             this.className += " active";
@@ -68,8 +77,6 @@ function UserLogin(props) {
             this.className = "student__login__images__picture";
         }
     }
-
-    console.log(passwordArrayLogin);
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
@@ -82,10 +89,10 @@ function UserLogin(props) {
     }
 
     const submit = (e) => {
+
         data.id = userId;
         data.password = setPassword();
         e.preventDefault();
-        console.log(data);
         setPassword();
         post(route('students.login'));
         //reset wachtwoord mocht het wachtwoord fout zijn, zodat kind weer 2 afbeeldingen kan kiezen.
@@ -111,25 +118,12 @@ function UserLogin(props) {
             </section>
             <section className="student__login">
                 <form className="student__login__form" onSubmit={submit}>
-                    <div className="student__login__form__input">
-                        <TextInput
-                            type="hidden"
-                            name="id"
-                            value={data.id}
-                            className="student__login__form__input__text"
-                            autoComplete="username"
-                            isFocused={true}
-                            handleChange={onHandleChange}
-                        />
-
-                        <InputError message={errors.id} className="student__login__form__input__error" />
-                    </div>
-
-                    <div class="reset">
-                        <button onClick={resetPassword}>Reset</button>
-                    </div>
                     <h2 className="student__login__images__title">Kies twee plaatjes die van jou zijn</h2>
                     <article className="student__login__images">
+                    <div className="student__login__actions">
+                        <button className="students__login__actions__button--back" onClick={backToStudentsLogin}>{<FiArrowLeft size="32" />}</button>
+
+                    </div>
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/vogel.png'} data={"Vogel"} />
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/boom.png'} data={"Boom"} />
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/dog.png'} data={"Hondje"} />
@@ -156,6 +150,19 @@ function UserLogin(props) {
                     />
                 </form>
             </section>
+            <Modal content={
+                <React.Fragment>
+                    <div className="login__modal__error">
+                        <article className="login__modal__error__content">
+                            <h2 className="login__modal__error__title">Verkeerde plaatjes</h2>
+                            <div className="error__icon">
+                                <AiOutlineClose size={108}/>
+                            </div>
+                            <button className="login__modal__error__button" onClick={() => setModelState(false)}>Opnieuw</button>
+                        </article>
+                    </div>
+                </React.Fragment>} modelState={modelState} setModelState = {setModelState}></Modal>
+                
         </article>
     );
 }

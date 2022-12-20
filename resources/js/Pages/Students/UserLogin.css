@@ -1,3 +1,4 @@
+@media (min-width: 768px) {
 .student {
     background-color: var(--background-light);
     background-image: url("/public/images/background/table.svg");
@@ -25,7 +26,6 @@
 
 .student__item__figure__picture {
     height: 6rem;
-    margin-left: 2rem;
 }
 
 .student__item__name__text {
@@ -45,14 +45,61 @@
 .student__login__buttons__button {
     width: 30%;
     margin-left: 20%;
+    background-color: var(--color-blue);
+    border-style: none;
+    color: var(--character-light);
+    border-radius: 5px;
+    background-color: var(--color-blue);
+    cursor: pointer;
+}
+.student__login__buttons__button:disabled {
+    cursor: not-allowed;
+    background-color: var(--color-dark-blue);
 }
 
+.students__login__actions__button--back {
+    width: 5%;
+    background-color: var(--color-blue);
+    border-style: none;
+    color: var(--character-dark);
+    border-radius: 5px;
+    background-color: var(--color-yellow);
+    cursor: pointer;
+}
+
+.login__modal__error {
+    height: 40vh;
+    width: 40vw;
+    background-color: #FCDAE2;
+    text-align: center;
+    display: flex;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login__modal__error__title {
+    color: var(--color-dark-blue);
+}
+.error__icon {
+    color: red;
+}
 .student__title {
-    grid-column: 2;
+    grid-column: 1;
+    margin-left: 5rem;
     margin-top: 50%
 }
 .student__item {
-    grid-column: 6;
+    grid-column: 5;
+}
+
+.login__modal__error__button {
+    padding: 0.4rem 2.8rem;
+    border-style: none;
+    color: var(--character-light);
+    border-radius: 5px;
+    background-color: var(--color-blue);
+    cursor: pointer;
 }
 
 
@@ -66,10 +113,10 @@
 .student__login__images {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-column-gap: 10rem;
-    grid-row-gap: 5rem;
+    grid-column-gap: 2rem;
+    grid-row-gap: 3rem;
     width: 90%;
-    padding: 6rem;
+    padding: 3rem;
     margin: 0;
     margin-left: 5rem;
     background: #3E4049;
@@ -77,9 +124,9 @@
 }
 
 .student__login__images__picture {
-    max-width: 30rem;
-    height: 15rem;
+    max-width: 15rem;
     object-fit: fill;
+    margin-left: 2rem;
 }
 
 .student__login__images__title {
@@ -87,6 +134,9 @@
 }
 
 
+.student__login__actions {
+    grid-column: 1 / 4;
+}
 
 .student__login__images__picture:hover {
     cursor: pointer;
@@ -95,4 +145,5 @@
 .active {
     border: .5rem solid var(--color-dark-blue); 
 
+}
 }

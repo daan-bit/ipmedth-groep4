@@ -26,8 +26,8 @@
 
 .student__item__figure__picture {
     height: 6rem;
+    margin-left: 2rem;
 }
-
 .student__item__name__text {
     text-decoration: none;
 }
@@ -43,9 +43,8 @@
     grid-column: 3;
 }
 .student__login__buttons__button {
-    width: 30%;
+    width: 7rem;
     margin-left: 20%;
-    background-color: var(--color-blue);
     border-style: none;
     color: var(--character-light);
     border-radius: 5px;
@@ -58,8 +57,7 @@
 }
 
 .students__login__actions__button--back {
-    width: 5%;
-    background-color: var(--color-blue);
+    width: 7rem;
     border-style: none;
     color: var(--character-dark);
     border-radius: 5px;
@@ -115,18 +113,16 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-column-gap: 2rem;
     grid-row-gap: 3rem;
-    width: 90%;
+    /* width: 90%; */
     padding: 3rem;
-    margin: 0;
-    margin-left: 5rem;
+    margin: 3rem;
     background: #3E4049;
     border-radius: 5rem;
 }
 
 .student__login__images__picture {
-    max-width: 15rem;
+    max-width: 10rem;
     object-fit: fill;
-    margin-left: 2rem;
 }
 
 .student__login__images__title {
@@ -146,4 +142,19 @@
     border: .5rem solid var(--color-dark-blue); 
 
 }
+}
+
+
+@media (min-width: 1025px) {
+    .student__login__images__picture {
+        max-width: 15rem;
+    }
+}
+
+@media (min-width: 1281px) {
+    .student__login__images__picture {
+        max-width: 20rem;
+    }
+
+    
 }

@@ -6,6 +6,7 @@ import Modal from "@/Components/Modal";
 import AICanvas, {
     undoLastMove,
     save,
+    getPercentage,
 } from "@/Components/Student/AICanvas/AICanvas";
 import PrimaryButton from '@/Components/PrimaryButton';
 import "../../../css/pages/Students/Level.css";
@@ -14,14 +15,12 @@ export default function Sandbox() {
     const { level } = usePage().props;
     const { student } = usePage().props;
     const { images } = usePage().props;
-    console.log(level);
-    console.log(images);
 
     const [drawing, setDrawing] = useState({
         image: "",
         assignment_id: level.id,
         student_id: student.id,
-        AIGuessPercentage: 0, //Value between 0 and 1
+        AIGuessPercentage: 0,
     });
     const [modelState, setModelState] = useState(true);
 
@@ -29,7 +28,8 @@ export default function Sandbox() {
     function updateImage(e) {
         e.preventDefault();
         const svg = save();
-        setDrawing({ ...drawing, image: svg });
+        const percentage = getPercentage();
+        setDrawing({ ...drawing, image: svg, AIGuessPercentage: percentage });
     }
 
     // Post request wordt uitgevoerd wanneer drawing.image geupdatet wordt

@@ -105,7 +105,8 @@ class StudentController extends Controller
         $drawing_id = Drawing::select('id')->where('image', '=', $imageName)->first();
 
         $result = new Result;
-        $result->status = "1";
+        if ($request->AIGuessPercentage > 50) $result->status = "1";
+        else $result->status = "-1";
         $result->assignment_id = $request->assignment_id;
         $result->student_id = $request->student_id;
         $result->drawing_id = $drawing_id->id;

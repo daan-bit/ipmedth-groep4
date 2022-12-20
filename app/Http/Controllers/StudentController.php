@@ -69,10 +69,12 @@ class StudentController extends Controller
         ->distinct()
         ->get();
 
+        //Creates a collection and adds the drawing for each drawing_id
         $images = collect();
         for ($i=0; $i < $drawing_ids->count(); $i++) { 
             $images->push(Drawing::select('image')->where('id', '=', $drawing_ids[$i]->drawing_id)->first());
         }
+        
         //add a slash before the url
         for ($i=0; $i < $images->count(); $i++) { 
             $images[$i]->image = "/" . $images[$i]->image;

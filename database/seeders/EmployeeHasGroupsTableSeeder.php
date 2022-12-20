@@ -15,7 +15,7 @@ class EmployeeHasGroupsTableSeeder extends Seeder
      */
     public function run()
     {
-        //een klas kan bijv 2 docenten hebben die werkzaam zijn op verschillende dagen
+        //een groep kan bijv 2 docenten hebben die werkzaam zijn op verschillende dagen
         DB::table('employee_has_groups')->insert([
          'group_id' => 1,
          'employee_id' => 1,

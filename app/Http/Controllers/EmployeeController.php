@@ -25,8 +25,6 @@ class EmployeeController extends Controller
         $employee = Employee::where('user_id', '=', Auth::user()->id)->first();
         $groups = $employee->groups;
 
-        error_log($employee);
-
         return Inertia::render('Teachers/Overview', ['employee' => $employee, 'groups' => $groups]);
     }
 
@@ -57,6 +55,50 @@ class EmployeeController extends Controller
 
         return Inertia::render('Teachers/OverviewPerGroup', ['allResults' => $allResults, 'students' => $students, 'assignments' => $assignments]);
     }
+    
+    public function createGroup(Request $request)
+    {
+        $group = new Group();
+        $group->school_group = $request->school_group;
+        $group->school_year = $request->school_year;
+        $group->school_id = $request->school_id;
+        $group->save();
+
+        // Link the group to the teacher with the employee_has_groups table
+        DB::table('employee_has_groups')->insert([
+            'group_id' => $group->id,
+            'employee_id' => $request->employee_id,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function updateGroup(Request $request, $id)
+    {
+        $group = Group::where('id', '=', $id)->first();
+        $group->school_group = $request->school_group;
+        $group->school_year = $request->school_year;
+        $group->school_id = $request->school_id;
+        $group->save();
+
+        return redirect()->back();
+    }
+
+    public function deleteGroup($id)
+    {
+        // get the students in the group
+        $students = Student::where('group_id', '=', $id)->get();
+        
+        foreach($students as $student){
+            User::where('id', '=', $student->user_id)->first()->delete();
+        }
+        
+        // Delete the group
+        Group::where('id', '=', $id)->first()->delete();
+        
+        return redirect()->back();
+    }
+
 
     //==========================================
     //==================ADMIN===================

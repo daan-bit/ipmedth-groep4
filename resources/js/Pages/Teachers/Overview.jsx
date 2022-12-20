@@ -2,11 +2,15 @@ import React from "react";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import Header from "@/Components/Teacher/Header";
 import "../../../css/pages/Teachers/overview.css";
+import AddGroupModel from "@/Components/Teacher/AddGroupModel";
+import EditGroupModel from "@/Components/Teacher/EditGroupModel";
 
 function Overview(props) {
     console.log(props);
-
-    const groups = Object.keys(props.groups).map(key => props.groups[key]);
+    const [showAddGroupModel, setShowAddGroupModel] = React.useState(false);
+    const [showEditGroupModel, setShowEditGroupModel] = React.useState(false);
+    const [groupToEdit, setGroupToEdit] = React.useState(null);
+    const groups = Object.keys(props.groups).map((key) => props.groups[key]);
 
     // sort groups by school_year and name
     let sortGroups = (a, b) => {
@@ -31,12 +35,34 @@ function Overview(props) {
     };
     groups.sort(sortGroups);
 
+    const openAddGroupModel = (e) => {
+        e.preventDefault();
+        setShowAddGroupModel(true);
+    };
+
+    const closeAddGroupModel = () => {
+        setShowAddGroupModel(false);
+    };
+
+    const openEditGroupModel = (school_id, school_year, school_group, group_id) => {
+        setGroupToEdit({ school_id, school_year, school_group, group_id });
+        setShowEditGroupModel(true);
+    };
+
+    const closeEditGroupModel = () => {
+        setShowEditGroupModel(false);
+    };
+
     return (
         <section className="teacherOverview">
             <Header first_name={props.employee.first_name} />
             <div className="page__title__wrapper">
                 <h1 className="page__title">Overzicht</h1>
+                <button className="addGroup__button" onClick={(e) => openAddGroupModel(e)}>
+                    + Nieuwe groep
+                </button>
             </div>
+            { showAddGroupModel ? <AddGroupModel closeModel={closeAddGroupModel} school_id={props.employee.school_id} employee_id={props.employee.id}/> : null}
             <section className="groups__overview">
                 {/* if there are no groups in props.groups array render this: */}
                 {props.groups.length === 0 ? (
@@ -47,6 +73,9 @@ function Overview(props) {
                     </div>
                 ) : (
                     <div className="groups__overview__groups">
+                        
+                        { showEditGroupModel ? <EditGroupModel closeModel={closeEditGroupModel} school_id={groupToEdit.school_id} school_year={groupToEdit.school_year} school_group={groupToEdit.school_group} group_id={groupToEdit.group_id}/> : null}                        
+                        
                         {groups.map((group) => (
                             <div className="group__card" key={group.id}>
                                 <div className="group__card__header">
@@ -56,6 +85,7 @@ function Overview(props) {
                                     <p className="group__card__subtitle">
                                         {group.school_year}
                                     </p>
+                                    <button className="group__card__edit__button" onClick={() => openEditGroupModel(props.employee.school_id, group.school_year, group.school_group, group.id)}>:</button>
                                     <div className="group__card__line"></div>
                                 </div>
                                 <div className="group__card__body">

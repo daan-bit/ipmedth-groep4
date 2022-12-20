@@ -9,13 +9,24 @@
 .page__title__wrapper {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
     padding: .5rem 2rem;
 }
 
 .page__title {
     color: var(--character-dark);
+}
+
+.addGroup__button {
+    width: fit-content;
+    border: none;
+    border-radius: .5rem;
+    padding: .4rem 2.8rem;
+    font-size: 1.2rem;
+    color: var(--color-card-white);
+    background-color: var(--color-blue);
+    cursor: pointer;
 }
 
 .groups__overview {
@@ -77,6 +88,7 @@
 
 /* In the group__card__header, show the group title big and the subtitle a bit smaller right under it. And end with a line dividing the header from the body */
 .group__card__header {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,6 +105,16 @@
 .group__card__subtitle {
     font-size: 1.2rem;
     color: var(--character-dark);
+}
+
+.group__card__edit__button {
+    position: absolute;
+    top: 0rem;
+    right: .5rem;
+    font-size: 1.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
 .group__card__line {

@@ -8,13 +8,13 @@ import AICanvas, {
     save,
     getPercentage,
 } from "@/Components/Student/AICanvas/AICanvas";
-import PrimaryButton from '@/Components/PrimaryButton';
 import "../../../css/pages/Students/Level.css";
 
 export default function Sandbox() {
     const { level } = usePage().props;
     const { student } = usePage().props;
     const { images } = usePage().props;
+    console.log(images);
 
     const [drawing, setDrawing] = useState({
         image: "",

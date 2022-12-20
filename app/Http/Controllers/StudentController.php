@@ -61,14 +61,18 @@ class StudentController extends Controller
         $level = Assignment::where([['world', '=', $world_id], ['level', '=', $level_id]])->first();
         $student = Student::where('user_id', '=', Auth::user()->id)->first();
 
-        //Get 3 diffrent images in a random order
-        $images = Drawing::select('image')
+        //Get 3 diffrent correct images in a random order
+        $drawing_ids = Result::select('drawing_id')
         ->where('assignment_id', '=', $level_id)
         ->inRandomOrder()
         ->take(3)
         ->distinct()
         ->get();
 
+        $images = collect();
+        for ($i=0; $i < $drawing_ids->count(); $i++) { 
+            $images->push(Drawing::select('image')->where('id', '=', $drawing_ids[$i]->drawing_id)->first());
+        }
         //add a slash before the url
         for ($i=0; $i < $images->count(); $i++) { 
             $images[$i]->image = "/" . $images[$i]->image;

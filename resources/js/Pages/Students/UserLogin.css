@@ -20,8 +20,7 @@
 
 .student__item__figure {
     background: linear-gradient(180deg, #FFD166 0%, #DB3069 100%);
-    backdrop-filter: blur(2px);
-    border-radius: 5rem;
+    border-radius: 3rem;
 }
 
 .student__item__figure__picture {
@@ -39,11 +38,18 @@
 
 }
 
+.student__login__images__figure {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 .student__login__buttons {
-    grid-column: 3;
+    grid-column: 5;
+    grid-row: 4;
 }
 .student__login__buttons__button {
-    width: 7rem;
+    width: 75%;
     margin-left: 20%;
     border-style: none;
     color: var(--character-light);
@@ -110,7 +116,7 @@
 
 .student__login__images {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     grid-column-gap: 2rem;
     grid-row-gap: 3rem;
     /* width: 90%; */
@@ -127,11 +133,16 @@
 
 .student__login__images__title {
     margin-left: 10%;
+    color: var(--color-card-white);
+
 }
 
 
 .student__login__actions {
-    grid-column: 1 / 4;
+    grid-column: 1 / 6;
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
 }
 
 .student__login__images__picture:hover {
@@ -139,7 +150,7 @@
 }
 
 .active {
-    border: .5rem solid var(--color-dark-blue); 
+    border: .5rem solid var(--color-blue);
 
 }
 }
@@ -147,14 +158,8 @@
 
 @media (min-width: 1025px) {
     .student__login__images__picture {
-        max-width: 15rem;
-    }
-}
-
-@media (min-width: 1281px) {
-    .student__login__images__picture {
-        max-width: 20rem;
+        max-width: 10rem;
     }
 
-    
+
 }

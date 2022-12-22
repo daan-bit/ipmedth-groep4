@@ -33,7 +33,7 @@ function UserLogin(props) {
     }
 
     const resetPassword = () => {
-        
+
         return passwordArrayLogin.length = 0;
     }
     const backToStudentsLogin = (e) => {
@@ -118,11 +118,10 @@ function UserLogin(props) {
             </section>
             <section className="student__login">
                 <form className="student__login__form" onSubmit={submit}>
-                    <h2 className="student__login__images__title">Kies twee plaatjes die van jou zijn</h2>
                     <article className="student__login__images">
                     <div className="student__login__actions">
                         <button className="students__login__actions__button--back" onClick={backToStudentsLogin}>{<FiArrowLeft size="32" />}</button>
-
+                        <h2 className="student__login__images__title">Kies twee plaatjes die van jou zijn</h2>
                     </div>
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/vogel.png'} data={"Vogel"} />
                         <ImageAsPassword className={'student__login__images__picture'} src={'/images/boom.png'} data={"Boom"} />
@@ -162,7 +161,7 @@ function UserLogin(props) {
                         </article>
                     </div>
                 </React.Fragment>} modelState={modelState} setModelState = {setModelState}></Modal>
-                
+
         </article>
     );
 }

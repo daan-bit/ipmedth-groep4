@@ -29,24 +29,31 @@ Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 //LEERLINGEN
 //Studenten login > hier kan student inloggen > redirect naar /
 // Route::get('/login', [], '')
-Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index']);
-//Studenten overzichtspagina > redirect wanneer NIET ingelogd naar /students/login
-Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index'])->name('student.overview');
-Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get'])->name('student.login');
-Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
+Route::middleware(['guest'])->group(function(){
+    //overzicht studenten
+    Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index'])->name('student.overview');
 
+    //inloggen 1 student
+    Route::get('students/login/{id}', [App\Http\Controllers\StudentController::class, 'get'])->name('student.login');
+
+    //post request voor user check
+    Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
+});
 //Pagina van bepaalde wereld - Alex
 Route::middleware(['AuthStudent', 'student'])->group(function(){
+    //wereld bekijken
     Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'getWorld'])->name('world.page');
+
     //Tekeningen bekijken
     Route::get('/album', [App\Http\Controllers\DrawingController::class, 'getDrawings'])->name('album.page');
-});
-//Pagina van opdracht binnnen een bepaalde wereld
-Route::get('/level/{world_id}/{level_id}', [App\Http\Controllers\StudentController::class, 'getLevel']);
-Route::post('/level/insert-drawing', [App\Http\Controllers\StudentController::class, 'insertDrawing']);
 
-//Vrij tekenen
-Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);
+    //Pagina van opdracht binnnen een bepaalde wereld
+    Route::get('/level/{world_id}/{level_id}', [App\Http\Controllers\StudentController::class, 'getLevel']);
+    Route::post('/level/insert-drawing', [App\Http\Controllers\StudentController::class, 'insertDrawing']);
+
+    //Vrij tekenen
+    Route::get('/sandbox', [App\Http\Controllers\StudentController::class, 'sandbox']);
+});
 
 
 

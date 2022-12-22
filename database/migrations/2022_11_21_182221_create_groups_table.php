@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->string('school_group', 20); // bijv Klas 4c
+            $table->string('school_group', 20); // bijv groep 4c
             $table->string('school_year', 10); //bijv 2019-2020
             $table->unsignedBigInteger('school_id');
-            $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

@@ -1,0 +1,143 @@
+@media (min-width: 768px) {
+.student {
+    background-color: var(--background-light);
+    background-image: url("/public/images/background/table.svg");
+    background-position: center;
+    background-repeat: repeat;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+}
+
+
+.student__section {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    height: 15rem;
+    align-items: baseline;
+
+}
+
+.student__login__images__figure {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.student__login__buttons {
+    grid-column: 5;
+    grid-row: 4;
+    display: flex;
+    justify-content: flex-end;
+}
+.student__login__buttons__button {
+    width: 7rem;
+    border-style: none;
+    color: var(--character-light);
+    border-radius: .5rem;
+    background-color: var(--color-blue);
+    cursor: pointer;
+}
+.student__login__buttons__button:disabled {
+    cursor: not-allowed;
+    background-color: var(--color-dark-blue);
+}
+
+.students__login__actions__button--back {
+    width: 7rem;
+    border-style: none;
+    color: var(--character-dark);
+    border-radius: 5px;
+    background-color: var(--color-yellow);
+    cursor: pointer;
+}
+
+.login__modal__error {
+    height: 40vh;
+    width: 40vw;
+    background-color: #FCDAE2;
+    text-align: center;
+    display: flex;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login__modal__error__title {
+    color: var(--color-dark-blue);
+}
+.error__icon {
+    color: red;
+}
+.student__title {
+    grid-column: 1;
+    margin-left: 5rem;
+    margin-top: 50%
+}
+.student__item {
+    grid-column: 5;
+}
+
+.login__modal__error__button {
+    padding: 0.4rem 2.8rem;
+    border-style: none;
+    color: var(--character-light);
+    border-radius: 5px;
+    background-color: var(--color-blue);
+    cursor: pointer;
+}
+
+.student__login__images {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 3rem;
+    /* width: 90%; */
+    padding: 3rem;
+    margin: 3rem;
+    background: #3E4049;
+    border-radius: 5rem;
+}
+
+.student__login__images__picture {
+    max-width: 7rem;
+    object-fit: fill;
+}
+
+.student__login__images__title {
+    color: var(--color-card-white);
+
+}
+
+
+.student__login__actions {
+    grid-column: 1 / 6;
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
+}
+
+.student__login__images__picture:hover {
+    cursor: pointer;
+}
+
+.active {
+    border: .5rem solid var(--color-blue);
+
+}
+
+
+}
+
+
+@media (min-width: 1025px) {
+    .student__login__images__picture {
+        max-width: 10rem;
+    }
+
+    .student__login__images__title {
+        margin-left: 20%;
+    }
+
+
+}

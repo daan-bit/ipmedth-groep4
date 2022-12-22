@@ -29,6 +29,7 @@ Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 //LEERLINGEN
 //Studenten login > hier kan student inloggen > redirect naar /
 // Route::get('/login', [], '')
+
 Route::middleware(['guest'])->group(function(){
     //overzicht studenten
     Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index'])->name('student.overview');

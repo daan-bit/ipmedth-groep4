@@ -7,6 +7,7 @@ import "../../css/components/button.css";
 export default function ModalWrong({
     modelState = false,
     setModelState = false,
+    updateDrawing
 }) {
     return (
         <Modal

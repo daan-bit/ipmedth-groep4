@@ -106,7 +106,7 @@ export default function Sandbox() {
                 setModelState={setModelStartState}
                 bgClosePopUp={false}
             ></Modal>
-            {drawingGuessed ? <ModalGood modelState={modelEndState} setModelState={setModelEndState} updateDrawing={updateDrawing} /> : <ModalWrong modelState={modelEndState} setModelState={setModelEndState} />}
+            {drawingGuessed ? <ModalGood modelState={modelEndState} setModelState={setModelEndState} updateDrawing={updateDrawing} /> : <ModalWrong modelState={modelEndState} setModelState={setModelEndState} updateDrawing={updateDrawing} />}
         </article>
     );
 }

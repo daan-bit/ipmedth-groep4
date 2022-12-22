@@ -9,12 +9,13 @@ import AICanvas, {
     getPercentage,
 } from "@/Components/Student/AICanvas/AICanvas";
 import "../../../css/pages/Students/Level.css";
+import ModalGood from "@/Components/ModalGood";
+import ModalWrong from "@/Components/ModalWrong";
 
 export default function Sandbox() {
     const { level } = usePage().props;
     const { student } = usePage().props;
     const { images } = usePage().props;
-    console.log(images);
 
     const [drawing, setDrawing] = useState({
         image: "",
@@ -22,14 +23,23 @@ export default function Sandbox() {
         student_id: student.id,
         AIGuessPercentage: 0,
     });
-    const [modelState, setModelState] = useState(true);
+    const [modelStartState, setModelStartState] = useState(true);
+    const [modelEndState, setModelEndState] = useState(false);
+    const [drawingGuessed, setDrawingGuessed] = useState(false);
 
     //Update the image variable to the canvas.
-    function updateImage(e) {
-        e.preventDefault();
+    function updateDrawing() {
         const svg = save();
         const percentage = getPercentage();
         setDrawing({ ...drawing, image: svg, AIGuessPercentage: percentage });
+    }
+
+
+    function showModelEndState() {
+        const percentage = getPercentage();
+        if (percentage >= 50) setDrawingGuessed(true);
+        else setDrawingGuessed(false);
+        setModelEndState(true);
     }
 
     // Post request wordt uitgevoerd wanneer drawing.image geupdatet wordt
@@ -53,13 +63,9 @@ export default function Sandbox() {
             <button className="u__z_index2" onClick={undoLastMove}>
                 undoLastMove
             </button>
-            <form
-                method="post"
-                onSubmit={updateImage}
-                encType="multipart/form-data"
-            >
-                <button className="u__z_index2">done</button>
-            </form>
+            <button onClick={showModelEndState} className="u__z_index2">
+                done
+            </button>
             <Modal
                 content={
                     <React.Fragment>
@@ -87,16 +93,20 @@ export default function Sandbox() {
                                 </figure>
                             </section>
 
-                            <button className="button button-primary popup_start" onClick={() => setModelState(false)}>
+                            <button
+                                className="button button-primary popup_start"
+                                onClick={() => setModelStartState(false)}
+                            >
                                 START
                             </button>
                         </section>
                     </React.Fragment>
                 }
-                modelState={modelState}
-                setModelState={setModelState}
+                modelState={modelStartState}
+                setModelState={setModelStartState}
                 bgClosePopUp={false}
             ></Modal>
+            {drawingGuessed ? <ModalGood modelState={modelEndState} setModelState={setModelEndState} updateDrawing={updateDrawing} /> : <ModalWrong modelState={modelEndState} setModelState={setModelEndState} />}
         </article>
     );
 }

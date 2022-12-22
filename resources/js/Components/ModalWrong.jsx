@@ -29,7 +29,7 @@ export default function ModalWrong({
                             </button>
                             <button
                                 className="button button-primary"
-                                onClick={() => setModelState(false)}
+                                onClick={() => updateDrawing()}
                             >
                                 Volgende
                             </button>

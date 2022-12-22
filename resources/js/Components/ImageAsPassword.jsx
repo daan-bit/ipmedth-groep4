@@ -10,7 +10,7 @@ export default function ImageAsPassword({
 
     return (
         <figure className={divClassName}>
-        <img className={className} src={src} data={data} id={id}></img>
+        <img className={className} src={"/images/login/" + src} data={data} id={id}></img>
         </figure> 
     );
 }

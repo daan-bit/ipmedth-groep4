@@ -9,32 +9,12 @@
     overflow: auto;
 }
 
-.student__item {
-    background: #3E4049;
-    box-shadow: -2px 0px 17px 13px rgb(88 196 246 / 19%);
-    border-radius: 3rem;
-    width: 10rem;
-    height: 10rem;
-    margin-top: 30%;
-}
-
-.student__item__figure {
-    background: linear-gradient(180deg, #FFD166 0%, #DB3069 100%);
-    border-radius: 3rem;
-}
-
-.student__item__figure__picture {
-    height: 6rem;
-    margin-left: 2rem;
-}
-.student__item__name__text {
-    text-decoration: none;
-}
 
 .student__section {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     height: 15rem;
+    align-items: baseline;
 
 }
 
@@ -47,13 +27,14 @@
 .student__login__buttons {
     grid-column: 5;
     grid-row: 4;
+    display: flex;
+    justify-content: flex-end;
 }
 .student__login__buttons__button {
-    width: 75%;
-    margin-left: 20%;
+    width: 7rem;
     border-style: none;
     color: var(--character-light);
-    border-radius: 5px;
+    border-radius: .5rem;
     background-color: var(--color-blue);
     cursor: pointer;
 }
@@ -106,14 +87,6 @@
     cursor: pointer;
 }
 
-
-.students__item__header__name {
-    color: var(--color-blue);
-    font-size: 1.5rem;
-    text-align: center;
-
-}
-
 .student__login__images {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -127,12 +100,11 @@
 }
 
 .student__login__images__picture {
-    max-width: 10rem;
+    max-width: 7rem;
     object-fit: fill;
 }
 
 .student__login__images__title {
-    margin-left: 10%;
     color: var(--color-card-white);
 
 }
@@ -153,12 +125,18 @@
     border: .5rem solid var(--color-blue);
 
 }
+
+
 }
 
 
 @media (min-width: 1025px) {
     .student__login__images__picture {
         max-width: 10rem;
+    }
+
+    .student__login__images__title {
+        margin-left: 20%;
     }
 
 

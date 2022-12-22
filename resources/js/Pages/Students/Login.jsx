@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
-import './Student.css';
-import Checkbox from '@/Components/Checkbox';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import '../../../css/pages/Students/Login/Student.css';
+import StudentItemCard from '@/Components/Student/AICanvas/StudentCardItem';
 
 const Login = () => {
     const { students } = usePage().props;
@@ -17,16 +12,9 @@ const Login = () => {
             </section>
             <section className="students__list">
                 {students.map(({ id, first_name, user_id }) => (
-                    <article className="students__list__item" key={id}>
-                        <InertiaLink href={route("student.login", id)} className="students__list__item__link">
-                            <figure className="students__list__item__figure">
-                                <img className="students__list__item__figure__picture" src={`https://avatars.dicebear.com/api/bottts/${user_id}.svg`} alt={`Avatar van ${first_name}`}></img>
-                            </figure>
-                            <article className="students__list__item__name">
-                                <h2 className="students__list__item__name__text">{first_name}</h2>
-                            </article>
-                        </InertiaLink>
-                    </article>
+                    <InertiaLink key={id} href={route("student.login", id)} className="student__item__link">
+                        <StudentItemCard id={id} first_name={first_name} user_id={user_id} />
+                    </InertiaLink>
                 ))}
             </section>
         </article>

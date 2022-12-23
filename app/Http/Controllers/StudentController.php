@@ -61,7 +61,34 @@ class StudentController extends Controller
         $level = Assignment::where([['world', '=', $world_id], ['level', '=', $level_id]])->first();
         $student = Student::where('user_id', '=', Auth::user()->id)->first();
 
-        return Inertia::render('Students/Level', ['level' => $level, 'student' => $student]);
+        //Get 3 diffrent correct images in a random order
+        $drawing_ids = Result::select('drawing_id')
+            ->where('assignment_id', '=', $level_id)
+            ->inRandomOrder()
+            ->take(3)
+            ->distinct()
+            ->get();
+
+        //Creates a collection and adds the drawing for each drawing_id
+        $images = collect();
+        for ($i = 0; $i < $drawing_ids->count(); $i++) {
+            $images->push(Drawing::select('image')->where('id', '=', $drawing_ids[$i]->drawing_id)->first());
+        }
+
+        //add a slash before the url
+        for ($i = 0; $i < $images->count(); $i++) {
+            $images[$i]->image = "/" . $images[$i]->image;
+        }
+
+        //If there are less than 3 images get more images from the example folder
+        if ($images->count() < 3) {
+            $extraNeededImages = 3 - $images->count();
+            for ($i = 0; $i < $extraNeededImages; $i++) {
+                $images->push(['image' => '/images/example_drawings/' . $level->prompt . '/' . $level->prompt . '_' . $i + 1 . '.svg']); //Sets the example image
+            }
+        }
+
+        return Inertia::render('Students/Level', ['level' => $level, 'student' => $student, 'images' => $images]);
     }
 
     public function insertDrawing(Request $request)
@@ -72,7 +99,7 @@ class StudentController extends Controller
             'student_id' => 'required',
         ]);
 
-        $imageName = 'images/drawings/'. time(). '.svg';
+        $imageName = 'images/drawings/' . time() . '.svg';
         file_put_contents($imageName, $request->image);
 
         $drawing = new Drawing;
@@ -83,13 +110,13 @@ class StudentController extends Controller
 
         $drawing_id = Drawing::select('id')->where('image', '=', $imageName)->first();
 
-        $result = new Result;
-        $result->status = "1";
-        $result->assignment_id = $request->assignment_id;
-        $result->student_id = $request->student_id;
-        $result->drawing_id = $drawing_id->id;
-
-        $result->save();
+        if ($request->AIGuessPercentage > 50) $AIGuess = "1";
+        else $AIGuess = "-1";
+        
+        Result::updateOrCreate(
+            ["student_id" => $request->student_id, "assignment_id" => $request->assignment_id],
+            ["status" => $AIGuess, "drawing_id" => $drawing_id->id]
+        );
 
         return redirect('/login');
     }

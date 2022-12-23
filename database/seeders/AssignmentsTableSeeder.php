@@ -19,7 +19,6 @@ class AssignmentsTableSeeder extends Seeder
             'name' => 'Opdracht 1',
             'description' => 'Teken de zon',
             'prompt' => 'zon',
-            'images' => json_encode(['afbeelding_1' => 'afbeelding1.png', 'afbeelding_2' => 'afbeelding_2.png']),
             'world' => 1,
             'level' => 1
         ]);
@@ -28,7 +27,6 @@ class AssignmentsTableSeeder extends Seeder
             'name' => 'Opdracht 2',
             'description' => 'Teken een Vis',
             'prompt' => 'vis',
-            'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
             'world' => 1,
             'level' => 2
         ]);
@@ -36,7 +34,6 @@ class AssignmentsTableSeeder extends Seeder
             'name' => 'Opdracht 3',
             'description' => 'Teken een zwaard',
             'prompt' => 'zwaard',
-            'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
             'world' => 1,
             'level' => 3
         ]);
@@ -44,7 +41,6 @@ class AssignmentsTableSeeder extends Seeder
             'name' => 'Opdracht 4',
             'description' => 'Teken een hoed',
             'prompt' => 'hoed',
-            'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
             'world' => 1,
             'level' => 4
         ]);
@@ -52,7 +48,6 @@ class AssignmentsTableSeeder extends Seeder
             'name' => 'Opdracht 5',
             'description' => 'Teken een kanon',
             'prompt' => 'kanon',
-            'images' => json_encode(['afbeelding_1' => 'afbeelding4.png', 'afbeelding_5' => 'afbeelding_5.png']),
             'world' => 1,
             'level' => 5
         ]);

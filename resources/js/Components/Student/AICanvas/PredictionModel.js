@@ -1,7 +1,7 @@
 import * as tf from '@tensorflow/tfjs';
 
 export class PredictionModel {
-    constructor(model, canvas, mode, prompt) {
+    constructor(model, canvas, mode, prompt, percentage) {
         this.model = model;
         this.canvas = canvas;
         this.classNames = [];
@@ -9,6 +9,11 @@ export class PredictionModel {
         this.mousePressed = false;
         this.mode = mode;
         this.prompt = prompt;
+        this.percentage = percentage;
+    }
+
+    getPercentage() {
+        return this.percentage;
     }
     //record the current drawing coordinates
     recordCoor(event) {
@@ -125,6 +130,7 @@ export class PredictionModel {
         const guessPrompt = Math.round(inp[indexPrompt] * 100);
         const className = this.classNames[indexPrompt];
         console.log(`${className} : ${guessPrompt}`);
+        this.percentage = guessPrompt;
     }
 
     //get indices of the top probs

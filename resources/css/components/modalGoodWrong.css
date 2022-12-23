@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+    border-radius: 15px;
+}
+
+.wrapper[data-status="wrong"] {
+    background-color: #fcdae2;
+}
+
+.wrapper[data-status="good"] {
+    background-color: #cdf7ec;
+}
+
+.button_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.button_wrapper > button {
+    font-size: 2rem;
+}

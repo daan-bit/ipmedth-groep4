@@ -8,6 +8,7 @@ import "../../../../css/components/Student/AICanvas.css";
 //variables
 let model;
 let canvas;
+let percentage = 0;
 let ai;
 
 //load the model
@@ -15,7 +16,7 @@ async function start(mode, prompt) {
     //load the model 
     model = await tf.loadLayersModel('/model/model.json');
 
-    ai = new PredictionModel(model, canvas, mode, prompt);
+    ai = new PredictionModel(model, canvas, mode, prompt, percentage);
 
     //warm up 
     ai.model.predict(tf.zeros([1, 28, 28, 1]));
@@ -50,6 +51,10 @@ export function save(){
     });
 }
 
+export function getPercentage(){
+    return percentage;
+}
+
 export default function AICanvas({mode, prompt = null}) {
     if (mode != "level" && mode != "sandbox") {
         console.error(`mode is ${mode}, it should be level or sandbox`);
@@ -80,6 +85,7 @@ export default function AICanvas({mode, prompt = null}) {
         //The mouse movements on the canvas
         canvas.on('mouse:up', function (e) {
             ai.getFrame();
+            percentage = ai.getPercentage();
             ai.mousePressed = false
         });
         canvas.on('mouse:down', function (e) {

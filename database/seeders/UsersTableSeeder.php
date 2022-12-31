@@ -17,6 +17,10 @@ class UsersTableSeeder extends Seeder
         /**
          * STUDENT USERS
          */
+
+        /**
+         * GROUP 1
+         */
         DB::table('users')->insert([
             'username' => 'Test gebruiker',
             'password' => bcrypt('VogelBoom'),
@@ -36,6 +40,24 @@ class UsersTableSeeder extends Seeder
             'username' => 'Tycho',
             'password' => bcrypt('HondjeKatje'),
         ]);
+
+        for ($i = 1; $i <= 16; $i++) {
+            DB::table('users')->insert([
+                'username' => 'test' . $i + 4,
+                'password' => bcrypt('HondjeKatje'),
+            ]);
+        }
+
+        /**
+         * GROUP 2
+         */
+
+        for ($i = 1; $i <= 20; $i++) {
+            DB::table('users')->insert([
+                'username' => 'test' . $i + 20,
+                'password' => bcrypt('HondjeKatje'),
+            ]);
+        }
 
         /**
          * TEACHER AND ADMIN USERS

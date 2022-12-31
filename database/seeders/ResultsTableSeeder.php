@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
 class ResultsTableSeeder extends Seeder
 {
     /**
@@ -15,17 +14,11 @@ class ResultsTableSeeder extends Seeder
     public function run()
     {
         //================================
-        //Student 1 - Pietje
+        //Student 1 - Test gebruiker
         //================================
         DB::table('results')->insert([
-            'status' => 1,
+            'status' => -1,
             'assignment_id' => 1,
-            'student_id' => 1,
-            'drawing_id' => 1,
-        ]);
-        DB::table('results')->insert([
-            'status' => 1,
-            'assignment_id' => 2,
             'student_id' => 1,
             'drawing_id' => 1,
         ]);

@@ -47,7 +47,7 @@ class ResultsTableSeeder extends Seeder
         ]);
         DB::table('results')->insert([
             'status' => 1,
-            'assignment_id' => 4,
+            'assignment_id' => 3,
             'student_id' => 2,
             'drawing_id' => 2,
             'created_at' => date("Y-m-d H:i:s"),
@@ -59,17 +59,17 @@ class ResultsTableSeeder extends Seeder
         //================================
         DB::table('results')->insert([
             'status' => -1,
-            'assignment_id' => 5,
+            'assignment_id' => 1,
             'student_id' => 3,
-            'drawing_id' => 2,
+            'drawing_id' => 4,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
         DB::table('results')->insert([
             'status' => 1,
-            'assignment_id' => 4,
+            'assignment_id' => 2,
             'student_id' => 3,
-            'drawing_id' => 2,
+            'drawing_id' => 5,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
@@ -77,7 +77,7 @@ class ResultsTableSeeder extends Seeder
             'status' => -1,
             'assignment_id' => 3,
             'student_id' => 3,
-            'drawing_id' => 2,
+            'drawing_id' => 6,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
@@ -87,18 +87,18 @@ class ResultsTableSeeder extends Seeder
          */
         DB::table('results')->insert([
             'status' => -1,
-            'assignment_id' => 3,
+            'assignment_id' => 1,
             'student_id' => 4,
-            'drawing_id' => 1,
+            'drawing_id' => 7,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
 
         DB::table('results')->insert([
             'status' => 1,
-            'assignment_id' => 4,
+            'assignment_id' => 2,
             'student_id' => 4,
-            'drawing_id' => 1,
+            'drawing_id' => 8,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
@@ -109,27 +109,27 @@ class ResultsTableSeeder extends Seeder
 
         DB::table('results')->insert([
             'status' => 1,
-            'assignment_id' => 3,
+            'assignment_id' => 1,
             'student_id' => 5,
-            'drawing_id' => 1,
+            'drawing_id' => 9,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
 
         DB::table('results')->insert([
             'status' => 1,
-            'assignment_id' => 5,
+            'assignment_id' => 2,
             'student_id' => 5,
-            'drawing_id' => 1,
+            'drawing_id' => 10,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
 
         DB::table('results')->insert([
             'status' => -1,
-            'assignment_id' => 4,
+            'assignment_id' => 3,
             'student_id' => 5,
-            'drawing_id' => 1,
+            'drawing_id' => 11,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);

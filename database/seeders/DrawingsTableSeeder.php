@@ -25,9 +25,49 @@ class DrawingsTableSeeder extends Seeder
             'student_id' => 1
         ]);
         DB::table('drawings')->insert([
-            'image' => 'images/drawings/test_zon2.svg',
+            'image' => 'images/example_drawings/zon/zon_3.svg',
             'assignment_id' => 1,
             'student_id' => 2
+        ]);
+        DB::table('drawings')->insert([
+            'image' => 'images/example_drawings/zon/zon_1.svg',
+            'assignment_id' => 1,
+            'student_id' => 3
+        ]);
+        DB::table('drawings')->insert([
+            'image' => 'images/example_drawings/vis/vis_1.svg',
+            'assignment_id' => 2,
+            'student_id' => 3
+        ]);
+        DB::table('drawings')->insert([
+            'image' => 'images/example_drawings/zwaard/zwaard_1.svg',
+            'assignment_id' => 3,
+            'student_id' => 3
+        ]);
+        DB::table('drawings')->insert([
+            'image' => 'images/example_drawings/zon/zon_1.svg',
+            'assignment_id' => 1,
+            'student_id' => 4
+        ]);
+        DB::table('drawings')->insert([
+            'image' => 'images/example_drawings/vis/vis_3.svg',
+            'assignment_id' => 2,
+            'student_id' => 4
+        ]);
+        DB::table('drawings')->insert([
+            'image' => 'images/example_drawings/zon/zon_2.svg',
+            'assignment_id' => 1,
+            'student_id' => 5
+        ]);
+        DB::table('drawings')->insert([
+            'image' => 'images/example_drawings/vis/vis_2.svg',
+            'assignment_id' => 2,
+            'student_id' => 5
+        ]);
+        DB::table('drawings')->insert([
+            'image' => 'images/example_drawings/zwaard/zwaard_2.svg',
+            'assignment_id' => 3,
+            'student_id' => 5
         ]);
     }
 }

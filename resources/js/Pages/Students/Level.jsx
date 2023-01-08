@@ -11,6 +11,8 @@ import AICanvas, {
 import "../../../css/pages/Students/Level.css";
 import ModalGood from "@/Components/ModalGood";
 import ModalWrong from "@/Components/ModalWrong";
+import { AiOutlineCheck } from "react-icons/ai";
+import { BsFillEraserFill } from "react-icons/bs";
 
 export default function Sandbox() {
     const { level } = usePage().props;
@@ -33,7 +35,6 @@ export default function Sandbox() {
         const percentage = getPercentage();
         setDrawing({ ...drawing, image: svg, AIGuessPercentage: percentage });
     }
-
 
     function showModelEndState() {
         const percentage = getPercentage();
@@ -60,12 +61,24 @@ export default function Sandbox() {
             <section className="canvas__container">
                 <AICanvas id="canvas" mode="level" prompt={level.prompt} />
             </section>
-            <button className="u__z_index2" onClick={undoLastMove}>
-                undoLastMove
-            </button>
-            <button onClick={showModelEndState} className="u__z_index2">
-                done
-            </button>
+            <section className="button_container">
+                <button
+                    className="level__button u__z_index2"
+                    onClick={undoLastMove}
+                    data-bgcolor="red"
+                >
+                    <BsFillEraserFill size={50} color={"#202020"} />
+                </button>
+                <button
+                    onClick={showModelEndState}
+                    className="level__button u__z_index2"
+                    data-bgcolor="green"
+                >
+                    <AiOutlineCheck size={50} color={"#202020"} />
+                </button>
+            </section>
+
+            {/* THE POPUP MODELS, INCLUDING THE START, WRONG AND GOOD */}
             <Modal
                 content={
                     <React.Fragment>
@@ -106,7 +119,19 @@ export default function Sandbox() {
                 setModelState={setModelStartState}
                 bgClosePopUp={false}
             ></Modal>
-            {drawingGuessed ? <ModalGood modelState={modelEndState} setModelState={setModelEndState} updateDrawing={updateDrawing} /> : <ModalWrong modelState={modelEndState} setModelState={setModelEndState} updateDrawing={updateDrawing} />}
+            {drawingGuessed ? (
+                <ModalGood
+                    modelState={modelEndState}
+                    setModelState={setModelEndState}
+                    updateDrawing={updateDrawing}
+                />
+            ) : (
+                <ModalWrong
+                    modelState={modelEndState}
+                    setModelState={setModelEndState}
+                    updateDrawing={updateDrawing}
+                />
+            )}
         </article>
     );
 }

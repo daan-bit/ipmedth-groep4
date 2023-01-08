@@ -17,6 +17,36 @@
     border-radius: 5px;
 }
 
+.button_container{
+    margin: 2rem 0 0 2rem;
+    gap: 1rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 4rem;
+}
+
+.level__button {
+    border-radius: 100%;
+    padding: .5rem;
+    border: none;
+    cursor: pointer;
+    transition: .3s box-shadow;
+}
+
+.level__button:hover {
+    box-shadow: 0 0 1rem var(--background-dark-primary) inset;
+}
+
+.level__button[data-bgcolor="red"] {
+    background-color: var(--color-red);
+}
+
+.level__button[data-bgcolor="green"] {
+    background-color: var(--color-green);
+}
+
 .canvas__container {
     position: absolute;
     width: 100%;

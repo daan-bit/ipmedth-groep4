@@ -34,26 +34,18 @@ class EmployeeController extends Controller
 
     public function getGroup($id)
     {
+        $employee = Employee::where('user_id', '=', Auth::user()->id)->first();
         $group = Group::where('id', '=', $id)->first();
         $students = Student::where('group_id', '=', $id)->get();
-
-        return Inertia::render('Teachers/Group', ['group' => $group, 'students' => $students]);
-    }
-
-    //Deze functie later samenvoegen met getGroup functie hierboven.
-    public function getResultsPerGroup($group_id){
-        $students = Student::where('group_id', '=', $group_id)->get();
-
         $allResults = [];
         foreach ($students as $student) {
             $results = $student->StudentResults;
 
             array_push($allResults,$results);
         }
-
         $assignments = Assignment::all();
 
-        return Inertia::render('Teachers/OverviewPerGroup', ['allResults' => $allResults, 'students' => $students, 'assignments' => $assignments]);
+        return Inertia::render('Teachers/Group', ['employee' => $employee, 'group' => $group, 'students' => $students, 'allResults' => $allResults, 'assignments' => $assignments]);
     }
     
     public function createGroup(Request $request)

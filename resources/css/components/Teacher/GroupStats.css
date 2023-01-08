@@ -1,6 +1,6 @@
 .OverviewPerGroupPage{
-    height: 100vh;
-    width: 100vw;
+    height: calc(100vh - (7.5rem + 5rem));
+    width: 100%;
     background-color: var(--background-light);
     padding: 2rem;
     display: flex;
@@ -29,6 +29,7 @@
 .statistic__titleContainer{
     width: 100%;
     padding: 1rem;
+    text-align: center;
 }
 
 .statistic__contentContainer{

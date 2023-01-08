@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -15,37 +14,63 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * STUDENT USERS
+         */
+
+        /**
+         * GROUP 1
+         */
         DB::table('users')->insert([
-            'username' => 'teacher',
-            'password' => bcrypt('Teacher1234'),
+            'username' => 'Test gebruiker',
+            'password' => bcrypt('VogelBoom'),
         ]);
+
+        DB::table('users')->insert([
+            'username' => 'Jasmine',
+            'password' => bcrypt('HondjeKatje'),
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'Daan',
+            'password' => bcrypt('BoomKatje'),
+        ]);
+
+        /**
+         * GROUP 2
+         */
+
+        DB::table('users')->insert([
+            'username' => 'Tycho',
+            'password' => bcrypt('HondjeKatje'),
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'test 5',
+            'password' => bcrypt('HondjeKatje'),
+        ]);
+
+        /**
+         * TEACHER AND ADMIN USERS
+         */
         DB::table('users')->insert([
             'username' => 'admin',
             'password' => bcrypt('Admin1234'),
         ]);
+
         DB::table('users')->insert([
-            'username' => 'pietje',
-            'password' => bcrypt('VogelBoom'),
-        ]);
-        DB::table('users')->insert([
-            'username' => 'jasmine',
-            'password' => bcrypt('HondjeKatje'),
-        ]);
-        DB::table('users')->insert([
-            'username' => 'daan',
-            'password' => bcrypt('BoomKatje'),
-        ]);
-         DB::table('users')->insert([
             'username' => 'teacher1',
             'password' => bcrypt('Teacher1234'),
         ]);
+
         DB::table('users')->insert([
             'username' => 'teacher2',
             'password' => bcrypt('Teacher1234'),
         ]);
+
         DB::table('users')->insert([
-            'username' => 'Tycho',
-            'password' => bcrypt('HondjeKatje'),
+            'username' => 'teacher3',
+            'password' => bcrypt('Teacher1234'),
         ]);
     }
 }

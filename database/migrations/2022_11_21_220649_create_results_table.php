@@ -34,9 +34,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('results', function (Blueprint $table) {
-            $table->dropForeign('results_assignment_id_foreign');
-            $table->dropForeign('results_student_id_foreign');
-            $table->dropForeign('results_drawing_id_foreign');
+            $table->dropForeign('results_assignment_id_foreign')->onDelete('cascade');
+            $table->dropForeign('results_student_id_foreign')->onDelete('cascade');
+            $table->dropForeign('results_drawing_id_foreign')->onDelete('cascade');
         });
         Schema::dropIfExists('results');
     }

@@ -50,6 +50,7 @@ export default function GroupOverview(props) {
             id: student.id,
             first_name: student.first_name,
             results: studentResults,
+            user_id: student.user_id
         });
     }
 
@@ -120,7 +121,7 @@ export default function GroupOverview(props) {
                             </div>
 
                                  <div></div>       
-                            {/* <button className="student__item__button" onClick={() => deleteUser(student.id)}><span class="material-symbols-outlined">delete</span></button> */}
+                            <button className="student__item__button" onClick={() => deleteUser(student.user_id)}><span className="material-symbols-outlined">delete</span></button>
                         </li>
                     ))}
                 </ul>

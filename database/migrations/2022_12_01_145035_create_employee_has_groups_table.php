@@ -29,8 +29,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('employee_has_groups', function (Blueprint $table) {
-            $table->dropForeign('employee_has_groups_employee_id_foreign');
-            $table->dropForeign('employee_has_groups_group_id_foreign');
+            $table->dropForeign('employee_has_groups_employee_id_foreign')->onDelete('cascade');
+            $table->dropForeign('employee_has_groups_group_id_foreign')->onDelete('cascade');
         });
         Schema::dropIfExists('employee_has_groups');
     }

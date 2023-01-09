@@ -31,8 +31,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('drawings', function (Blueprint $table) {
-            $table->dropForeign('drawings_assignment_id_foreign');
-            $table->dropForeign('drawings_student_id_foreign');
+            $table->dropForeign('drawings_assignment_id_foreign')->onDelete('cascade');
+            $table->dropForeign('drawings_student_id_foreign')->onDelete('cascade');
         });
         Schema::dropIfExists('drawings');
     }

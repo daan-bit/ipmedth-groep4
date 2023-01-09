@@ -1,4 +1,5 @@
 #!/bin/bash
 
-php artisan migrate:refresh
+php artisan db:wipe
+php artisan migrate
 php artisan db:seed

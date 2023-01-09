@@ -22,7 +22,7 @@ class DrawingsTableSeeder extends Seeder
         DB::table('drawings')->insert([
             'image' => 'images/drawings/test_vis.svg',
             'assignment_id' => 2,
-            'student_id' => 1
+            'student_id' => 5
         ]);
         DB::table('drawings')->insert([
             'image' => 'images/example_drawings/zon/zon_3.svg',

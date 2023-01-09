@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Header from "@/Components/Teacher/Header";
 import GroupStatistics from "@/Components/Teacher/GroupStatistics";
+import GroupOverview from "@/Components/Teacher/GroupOverview";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import "../../../css/pages/Teachers/overviewGroup.css";
 
 function Overview(props) {
-    console.log(props);
+    // console.log(props);
     const [activeSection, setActiveSection] = useState("statistieken");
 
     function changeActiveSection(section) {
@@ -52,26 +53,7 @@ function Overview(props) {
             )}
 
             {activeSection == "leerlingen" && (
-                <>
-                    <article>
-                        <h1>id: {props.group.id}</h1>
-                        <p>school_group: {props.group.school_group}</p>
-                        <p>school_id: {props.group.school_id}</p>
-                        <p>school_year: {props.group.school_year}</p>
-                    </article>
-                    <article>
-                        <h2>Students</h2>
-                        <ul>
-                            {props.students.map((student) => (
-                                <li key={student.id}>
-                                    <h3>id: {student.id}</h3>
-                                    <p>first_name: {student.first_name}</p>
-                                    <p>user_id: {student.user_id}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    </article>
-                </>
+                <GroupOverview group={props.group} students={props.students} allResults={props.allResults} assignments={props.assignments}/>
             )}
         </>
     );

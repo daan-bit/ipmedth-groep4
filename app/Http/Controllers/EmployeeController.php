@@ -91,6 +91,33 @@ class EmployeeController extends Controller
         return redirect()->back();
     }
 
+    // Add new student to the group
+    public function addStudent($id, $username)
+    {
+        $user = new User();
+        $user->username = $username;
+        $user->password = bcrypt("HondjeKatje");
+        $user->save();
+
+        var_dump($user);
+
+        $student = new Student();
+        $student->first_name = $username;
+        $student->group_id = $id;
+        $student->user_id = $user->id;
+        $student->save();
+
+        return redirect()->back();
+    }
+
+    // Remove student
+    public function deleteStudent($id, $user_id)
+    {
+        User::where('id', '=', $user_id)->first()->delete();
+
+        return redirect()->back();
+    }
+
 
     //==========================================
     //==================ADMIN===================

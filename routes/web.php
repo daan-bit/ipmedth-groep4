@@ -30,7 +30,7 @@ Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
 //Studenten login > hier kan student inloggen > redirect naar /
 // Route::get('/login', [], '')
 
-Route::middleware(['guest'])->group(function(){
+Route::middleware(['guest'])->group(function () {
     //overzicht studenten
     Route::get('students/login', [App\Http\Controllers\StudentController::class, 'index'])->name('student.overview');
 
@@ -41,7 +41,7 @@ Route::middleware(['guest'])->group(function(){
     Route::post('students/login', [App\Http\Controllers\StudentController::class, 'store'])->name('students.login');
 });
 //Pagina van bepaalde wereld - Alex
-Route::middleware(['AuthStudent', 'student'])->group(function(){
+Route::middleware(['AuthStudent', 'student'])->group(function () {
     //wereld bekijken
     Route::get('/world/{id}', [App\Http\Controllers\WorldController::class, 'getWorld'])->name('world.page');
 
@@ -64,41 +64,46 @@ Route::middleware(['AuthStudent', 'student'])->group(function(){
 
 Route::get('/login', [App\Http\Controllers\AuthenticatedSessionController::class, 'store']);
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
     Route::post('/change-password', [App\Http\Controllers\PasswordController::class, 'updatePassword']);
 });
 
 //DOCENTEN
-Route::middleware(['auth', 'teacher'])->group(function(){
+Route::middleware(['auth', 'teacher'])->group(function () {
     //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
     Route::get('/docent/overzicht', [App\Http\Controllers\EmployeeController::class, 'getTeacherOverview'])->name('docent.overzicht');
     Route::get('/docent/instellingen', [App\Http\Controllers\EmployeeController::class, 'getTeacherSettings']);
 
     // Docenten kunnen een groep maken met een post request
     Route::post('/docent/groep', [App\Http\Controllers\EmployeeController::class, 'createGroup']);
-    
 });
 
-Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function(){
+Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function () {
     //Overzicht van groep
     Route::get('/docent/overzicht/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
-    
+
     //Overzicht groep
     Route::get('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'getGroup']);
-    
+
     // Docenten kunnen een groep verwijderen met een delete request
     Route::delete('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'deleteGroup']);
 
     // Docenten kunnen een groep updaten met een put request
     Route::put('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'updateGroup']);
+
+    // Docenten kunnen een student toevoegen aan een groep met een post request
+    Route::post('/docent/overzicht/{id}/{username}', [App\Http\Controllers\EmployeeController::class, 'addStudent']);
+
+    // Docenten kunnen een student verwijderen
+    Route::delete('/docent/overzicht/{id}/{user_id}', [App\Http\Controllers\EmployeeController::class, 'deleteStudent']);
 });
 
 //ADMIN
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
-Route::middleware(['auth', 'admin'])->group(function(){
-   Route::get('/admin/overzicht', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
-   Route::get('/admin/instellingen', [App\Http\Controllers\EmployeeController::class, 'getAdminSettings']);
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/overzicht', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
+    Route::get('/admin/instellingen', [App\Http\Controllers\EmployeeController::class, 'getAdminSettings']);
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

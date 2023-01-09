@@ -10,6 +10,8 @@ class Student extends Model
 {
     protected $table = 'students';
 
+    public $timestamps = false;
+
     public function StudentResults() {
         return $this->hasMany(\App\Models\Result::class);
     }

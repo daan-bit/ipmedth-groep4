@@ -1,16 +1,7 @@
 
 .world__navbar {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    grid-column-gap: 2rem;
-    grid-row-gap: 2rem;
-    width: 100%;
-    padding: 3rem;
-    margin: 0;
-}
-
-.world__navbar__buttons {
-    grid-column: 6;
+    text-align: right;
+    padding: 2rem;
 }
 
 .world__navbar__buttons__album,

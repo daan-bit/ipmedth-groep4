@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "../../../css/components/Teacher/GroupOverview.css";
+// import "../../../css/components/Teacher/GroupOverview.css";
 import AddStudentModel from "../Teacher/AddStudentModel";
 import ResponsiveNavLink from "../ResponsiveNavLink";
 import { Inertia } from "@inertiajs/inertia";
 
 export default function GroupOverview(props) {
-    // console.log(props);
+    console.log(props);
     const [addStudentModel, setAddStudentModel] = useState(false);
     let allResults = props.allResults;
     let allStudents = props.students;

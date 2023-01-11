@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import StackedBarChart from '@/Components/StackedBarChart';
 
-import '../../../css/pages/Teachers/OverviewPerGroup.css'
+// import '../../../css/pages/Teachers/OverviewPerGroup.css'
 //Deze pagina later samenvoegen met overview pagina.
 
 function OverviewPerGroup(props) {

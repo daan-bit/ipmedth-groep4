@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "../../../css/components/Teacher/GroupOverview.css";
+import "../../../css/components/Teacher/GroupOverview.css";
 import AddStudentModel from "../Teacher/AddStudentModel";
 import ResponsiveNavLink from "../ResponsiveNavLink";
 import { Inertia } from "@inertiajs/inertia";

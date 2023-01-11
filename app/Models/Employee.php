@@ -10,6 +10,12 @@ class Employee extends Model
     use HasFactory;
 
     protected $table = 'employees';
+    protected $fillable = [
+        'first_name', 'last_name', 'email', 'school_id', 'user_id', 'role_id'
+    ];
+    public $timestamps = false;
+
+
 
     // get all the groups that belong to the teacher from the employees_has_groups table
     public function groups()

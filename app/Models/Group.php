@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
-
-    protected $table = 'groups';
+    protected $fillable = [
+    'school_group',
+    'school_year',
+    'school_id'
+    ];
 
     public $timestamps = false;
 

@@ -6,7 +6,6 @@ import AddGroupModel from "@/Components/Teacher/AddGroupModel";
 import EditGroupModel from "@/Components/Teacher/EditGroupModel";
 
 function Overview(props) {
-    console.log(props);
     const [showAddGroupModel, setShowAddGroupModel] = React.useState(false);
     const [showEditGroupModel, setShowEditGroupModel] = React.useState(false);
     const [groupToEdit, setGroupToEdit] = React.useState(null);
@@ -117,7 +116,7 @@ function Overview(props) {
                                             )
                                         }
                                     >
-                                        <span class="material-symbols-outlined">
+                                        <span className="material-symbols-outlined">
                                             more_vert
                                         </span>
                                     </button>

@@ -5,11 +5,24 @@ export default function ImageAsPassword({
     className,
     src,
     data,
-    divClassName = 'student__login__images__figure'
+    divClassName = 'student__login__form__figure',
+    passwordState,
+    setPasswordState
 }) {
 
+    function setPassword(e) {
+        if (!passwordState) {
+            setPasswordState(data)
+            e.target.classList.add("active");
+        }
+        else if (passwordState == data) {
+            setPasswordState(null)
+            e.target.classList.remove("active");
+        }
+    }
+
     return (
-        <figure className={divClassName}>
+        <figure onClick={(e) => setPassword(e)} className={divClassName}>
         <img className={className} src={"/images/login/" + src} data={data} id={id}></img>
         </figure> 
     );

@@ -4,13 +4,21 @@
     padding: 2rem;
 }
 
+.world__navbar__buttons__album {
+    background: var(--color-green);
+}
+
+.world__navbar__buttons__logout {
+    background: var(--color-red);
+}
+
 .world__navbar__buttons__album,
 .world__navbar__buttons__logout {
-    background: var(--color-green);
     width: 4rem;
     height: 4rem;
     border-radius: 2rem;
     border: none;
+    transition: .5s all;
 }
 
 .world__navbar__buttons__album:hover,

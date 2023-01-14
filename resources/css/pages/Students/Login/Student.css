@@ -1,38 +1,40 @@
 @media (min-width: 768px) {
-  .students {
+  .background {
         background-color: var(--background-light);
         background-image: url("/public/images/background/table.svg");
         background-position: center;
         background-repeat: repeat;
+
         width: 100vw;
         height: 100vh;
-        overflow: auto;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 
+    .students {
+        margin-top: 2rem;
+        width: 90%;
+    }
+
+    .students__header{
+        margin-bottom: 1rem;
+    }
+
+    .students__title {
+        font-weight: bold;
+        text-align: left;
+    }
     
     .students__list {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-template-rows: repeat(3, minmax(0,1fr));
         grid-column-gap: 2rem;
         grid-row-gap: 2rem;
-        width: 90%;
-        padding: 3rem;
-        height: 70%;
-        margin-left: 5%;
-        background: #3E4049;
+        padding: 4rem 6rem;
+        background: var(--background-dark-primary);
         border-radius: .5rem;
-    }
-
-    .students__header {
-        display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        height: 15rem;
-    }
-
-    .students__title {
-        margin-top: 10rem;
-        margin-left: 5rem;
     }
 
 
@@ -47,7 +49,7 @@
 
 @media (min-width: 1281px) {
     .students__list {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
 
     }
 

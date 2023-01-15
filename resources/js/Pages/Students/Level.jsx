@@ -14,11 +14,11 @@ import ModalWrong from "@/Components/ModalWrong";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BsFillEraserFill } from "react-icons/bs";
 
-export default function Sandbox() {
+export default function Level() {
     const { level } = usePage().props;
     const { student } = usePage().props;
     const { images } = usePage().props;
-
+    
     const [drawing, setDrawing] = useState({
         image: "",
         assignment_id: level.id,

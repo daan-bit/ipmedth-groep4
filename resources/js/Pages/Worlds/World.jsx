@@ -42,9 +42,7 @@ function drawLine() {
         if (indexEven)
             svg.setAttribute(
                 "style",
-                `position: absolute; top: ${
-                    dictIslands[index].y
-                }px; left: ${dictIslands[index].x}px; z-index:1;`
+                `position: absolute; top: ${dictIslands[index].y}px; left: ${dictIslands[index].x}px; z-index:1;`
             );
         else
             svg.setAttribute(
@@ -87,16 +85,23 @@ function drawLine() {
 //Removes and readds the dashed lines for the new screen size
 window.addEventListener("resize", function () {
     const dashed_lines = document.getElementsByClassName("dashed-lines");
-    while(dashed_lines.length > 0){
+    while (dashed_lines.length > 0) {
         dashed_lines[0].parentNode.removeChild(dashed_lines[0]);
     }
     drawLine();
 });
 
 function World(props) {
+    console.log(props);
     const world = props.world;
     const assignments = props.assignments;
     const [currentLevel, setCurrentLevel] = useState(0);
+    const [tutorialWindow, setTutorialWindow] = useState(false);
+
+    useEffect(() => {
+        if (assignments.length <= 0) setTutorialWindow(true); //Open Tutorial if no level are played
+    })
+
     useEffect(() => {
         //definieer laatste assignment oftewel level_id die in results table naarvoren is gekomen.
         setCurrentLevel(
@@ -128,7 +133,13 @@ function World(props) {
                     />
                 ))}
             </section>
-            <Tutorial/>
+            <section onClick={() => setTutorialWindow(false)}>
+                {tutorialWindow ? (
+                    <Tutorial text="ahoy, kan jij mij helpen om de schatkist💎 te vinden? Het ligt op een van deze eilanden🏝️. We zijn nu bij het 1 eiland waar het schip🚢 is. Eilanden met groene vlag🟢 zijn goed gegaan, eiladen met een rode vlag🔴 zijn fout gegaan. Klik op het eiland met een schip om te beginnen🚢." />
+                ) : (
+                    <p></p>
+                )}
+            </section>
         </article>
     );
 }

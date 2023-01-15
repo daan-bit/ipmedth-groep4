@@ -1,17 +1,17 @@
 import React from "react";
 import "../../../css/components/Student/Tutorial.css";
 
-export default function Tutorial() {
+export default function Tutorial({text}) {
+
     return (
         <article className="tutorial">
-            <h1>Hello World</h1>
-            <section>
-                <figure>
-                    <img src="/images/mascot.png" alt="" />
+            <section className="dialog">
+                <figure className="mascot_figure">
+                    <img className="mascot_image" src="/images/mascot.png" alt="Afbeeldingen van de mascotten" />
                 </figure>
-                <section>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, cupiditate? Non odit fugit eius adipisci impedit animi eum soluta modi, doloremque accusamus? Vitae odit corrupti omnis reprehenderit perferendis earum quasi.
-                </section>
+                <p className="dialog_text">
+                    {text}
+                </p>
             </section>
         </article>
     );

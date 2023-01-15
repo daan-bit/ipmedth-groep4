@@ -1,3 +1,4 @@
+import Tutorial from "@/Components/Student/Tutorial";
 import Navbar from "@/Components/World/NavBar";
 import WorldRoute from "@/Components/World/WorldRoute";
 import { Head } from "@inertiajs/inertia-react";
@@ -127,6 +128,7 @@ function World(props) {
                     />
                 ))}
             </section>
+            <Tutorial/>
         </article>
     );
 }

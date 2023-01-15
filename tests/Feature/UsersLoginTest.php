@@ -30,10 +30,11 @@ class UsersLoginTest extends TestCase
             'id' => strval($user->id),
             'password' => 'Lolol',
         ]);
-        //if id & password is correct in normal code, user is being redirected.
+        //if id & password is correct, user is being redirected.
         //302 status code means redirect, so thats why we use it here
         $response->assertStatus(302);
-        //we check if user is authenticated in function below. If yes, no error occurs. If not, error is shown.
+        //we check if user is authenticated in function below.
+        //If user is authenticated, no error occurs. If not, error is shown.
         $this->assertAuthenticated();
     }
 

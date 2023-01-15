@@ -6,11 +6,12 @@ use App\Models\School;
 use App\Models\Group;
 use App\Models\Employee;
 use App\Models\Role;
+use App\Models\Student;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class TeacherCreatesClassTest extends TestCase
+class TeacherTest extends TestCase
 {
     use RefreshDatabase;
     /** @test */
@@ -69,7 +70,4 @@ class TeacherCreatesClassTest extends TestCase
         //302 status because original code redirects us back to other page
         $response->assertStatus(302);
     }
-
-
-
 }

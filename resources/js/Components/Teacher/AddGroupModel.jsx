@@ -143,9 +143,7 @@ export default function AddGroupModel({ closeModel, school_id, employee_id }) {
                                     );
                                 }}
                                 placeholder={
-                                    new Date().getFullYear() +
-                                    "-" +
-                                    (new Date().getFullYear() + 1)
+                                    "Schooljaar"
                                 }
                             />
                             {/* Add a place for a error message, and render only when there is something wrong in this form field */}
@@ -167,7 +165,7 @@ export default function AddGroupModel({ closeModel, school_id, employee_id }) {
                                 type="text"
                                 name="school_group"
                                 id="school_group"
-                                placeholder="Groep 3A"
+                                placeholder="Groep"
                                 onChange={(e) => {
                                     e.target.value = school_group_mask(
                                         e.target.value

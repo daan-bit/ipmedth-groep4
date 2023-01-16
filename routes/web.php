@@ -72,7 +72,6 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'teacher'])->group(function () {
     //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
     Route::get('/docent/overzicht', [App\Http\Controllers\EmployeeController::class, 'getTeacherOverview'])->name('docent.overzicht');
-    Route::get('/docent/instellingen', [App\Http\Controllers\EmployeeController::class, 'getTeacherSettings']);
 
     // Docenten kunnen een groep maken met een post request
     Route::post('/docent/groep', [App\Http\Controllers\EmployeeController::class, 'createGroup']);
@@ -91,11 +90,17 @@ Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function () {
     // Docenten kunnen een groep updaten met een put request
     Route::put('/docent/groep/{id}', [App\Http\Controllers\EmployeeController::class, 'updateGroup']);
 
+    // Docenten kunnen de resultaten van een student bekijken
+    Route::get('/docent/overzicht/{id}/{student_id}', [App\Http\Controllers\EmployeeController::class, 'getStudentResults']);
+
     // Docenten kunnen een student toevoegen aan een groep met een post request
     Route::post('/docent/overzicht/{id}/{username}', [App\Http\Controllers\EmployeeController::class, 'addStudent']);
 
     // Docenten kunnen een student verwijderen
     Route::delete('/docent/overzicht/{id}/{user_id}', [App\Http\Controllers\EmployeeController::class, 'deleteStudent']);
+
+    // Docenten kunnen een resultaat aanpassen
+    Route::post('/docent/overzicht/{id}/{student_id}/resultaat', [App\Http\Controllers\EmployeeController::class, 'updateStudentResult']);
 });
 
 //ADMIN

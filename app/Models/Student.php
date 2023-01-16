@@ -16,6 +16,7 @@ class Student extends Model
         'group_id',
         'user_id'
     ];
+
     public function StudentResults() {
         return $this->hasMany(\App\Models\Result::class);
     }

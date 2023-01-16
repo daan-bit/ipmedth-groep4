@@ -24,10 +24,10 @@
   }
   
   .Collapsible__trigger:hover{
-      background-color: var(--background-light);
+      /* background-color: var(--background-light); */
       cursor: pointer;
   }
   
   .is-open{
-      background-color: var(--background-light);
+      /* background-color: var(--background-light); */
   }

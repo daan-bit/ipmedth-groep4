@@ -71,7 +71,7 @@ export default function LoginWrapper({passwordState, setPasswordState}) {
             <ImageAsPassword
                 className={"student__login__form__picture"}
                 src={"papagaai.png"}
-                data={"Papagaai"}
+                data={"Papegaai"}
                 passwordState={passwordState}
                 setPasswordState={setPasswordState}
             />

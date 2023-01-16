@@ -117,7 +117,7 @@ export default function GroupStatistics(props) {
                         <h3 className="bold">Gemiddelde</h3>
                     </section>
                     <section className="statistic__contentContainer">
-                        <h3>{average}</h3>
+                        <h3>{average ? average : "-"}</h3>
                     </section>
                 </section>
                 <section className="statisticContainer__statistic">
@@ -125,7 +125,7 @@ export default function GroupStatistics(props) {
                         <h3 className="bold">Mediaan</h3>
                     </section>
                     <section className="statistic__contentContainer">
-                        <h3>{median}</h3>
+                        <h3>{median ? median : "-"}</h3>
                     </section>
                 </section>
                 <section className="statisticContainer__statistic">
@@ -133,7 +133,7 @@ export default function GroupStatistics(props) {
                         <h3 className="bold">Modus</h3>
                     </section>
                     <section className="statistic__contentContainer">
-                        <h3>{mode}</h3>
+                        <h3>{mode === 0 ? "-" : mode}</h3>
                     </section>
                 </section>
                 <section className="statisticContainer__statistic">
@@ -142,7 +142,7 @@ export default function GroupStatistics(props) {
                     </section>
                     <section className="statistic__contentContainer">
                         <h3>
-                            {min} / {max}
+                            {min === Infinity ? "-" : min} / {max === -Infinity ? "-" : max}
                         </h3>
                     </section>
                 </section>

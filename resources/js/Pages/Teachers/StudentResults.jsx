@@ -82,7 +82,7 @@ export default function ResultOverview(props) {
                     <div className="result__overview__button__container">
                         <ResponsiveNavLink
                             as="button"
-                            href={`/docent/overzicht/${props.group.id}`}
+                            href={`/docent/overzicht/${props.group.id}?overzicht=leerlingen`}
                             className={
                                 "button-primary result__overview__backButton"
                             }

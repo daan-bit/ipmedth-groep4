@@ -100,7 +100,7 @@ export default function GroupOverview(props) {
                                 className="viewpassword__close"
                                 onClick={() => setShowPassword(false)}
                             >
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     close
                                 </span>
                             </button>

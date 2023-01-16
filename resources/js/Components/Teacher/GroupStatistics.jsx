@@ -109,8 +109,6 @@ export default function GroupStatistics(props) {
         return max;
     }
 
-    console.log(min)
-
     return (
         <article className="OverviewPerGroupPage">
             <section className="OverviewPerGroupPage__statisticContainer">

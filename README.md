@@ -2,6 +2,7 @@
 - [📂 Jira/Backlog](https://ipmedth.atlassian.net/jira/software/projects/AT/boards/1/backlog)
 - [🎨 Figma](https://www.figma.com/file/JKoqKT4WmDrZFd8pqcAmyX/Documenten?node-id=0%3A1&t=9qRU8F6jOJ6MHNXe-1)
 - [🤖 AI Repository](https://github.com/Kasper-Trouwee/ipmedth-groep4-ai)
+- [🌐 Live Versie](https://ipmedth.tychovanveen.nl/)
 
 ## Install Guide
 <pre><code>#Basis update ubuntu, recommended

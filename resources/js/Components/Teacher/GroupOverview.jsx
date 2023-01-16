@@ -3,10 +3,14 @@ import "../../../css/components/Teacher/GroupOverview.css";
 import AddStudentModel from "../Teacher/AddStudentModel";
 import ResponsiveNavLink from "../ResponsiveNavLink";
 import { Inertia } from "@inertiajs/inertia";
+import Modal from "@/Components/Modal";
 
 export default function GroupOverview(props) {
     console.log(props);
     const [addStudentModel, setAddStudentModel] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState(["", ""]);
+    const [selectedStudent, setSelectedStudent] = useState("");
     let allResults = props.allResults;
     let allStudents = props.students;
     let totalAssignments = props.assignments.length;
@@ -50,7 +54,8 @@ export default function GroupOverview(props) {
             id: student.id,
             first_name: student.first_name,
             results: studentResults,
-            user_id: student.user_id
+            user_id: student.user_id,
+            password: student.password,
         });
     }
 
@@ -64,13 +69,66 @@ export default function GroupOverview(props) {
 
     const deleteUser = (userId) => {
         Inertia.delete(`/docent/overzicht/${props.group.id}/${userId}`);
-    }
+    };
+
+    const viewPassword = (password, student) => {
+        // split password into two parts, split at capital letter
+        let passwordArray = password.split(/(?=[A-Z])/);
+        setPassword(passwordArray);
+        setShowPassword(true);
+        setSelectedStudent(student);
+    };
 
     return (
         <>
-            {addStudentModel ? <AddStudentModel closeModel={closeAddStudentModel} group_id={props.group.id}/> : null}
+            {addStudentModel ? (
+                <AddStudentModel
+                    closeModel={closeAddStudentModel}
+                    group_id={props.group.id}
+                />
+            ) : null}
+
+            <Modal
+                content={
+                    <React.Fragment>
+                        <div className="viewpassword__modal">
+                            <button
+                                className="viewpassword__close"
+                                onClick={() => setShowPassword(false)}
+                            >
+                                <span class="material-symbols-outlined">
+                                    close
+                                </span>
+                            </button>
+                            <h3 className="viewpassword__title">
+                                Wachtwoord van {selectedStudent}
+                            </h3>
+                            <div className="viewpassword__password__wrapper">
+                                <p className="viewpassword__password viewpassword__password--1">
+                                    <span className="password--bold">
+                                        Plaatje 1:
+                                    </span>{" "}
+                                    {password[0]}
+                                </p>
+                                <p className="viewpassword__password viewpassword__password--2">
+                                    <span className="password--bold">
+                                        Plaatje 2:
+                                    </span>{" "}
+                                    {password[1]}
+                                </p>
+                            </div>
+                        </div>
+                    </React.Fragment>
+                }
+                modelState={showPassword}
+                setModelState={setShowPassword}
+            />
+
             <section className="student__table__header">
-                <button className="button button-primary" onClick={openAddStudentModel}>
+                <button
+                    className="button button-primary"
+                    onClick={openAddStudentModel}
+                >
                     Voeg leerling toe
                 </button>
             </section>
@@ -120,8 +178,39 @@ export default function GroupOverview(props) {
                                 </p>
                             </div>
 
-                                 <div></div>       
-                            <button className="student__item__button" onClick={() => deleteUser(student.user_id)}><span className="material-symbols-outlined">delete</span></button>
+                            <div className="student__item__button__wrapper">
+                                <button
+                                    className="student__item__button student__item__button--password"
+                                    onClick={() =>
+                                        viewPassword(student.user_id)
+                                    }
+                                >
+                                    <span className="material-symbols-outlined">
+                                        visibility
+                                    </span>
+                                </button>
+                                <button
+                                    className="student__item__button student__item__button--password"
+                                    onClick={() =>
+                                        viewPassword(
+                                            student.password,
+                                            student.first_name
+                                        )
+                                    }
+                                >
+                                    <span className="material-symbols-outlined">
+                                        password
+                                    </span>
+                                </button>
+                                <button
+                                    className="student__item__button student__item_button--delete"
+                                    onClick={() => deleteUser(student.user_id)}
+                                >
+                                    <span className="material-symbols-outlined">
+                                        delete
+                                    </span>
+                                </button>
+                            </div>
                         </li>
                     ))}
                 </ul>

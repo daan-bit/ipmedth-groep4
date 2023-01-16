@@ -94,9 +94,17 @@ class EmployeeController extends Controller
     // Add new student to the group
     public function addStudent($id, $username)
     {
+        // Create random password consisting of two words out the following list
+        // Vogel, Boom, Hondje, Katje, Fiets, Jongen, Meisje, Olifant, Leeuw, Papegaai
+        // Eenn wachtwoord mag niet bestaan uit twee dezelfde woorden
+
+        $words_array = array("Vogel", "Boom", "Hondje", "Katje", "Fiets", "Jongen", "Meisje", "Olifant", "Leeuw", "Papegaai");
+        $random_keys = array_rand($words_array, 2);
+        $password = $words_array[$random_keys[0]] . $words_array[$random_keys[1]];
+
         $user = new User();
         $user->username = $username;
-        $user->password = bcrypt("HondjeKatje");
+        $user->password = bcrypt($password);
         $user->save();
 
         var_dump($user);
@@ -105,6 +113,7 @@ class EmployeeController extends Controller
         $student->first_name = $username;
         $student->group_id = $id;
         $student->user_id = $user->id;
+        $student->password = $password;
         $student->save();
 
         return redirect()->back();

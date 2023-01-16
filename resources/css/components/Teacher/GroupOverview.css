@@ -55,9 +55,9 @@
     border-bottom: 0.3rem solid var(--color-grey-border);
 }
 
-.student__table__row > * {
+/* .student__table__row > * {
     width: 10%;
-}
+} */
 
 .student__table__row > *:nth-child(1) {
     width: 5%;
@@ -72,7 +72,7 @@
 }
 
 .student__table__row > *:nth-child(4) {
-    width: 2rem;
+    width: 8rem;
 }
 
 .student__item__name {
@@ -110,6 +110,10 @@
     text-align: right;
 }
 
+.student__item__button__wrapper {
+    display: flex;
+}
+
 .student__item__button {
     /* remove all standart button styling */
     background: none;
@@ -122,8 +126,69 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 1rem;
 }
 
-.student__item__button:hover {
+.student__item__button__wrapper > .student__item__button:nth-child(1) {
+    margin-left: 0;
+}
+
+.student__item__button--delete {
     color: var(--color-red);
+}
+
+.student__item__button--delete:hover {
+    color: var(--color-red);
+}
+
+.viewpassword__modal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 2.5rem;
+    width: 40rem;
+}
+
+.viewpassword__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--character-dark);
+}
+
+.viewpassword__password__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.viewpassword__password {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--character-dark);
+}
+
+.viewpassword__password--2 {
+    margin-top: 1rem;
+}
+
+.password--bold {
+    font-weight: 600;
+}
+
+.viewpassword__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-weight: 600;
+    color: var(--character-dark);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.viewpassword__close > span {
+    font-size: 2rem;
 }

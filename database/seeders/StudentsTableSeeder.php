@@ -20,22 +20,26 @@ class StudentsTableSeeder extends Seeder
         DB::table('students')->insert([
             'first_name' => 'Test gebruiker',
             'user_id' => 1,
-            'group_id' => 1
+            'group_id' => 1,
+            'password' => 'VogelBoom'
         ]);
         DB::table('students')->insert([
             'first_name' => 'Jasmine',
             'user_id' => 2,
-            'group_id' => 1
+            'group_id' => 1,
+            'password' => 'HondjeKatje'
         ]);
         DB::table('students')->insert([
             'first_name' => 'Daan',
             'user_id' => 3,
-            'group_id' => 1
+            'group_id' => 1,
+            'password' => 'BoomKatje'
         ]);
         DB::table('students')->insert([
             'first_name' => 'Tycho',
             'user_id' => 4,
-            'group_id' => 2
+            'group_id' => 2,
+            'password' => 'HondjeKatje'
         ]);
 
         /**
@@ -45,7 +49,8 @@ class StudentsTableSeeder extends Seeder
         DB::table('students')->insert([
             'first_name' => 'test 5',
             'user_id' => 5,
-            'group_id' => 2
+            'group_id' => 2,
+            'password' => 'HondjeKatje'
         ]);
     }
 }

@@ -104,7 +104,7 @@ class EmployeeController extends Controller
         $user->password = bcrypt($password);
         $user->save();
 
-        var_dump($user);
+        // var_dump($user);
 
         $student = new Student();
         $student->first_name = $username;

@@ -6,7 +6,7 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import "../../../css/pages/Teachers/overviewGroup.css";
 
 function Overview(props) {
-    console.log(props);
+    // console.log(props);
     const [activeSection, setActiveSection] = useState("statistieken");
 
     function changeActiveSection(section) {

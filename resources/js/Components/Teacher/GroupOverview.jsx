@@ -6,7 +6,7 @@ import { Inertia } from "@inertiajs/inertia";
 import Modal from "@/Components/Modal";
 
 export default function GroupOverview(props) {
-    console.log(props);
+    // console.log(props);
     const [addStudentModel, setAddStudentModel] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState(["", ""]);

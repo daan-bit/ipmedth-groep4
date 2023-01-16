@@ -92,7 +92,7 @@ window.addEventListener("resize", function () {
 });
 
 function World(props) {
-    console.log(props);
+    // console.log(props);
     const world = props.world;
     const assignments = props.assignments;
     const [currentLevel, setCurrentLevel] = useState(0);

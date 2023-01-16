@@ -9,6 +9,10 @@
     background-color: var(--background-light);
 }
 
+.student__table__header > button:nth-child(2) {
+    margin-left: 1rem;
+}
+
 .student__table__header {
     height: 2.5rem;
     width: 100%;

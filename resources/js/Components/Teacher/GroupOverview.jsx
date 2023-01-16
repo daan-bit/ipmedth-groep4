@@ -83,6 +83,30 @@ export default function GroupOverview(props) {
         Inertia.visit(`/docent/overzicht/${props.group.id}/${userId}`);
     };
 
+    const downloadPasswords = () => {
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Naam,Plaatje 1,Plaatje 2";
+        csvContent += "\n";
+
+        allStudentsWithResults.forEach((student) => {
+            let passwordArray = student.password.split(/(?=[A-Z])/);
+            csvContent += `${student.first_name},${passwordArray[0]},${passwordArray[1]}`;
+            csvContent += "\n";
+        });
+
+        let encodedUri = encodeURI(csvContent);
+        let link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        let date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        link.setAttribute("download", `wachtwoorden_${props.group.school_group.replace(/\s/g, '_')}_${day}-${month}-${year}.csv`);
+        document.body.appendChild(link); // Required for FF
+
+        link.click();
+    };
+
     return (
         <>
             {addStudentModel ? (
@@ -129,6 +153,12 @@ export default function GroupOverview(props) {
             />
 
             <section className="student__table__header">
+                <button
+                    className="button button-primary"
+                    onClick={downloadPasswords}
+                >
+                    Download wachtwoorden
+                </button>
                 <button
                     className="button button-primary"
                     onClick={openAddStudentModel}
@@ -185,9 +215,7 @@ export default function GroupOverview(props) {
                             <div className="student__item__button__wrapper">
                                 <button
                                     className="student__item__button student__item__button--password"
-                                    onClick={() =>
-                                        viewResults(student.id)
-                                    }
+                                    onClick={() => viewResults(student.id)}
                                 >
                                     <span className="material-symbols-outlined">
                                         visibility

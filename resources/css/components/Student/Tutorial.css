@@ -27,7 +27,8 @@
 }
 
 .dialog_text{
-    background-color: white;
+    background-color: var(--background-light);
+    color: var(--character-dark);
     padding: 1rem;
     border-radius: .5rem;
     position: relative;
@@ -41,5 +42,5 @@
     width: 20%;
     height: 5rem;
     clip-path: polygon(100% 0, 1rem 0, 0 50%);
-    background-color: white;
+    background-color: var(--background-light);
 }

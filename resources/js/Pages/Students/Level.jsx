@@ -8,17 +8,20 @@ import AICanvas, {
     save,
     getPercentage,
 } from "@/Components/Student/AICanvas/AICanvas";
+import Tutorial from "@/Components/Student/Tutorial";
 import "../../../css/pages/Students/Level.css";
 import ModalGood from "@/Components/ModalGood";
 import ModalWrong from "@/Components/ModalWrong";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BsFillEraserFill } from "react-icons/bs";
+import { GiHummingbird } from "react-icons/gi"
 
 export default function Level() {
     const { level } = usePage().props;
     const { student } = usePage().props;
     const { images } = usePage().props;
-    
+    const { tutorial_completed } = usePage().props;
+
     const [drawing, setDrawing] = useState({
         image: "",
         assignment_id: level.id,
@@ -28,6 +31,7 @@ export default function Level() {
     const [modelStartState, setModelStartState] = useState(true);
     const [modelEndState, setModelEndState] = useState(false);
     const [drawingGuessed, setDrawingGuessed] = useState(false);
+    const [tutorialWindow, setTutorialWindow] = useState(!tutorial_completed); //this inverse because you dont want to show the tutorial if it has been completed
 
     //Update the image variable to the canvas.
     function updateDrawing() {
@@ -68,6 +72,13 @@ export default function Level() {
                     data-bgcolor="red"
                 >
                     <BsFillEraserFill size={50} color={"#202020"} />
+                </button>
+                <button
+                    className="level__button u__z_index2"
+                    onClick={() => setTutorialWindow(true)}
+                    data-bgcolor="yellow"
+                >
+                    <GiHummingbird size={50} color={"#202020"} />
                 </button>
                 <button
                     onClick={showModelEndState}
@@ -132,6 +143,12 @@ export default function Level() {
                     updateDrawing={updateDrawing}
                 />
             )}
+
+            <section onClick={() => setTutorialWindow(false)}>
+                {tutorialWindow ? (
+                    <Tutorial text={`yo ho ho, je kan op het witte vierkant tekenen. Boven zie je een tekst, daar staat nu een 'Teken een ${level.prompt}'. Maak een ${level.prompt} die de computer kan raden om dichter bij de schatkist💎 te komen. Ook zie je een gum🔴, klik op de gum om opnieuw te beginnen. Het vinkje🟢 kan je op drukken als je klaar bent. En klik op de vogel om de tutorial weer te zien🐦.`} />
+                ) : null}
+            </section>
         </article>
     );
 }

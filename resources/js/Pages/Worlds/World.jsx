@@ -136,9 +136,7 @@ function World(props) {
             <section onClick={() => setTutorialWindow(false)}>
                 {tutorialWindow ? (
                     <Tutorial text="ahoy, kan jij mij helpen om de schatkist💎 te vinden? Het ligt op een van deze eilanden🏝️. We zijn nu bij het 1 eiland waar het schip🚢 is. Eilanden met groene vlag🟢 zijn goed gegaan, eiladen met een rode vlag🔴 zijn fout gegaan. Klik op het eiland met een schip om te beginnen🚢." />
-                ) : (
-                    <p></p>
-                )}
+                ) : null}
             </section>
         </article>
     );

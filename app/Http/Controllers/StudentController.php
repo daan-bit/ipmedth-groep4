@@ -63,7 +63,7 @@ class StudentController extends Controller
 
         //Get 3 diffrent correct images in a random order
         $drawing_ids = Result::select('drawing_id')
-            ->where('assignment_id', '=', $level_id)
+            ->where([['assignment_id', '=', $level_id], ['status', '=', '1']])
             ->inRandomOrder()
             ->take(3)
             ->distinct()
@@ -88,7 +88,14 @@ class StudentController extends Controller
             }
         }
 
-        return Inertia::render('Students/Level', ['level' => $level, 'student' => $student, 'images' => $images]);
+        //Als de gebruiker resultaten heeft is tutorial_completed true
+        $user_has_result = Result::where('student_id', '=', Auth::user()->id)->first();
+        $tutorial_completed = false;
+        if ($user_has_result){
+            $tutorial_completed = true;
+        }
+
+        return Inertia::render('Students/Level', ['level' => $level, 'student' => $student, 'images' => $images, 'tutorial_completed' => $tutorial_completed]);
     }
 
     public function insertDrawing(Request $request)

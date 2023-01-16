@@ -79,6 +79,10 @@ export default function GroupOverview(props) {
         setSelectedStudent(student);
     };
 
+    const viewResults = (userId) => {
+        Inertia.visit(`/docent/overzicht/${props.group.id}/${userId}`);
+    };
+
     return (
         <>
             {addStudentModel ? (
@@ -182,7 +186,7 @@ export default function GroupOverview(props) {
                                 <button
                                     className="student__item__button student__item__button--password"
                                     onClick={() =>
-                                        viewPassword(student.user_id)
+                                        viewResults(student.id)
                                     }
                                 >
                                     <span className="material-symbols-outlined">
@@ -203,7 +207,7 @@ export default function GroupOverview(props) {
                                     </span>
                                 </button>
                                 <button
-                                    className="student__item__button student__item_button--delete"
+                                    className="student__item__button student__item__button--delete"
                                     onClick={() => deleteUser(student.user_id)}
                                 >
                                     <span className="material-symbols-outlined">

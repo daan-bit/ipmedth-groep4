@@ -47,6 +47,10 @@
     background-color: var(--color-green);
 }
 
+.level__button[data-bgcolor="yellow"] {
+    background-color: var(--color-yellow);
+}
+
 .canvas__container {
     position: absolute;
     width: 100%;

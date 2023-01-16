@@ -2,9 +2,10 @@ import React from "react";
 import "../../../css/pages/navbar_for_kids.css";
 import { MdLogout } from "react-icons/md";
 import { BiPhotoAlbum } from "react-icons/bi";
+import { GiHummingbird } from "react-icons/gi";
 import { Inertia } from "@inertiajs/inertia";
 
-export default function Navbar() {
+export default function Navbar( {setTutorialWindow}) {
     const goToAlbum = () => {
         Inertia.get(route("album.page"));
     };
@@ -20,6 +21,12 @@ export default function Navbar() {
                 className="world__navbar__buttons__album"
             >
                 <BiPhotoAlbum size={35}></BiPhotoAlbum>
+            </button>
+            <button
+                onClick={() => setTutorialWindow(true)}
+                className="world__navbar__buttons__tutorial"
+            >
+                <GiHummingbird size={35} />
             </button>
             <button onClick={logOut} className="world__navbar__buttons__logout">
                 <MdLogout size={35} />

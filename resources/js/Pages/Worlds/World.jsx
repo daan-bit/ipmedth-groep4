@@ -115,7 +115,7 @@ function World(props) {
     return (
         <article className="world">
             <Head title="🌎 Wereld 1" />
-            <Navbar student_id={props.student.id} />
+            <Navbar setTutorialWindow={setTutorialWindow} />
             <section className="world__route" id="world">
                 {world.map((item, key) => (
                     <WorldRoute

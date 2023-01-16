@@ -12,6 +12,11 @@
     background: var(--color-red);
 }
 
+.world__navbar__buttons__tutorial{
+    background-color: var(--color-yellow);
+}
+
+.world__navbar__buttons__tutorial,
 .world__navbar__buttons__album,
 .world__navbar__buttons__logout {
     width: 4rem;
@@ -19,14 +24,12 @@
     border-radius: 2rem;
     border: none;
     transition: .5s all;
+    margin-right: 1rem;
+    cursor: pointer;
 }
 
+.world__navbar__buttons__tutorial:hover,
 .world__navbar__buttons__album:hover,
 .world__navbar__buttons__logout:hover {
-    cursor: pointer;
-    background: var(--color-yellow);
-}
-
-.world__navbar__buttons__logout {
-    margin-left: 2.5rem;
+    box-shadow: 0 0 1rem var(--background-dark-primary) inset;
 }

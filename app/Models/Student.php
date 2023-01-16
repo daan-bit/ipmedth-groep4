@@ -11,10 +11,14 @@ class Student extends Model
     protected $table = 'students';
 
     public $timestamps = false;
-
+    protected $fillable = [
+        'first_name',
+        'group_id',
+        'user_id'
+    ];
     public function StudentResults() {
         return $this->hasMany(\App\Models\Result::class);
     }
-    
+
     use HasFactory;
 }

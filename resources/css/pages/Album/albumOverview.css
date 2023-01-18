@@ -1,5 +1,9 @@
 .album {
     background-color: var(--background-light);
+    background-image: url("/public/images/background/table.svg");
+    background-position: center;
+    background-repeat: repeat;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;

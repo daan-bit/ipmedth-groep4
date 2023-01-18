@@ -18,19 +18,19 @@ class StudentsTableSeeder extends Seeder
          * GROUP 1
          */
         DB::table('students')->insert([
-            'first_name' => 'Test gebruiker',
+            'first_name' => 'Alex',
             'user_id' => 1,
             'group_id' => 1,
             'password' => 'VogelBoom'
         ]);
         DB::table('students')->insert([
-            'first_name' => 'Jasmine',
+            'first_name' => 'Daniel',
             'user_id' => 2,
             'group_id' => 1,
             'password' => 'HondjeKatje'
         ]);
         DB::table('students')->insert([
-            'first_name' => 'Daan',
+            'first_name' => 'Kasper',
             'user_id' => 3,
             'group_id' => 1,
             'password' => 'BoomKatje'
@@ -47,7 +47,7 @@ class StudentsTableSeeder extends Seeder
          */
 
         DB::table('students')->insert([
-            'first_name' => 'test 5',
+            'first_name' => 'Mark',
             'user_id' => 5,
             'group_id' => 2,
             'password' => 'HondjeKatje'

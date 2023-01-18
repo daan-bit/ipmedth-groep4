@@ -1,0 +1,1 @@
+import{a as e,L as i}from"./app.d3061d20.js";/* empty css               */function p({method:a="get",as:s="a",href:t,children:n,className:o}){return e(i,{method:a,as:s,href:t,className:`button ${o}`,children:n})}export{p as R};

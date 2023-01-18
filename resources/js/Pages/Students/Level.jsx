@@ -146,7 +146,7 @@ export default function Level() {
 
             <section onClick={() => setTutorialWindow(false)}>
                 {tutorialWindow ? (
-                    <Tutorial text={`yo ho ho, je kan op het witte vierkant tekenen. Boven zie je een tekst, daar staat nu een 'Teken een ${level.prompt}'. Maak een ${level.prompt} die de computer kan raden om dichter bij de schatkist💎 te komen. Ook zie je een gum🔴, klik op de gum om opnieuw te beginnen. Het vinkje🟢 kan je op drukken als je klaar bent. En klik op de vogel om de tutorial weer te zien🐦.`} />
+                    <Tutorial text={`yo ho ho, je kan op het witte vierkant tekenen. Boven staat wat je moet tekenen(${level.prompt}). Maak een ${level.prompt} die ik probeer te raden, als ik het goed🟢 heb dan heb jij het level gehaald. succes!`} />
                 ) : null}
             </section>
         </article>

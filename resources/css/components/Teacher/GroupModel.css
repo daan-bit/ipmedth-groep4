@@ -136,6 +136,7 @@
 .group__modal__delete {
     width: 100%;
     border: none;
+    margin-top: 1rem;
     border-radius: .5rem;
     padding: .4rem 2.8rem;
     font-size: 1rem;

@@ -1,8 +1,7 @@
 import React from "react";
 import "../../../css/pages/navbar_for_kids.css";
 import { MdLogout } from "react-icons/md";
-import { BiPhotoAlbum } from "react-icons/bi";
-import { GiHummingbird } from "react-icons/gi";
+import { BiPhotoAlbum, BiQuestionMark } from "react-icons/bi";
 import { Inertia } from "@inertiajs/inertia";
 
 export default function Navbar( {setTutorialWindow}) {
@@ -26,7 +25,7 @@ export default function Navbar( {setTutorialWindow}) {
                 onClick={() => setTutorialWindow(true)}
                 className="world__navbar__buttons__tutorial"
             >
-                <GiHummingbird size={35} />
+                <BiQuestionMark size={35} />
             </button>
             <button onClick={logOut} className="world__navbar__buttons__logout">
                 <MdLogout size={35} />

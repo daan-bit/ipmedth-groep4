@@ -22,17 +22,17 @@ class UsersTableSeeder extends Seeder
          * GROUP 1
          */
         DB::table('users')->insert([
-            'username' => 'Test gebruiker',
+            'username' => 'Alex',
             'password' => bcrypt('VogelBoom'),
         ]);
 
         DB::table('users')->insert([
-            'username' => 'Jasmine',
+            'username' => 'Daniel',
             'password' => bcrypt('HondjeKatje'),
         ]);
 
         DB::table('users')->insert([
-            'username' => 'Daan',
+            'username' => 'Kasper',
             'password' => bcrypt('BoomKatje'),
         ]);
 
@@ -46,7 +46,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'username' => 'test 5',
+            'username' => 'Mark',
             'password' => bcrypt('HondjeKatje'),
         ]);
 
@@ -54,12 +54,12 @@ class UsersTableSeeder extends Seeder
          * TEACHER AND ADMIN USERS
          */
         DB::table('users')->insert([
-            'username' => 'admin',
+            'username' => 'Veronique',
             'password' => bcrypt('Admin1234'),
         ]);
 
         DB::table('users')->insert([
-            'username' => 'teacher1',
+            'username' => 'Harold',
             'password' => bcrypt('Teacher1234'),
         ]);
 

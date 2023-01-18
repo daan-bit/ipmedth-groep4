@@ -7,23 +7,20 @@ import "../../css/components/button.css";
 export default function ModalWrong({
     modelState = false,
     setModelState = false,
-    updateDrawing
+    tryDrawingAgain,
+    updateDrawing,
 }) {
     return (
         <Modal
             content={
                 <React.Fragment>
                     <section data-status="wrong" className="wrapper">
-                        <h2>Aaah jammer</h2>
-                        <AiOutlineClose size={100} color={"#DB3069"} />
-                        <p>
-                            Als de computer fout geraden heeft kan je de
-                            juffvrouw/meester om hulp vragen
-                        </p>
-                        <section className="button_wrapper">
+                        <h2 className="u_zindex">Aaah jammer</h2>
+                        <AiOutlineClose size={100} color={"#DB3069"} className="u_zindex" />
+                        <section className="button_wrapper u_zindex">
                             <button
                                 className="button button-primary"
-                                onClick={() => setModelState(false)}
+                                onClick={() => tryDrawingAgain()}
                             >
                                 Opnieuw
                             </button>
@@ -34,11 +31,19 @@ export default function ModalWrong({
                                 Volgende
                             </button>
                         </section>
+                        <figure className="mascot__figure">
+                            <img
+                                className="mascot__image"
+                                src="/images/mascot.png"
+                                alt="Afbeeldingen van de mascotten"
+                            />
+                        </figure>
                     </section>
                 </React.Fragment>
             }
             modelState={modelState}
             setModelState={setModelState}
+            bgClosePopUp={false}
         ></Modal>
     );
 }

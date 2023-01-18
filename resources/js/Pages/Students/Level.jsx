@@ -14,7 +14,8 @@ import ModalGood from "@/Components/ModalGood";
 import ModalWrong from "@/Components/ModalWrong";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BsFillEraserFill } from "react-icons/bs";
-import { GiHummingbird } from "react-icons/gi"
+import { BiQuestionMark } from "react-icons/bi";
+import { FiArrowLeft } from "react-icons/fi";
 
 export default function Level() {
     const { level } = usePage().props;
@@ -40,6 +41,11 @@ export default function Level() {
         setDrawing({ ...drawing, image: svg, AIGuessPercentage: percentage });
     }
 
+    function tryDrawingAgain() {
+        setModelEndState(false);
+        undoLastMove();
+    }
+
     function showModelEndState() {
         const percentage = getPercentage();
         if (percentage >= 50) setDrawingGuessed(true);
@@ -59,9 +65,17 @@ export default function Level() {
     return (
         <article className="level__container">
             <Head title={level.name} />
-            <h3 className="level__description u__z_index2">
-                {level.description}
-            </h3>
+            <section className="level__nav">
+                <button
+                    className="level__return_button u__z_index2"
+                    onClick={() => Inertia.get(route("student.overview"))}
+                >
+                    {<FiArrowLeft size="32" />}&nbsp;Terug
+                </button>
+                <h3 className="level__description u__z_index2">
+                    {level.description}
+                </h3>
+            </section>
             <section className="canvas__container">
                 <AICanvas id="canvas" mode="level" prompt={level.prompt} />
             </section>
@@ -78,7 +92,7 @@ export default function Level() {
                     onClick={() => setTutorialWindow(true)}
                     data-bgcolor="yellow"
                 >
-                    <GiHummingbird size={50} color={"#202020"} />
+                    <BiQuestionMark size={50} color={"#202020"} />
                 </button>
                 <button
                     onClick={showModelEndState}
@@ -140,13 +154,16 @@ export default function Level() {
                 <ModalWrong
                     modelState={modelEndState}
                     setModelState={setModelEndState}
+                    tryDrawingAgain={tryDrawingAgain}
                     updateDrawing={updateDrawing}
                 />
             )}
 
             <section onClick={() => setTutorialWindow(false)}>
                 {tutorialWindow ? (
-                    <Tutorial text={`yo ho ho, je kan op het witte vierkant tekenen. Boven zie je een tekst, daar staat nu een 'Teken een ${level.prompt}'. Maak een ${level.prompt} die de computer kan raden om dichter bij de schatkist💎 te komen. Ook zie je een gum🔴, klik op de gum om opnieuw te beginnen. Het vinkje🟢 kan je op drukken als je klaar bent. En klik op de vogel om de tutorial weer te zien🐦.`} />
+                    <Tutorial
+                        text={`yo ho ho, je kan op het witte vierkant tekenen. Boven staat wat je moet tekenen(${level.prompt}). Maak een ${level.prompt} die ik probeer te raden, als ik het goed🟢 heb dan heb jij het level gehaald. succes!`}
+                    />
                 ) : null}
             </section>
         </article>

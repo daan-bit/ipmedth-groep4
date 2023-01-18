@@ -16,6 +16,7 @@ function UserLogin(props) {
     const [nextPasswordPage, setNextPasswordPage] = useState(true);
     const [password1, setPassword1] = useState(null);
     const [password2, setPassword2] = useState(null);
+    const [textPlaatje, setTextPlaatje] = useState(null);
 
     useEffect(() => {
         const page = document.getElementsByClassName(
@@ -67,6 +68,22 @@ function UserLogin(props) {
     };
 
     useEffect(() => {
+            //added switch case to determine first or second as text instead of number
+         switch(passwordPage) {
+            case 1:
+                setTextPlaatje('eerste');
+                break;
+            case 2:
+                setTextPlaatje('tweede');
+                break;
+            default:
+                setTextPlaatje('eerste');
+         }    
+    }, [passwordPage]);
+
+
+
+    useEffect(() => {
         if (errors.id) {
             //modal tonen als wachtwoord fout is
             setModelState(true);
@@ -114,7 +131,7 @@ function UserLogin(props) {
             <article className="student">
                 <section className="student__header">
                     <h1 className="student__title">
-                        Kies je {passwordPage} plaatje
+                        Kies je {textPlaatje} plaatje
                     </h1>
                     {students.map(({ id, first_name, user_id }) => (
                         <div className="student__card">
@@ -129,8 +146,12 @@ function UserLogin(props) {
                 </section>
                 <form className="student__login__form" onSubmit={submit}>
                     <section className="student__login__form__password__wrapper">
-                        <div className="student__login__form__password">1</div>
-                        <div className="student__login__form__password">2</div>
+                        <div className="student__login__form__password">
+                            <p>1</p>
+                        </div>
+                        <div className="student__login__form__password">
+                            <p>2</p>
+                        </div>
                     </section>
                     <section
                         className="login__collection"

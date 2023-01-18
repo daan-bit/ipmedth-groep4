@@ -41,6 +41,11 @@ export default function Level() {
         setDrawing({ ...drawing, image: svg, AIGuessPercentage: percentage });
     }
 
+    function tryDrawingAgain() {
+        setModelEndState(false);
+        undoLastMove();
+    }
+
     function showModelEndState() {
         const percentage = getPercentage();
         if (percentage >= 50) setDrawingGuessed(true);
@@ -149,6 +154,7 @@ export default function Level() {
                 <ModalWrong
                     modelState={modelEndState}
                     setModelState={setModelEndState}
+                    tryDrawingAgain={tryDrawingAgain}
                     updateDrawing={updateDrawing}
                 />
             )}

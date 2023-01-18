@@ -7,6 +7,7 @@ import "../../css/components/button.css";
 export default function ModalWrong({
     modelState = false,
     setModelState = false,
+    tryDrawingAgain,
     updateDrawing
 }) {
     return (
@@ -23,7 +24,7 @@ export default function ModalWrong({
                         <section className="button_wrapper">
                             <button
                                 className="button button-primary"
-                                onClick={() => setModelState(false)}
+                                onClick={() => tryDrawingAgain()}
                             >
                                 Opnieuw
                             </button>
@@ -39,6 +40,7 @@ export default function ModalWrong({
             }
             modelState={modelState}
             setModelState={setModelState}
+            bgClosePopUp={false}
         ></Modal>
     );
 }

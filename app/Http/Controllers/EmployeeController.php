@@ -203,7 +203,14 @@ class EmployeeController extends Controller
     {
         $user = User::where('id', '=', $user_id)->first();
 
-        if ($user) {
+        $employee = Employee::where('user_id', '=', $user_id)->first();
+
+        if ($user && $employee) {
+            $groups = $employee->Groups;
+            foreach ($groups as $group) {
+                $group->delete();
+            }
+
             $user->delete();
             return redirect()->back()->with('success', 'Docent verwijderd');
         }

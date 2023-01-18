@@ -111,6 +111,9 @@ Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function () {
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
+    Route::post('/docent', [App\Http\Controllers\EmployeeController::class, 'createTeacher']);
+    Route::put('/docent/{user_id}', [App\Http\Controllers\EmployeeController::class, 'updateTeacher']);
+    Route::delete('/docent/{user_id}', [App\Http\Controllers\EmployeeController::class, 'deleteTeacher']);
 });
 
 

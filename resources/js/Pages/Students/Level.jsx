@@ -14,7 +14,7 @@ import ModalGood from "@/Components/ModalGood";
 import ModalWrong from "@/Components/ModalWrong";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BsFillEraserFill } from "react-icons/bs";
-import { GiHummingbird } from "react-icons/gi"
+import { BiQuestionMark } from "react-icons/bi"
 
 export default function Level() {
     const { level } = usePage().props;
@@ -78,7 +78,7 @@ export default function Level() {
                     onClick={() => setTutorialWindow(true)}
                     data-bgcolor="yellow"
                 >
-                    <GiHummingbird size={50} color={"#202020"} />
+                    <BiQuestionMark size={50} color={"#202020"} />
                 </button>
                 <button
                     onClick={showModelEndState}

@@ -47,9 +47,3 @@ a{
 .a:active{
     color: var(--color-dark-blue);
 }
-
-
-/*show error if page if device is to small*/
-@media only screen and (max-width: 600px)  {
-
-}

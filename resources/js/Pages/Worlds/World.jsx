@@ -92,7 +92,6 @@ window.addEventListener("resize", function () {
 });
 
 function World(props) {
-    // console.log(props);
     const world = props.world;
     const assignments = props.assignments;
     const [currentLevel, setCurrentLevel] = useState(0);
@@ -100,7 +99,7 @@ function World(props) {
 
     useEffect(() => {
         if (assignments.length <= 0) setTutorialWindow(true); //Open Tutorial if no level are played
-    })
+    }, [])
 
     useEffect(() => {
         //definieer laatste assignment oftewel level_id die in results table naarvoren is gekomen.

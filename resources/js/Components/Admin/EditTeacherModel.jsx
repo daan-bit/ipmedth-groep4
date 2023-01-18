@@ -10,11 +10,19 @@ import ResponsiveNavLink from "../ResponsiveNavLink";
 // Password (input)
 // role_id (assigned in controller)
 
-export default function AddTeacherModel({ closeModel, current_username, current_lastname, current_email, user_id }) {
+export default function AddTeacherModel({
+    closeModel,
+    current_username,
+    current_lastname,
+    current_email,
+    user_id,
+}) {
     const addTeacherModelForm = React.useRef();
     const [usernameError, setUsernameError] = React.useState(false);
     const [lastnameError, setLastnameError] = React.useState(false);
     const [emailError, setEmailError] = React.useState(false);
+    const [showDeleteConfirmation, setShowDeleteConfirmation] =
+        React.useState(false);
 
     // values
     const [username, setUsername] = React.useState(current_username);
@@ -28,8 +36,7 @@ export default function AddTeacherModel({ closeModel, current_username, current_
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { username, lastname, email } =
-            getFormData();
+        const { username, lastname, email } = getFormData();
 
         setUsernameError(false);
         setLastnameError(false);
@@ -62,15 +69,11 @@ export default function AddTeacherModel({ closeModel, current_username, current_
             setEmailError("Het emailadres is niet geldig");
         }
 
-        if (
-            usernameIsValid &&
-            lastnameIsValid &&
-            emailIsValid
-        ) {
+        if (usernameIsValid && lastnameIsValid && emailIsValid) {
             Inertia.put(`/docent/${user_id}`, {
                 username,
                 lastname,
-                email
+                email,
             });
             closeModel();
         }
@@ -85,92 +88,126 @@ export default function AddTeacherModel({ closeModel, current_username, current_
         <div className="group__modal">
             <div className="group__modal__overlay" onClick={closeModel}></div>
             <div className="group__modal__content">
-                <div className="group__modal__header">
-                    <h2 className="group__modal__title">Nieuwe docent</h2>
-                    <button
-                        className="group__modal__closeButton"
-                        onClick={closeModel}
-                    >
-                        X
-                    </button>
-                </div>
-                <div className="group__modal__body">
-                    <form
-                        className="group__modal__form"
-                        name="teacherModelForm"
-                        ref={addTeacherModelForm}
-                    >
-                        <div className="group__modal__form__group">
-                            <label htmlFor="username">Gebruikersnaam</label>
-                            <input
-                                type="text"
-                                name="username"
-                                id="username"
-                                className="group__modal__form__input"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-
-                            {usernameError && (
-                                <div className="group__modal__form__error">
-                                    <p>{usernameError}</p>
-                                </div>
-                            )}
+                {showDeleteConfirmation ? (
+                    <div className="group__modal__deleteConfirmation">
+                        <h2 className="group__modal__deleteTitle">
+                            Weet je zeker dat je deze docent wilt verwijderen?
+                        </h2>
+                        <div className="group__modal__deleteConfirmation__buttons">
+                            <button
+                                className="group__modal__deleteConfirmation__button group__modal__deleteConfirmation__button--cancel"
+                                onClick={() => setShowDeleteConfirmation(false)}
+                            >
+                                Annuleer
+                            </button>
+                            <button
+                                className="group__modal__deleteConfirmation__button group__modal__deleteConfirmation__button--confirm"
+                                onClick={handleDelete}
+                            >
+                                Verwijder docent
+                            </button>
                         </div>
-
-                        <div className="group__modal__form__group">
-                            <label htmlFor="lastname">Achternaam</label>
-                            <input
-                                type="text"
-                                name="lastname"
-                                id="lastname"
-                                className="group__modal__form__input"
-                                value={lastname}
-                                onChange={(e) => setLastname(e.target.value)}
-                            />
-
-                            {lastnameError && (
-                                <div className="group__modal__form__error">
-                                    <p>{lastnameError}</p>
-                                </div>
-                            )}
+                    </div>
+                ) : (
+                    <>
+                        <div className="group__modal__header">
+                            <h2 className="group__modal__title">
+                                Nieuwe docent
+                            </h2>
+                            <button
+                                className="group__modal__closeButton"
+                                onClick={closeModel}
+                            >
+                                X
+                            </button>
                         </div>
+                        <div className="group__modal__body">
+                            <form
+                                className="group__modal__form"
+                                name="teacherModelForm"
+                                ref={addTeacherModelForm}
+                            >
+                                <div className="group__modal__form__group">
+                                    <label htmlFor="username">
+                                        Gebruikersnaam
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        id="username"
+                                        className="group__modal__form__input"
+                                        value={username}
+                                        onChange={(e) =>
+                                            setUsername(e.target.value)
+                                        }
+                                    />
 
-                        <div className="group__modal__form__group">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                className="group__modal__form__input"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-
-                            {emailError && (
-                                <div className="group__modal__form__error">
-                                    <p>{emailError}</p>
+                                    {usernameError && (
+                                        <div className="group__modal__form__error">
+                                            <p>{usernameError}</p>
+                                        </div>
+                                    )}
                                 </div>
-                            )}
+
+                                <div className="group__modal__form__group">
+                                    <label htmlFor="lastname">Achternaam</label>
+                                    <input
+                                        type="text"
+                                        name="lastname"
+                                        id="lastname"
+                                        className="group__modal__form__input"
+                                        value={lastname}
+                                        onChange={(e) =>
+                                            setLastname(e.target.value)
+                                        }
+                                    />
+
+                                    {lastnameError && (
+                                        <div className="group__modal__form__error">
+                                            <p>{lastnameError}</p>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="group__modal__form__group">
+                                    <label htmlFor="email">Email</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        className="group__modal__form__input"
+                                        value={email}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
+                                    />
+
+                                    {emailError && (
+                                        <div className="group__modal__form__error">
+                                            <p>{emailError}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-                <div className="group__modal__footer">
-                    <button
-                        className="group__modal__delete button-secondary"
-                        onClick={handleDelete}
-                        as="button"
-                    >
-                        Verwijder docent
-                    </button>
-                    <button
-                        className="group__modal__submit button-primary"
-                        onClick={handleSubmit}
-                        as="button"
-                    >
-                        Wijzig docent
-                    </button>
-                </div>
+                        <div className="group__modal__footer">
+                            <button
+                                className="group__modal__delete button-secondary"
+                                onClick={() => setShowDeleteConfirmation(true)}
+                                as="button"
+                            >
+                                Verwijder docent
+                            </button>
+                            <button
+                                className="group__modal__submit button-primary"
+                                onClick={handleSubmit}
+                                as="button"
+                            >
+                                Wijzig docent
+                            </button>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );

@@ -20,7 +20,7 @@ function checkScreenSize(root, App, props) {
                 <h1>Te klein scherm</h1>
                 <p>
                     Het gebruikte scherm is te klein. gebruiker een groter
-                    appraat zoals een tablet of computer.
+                    apparaat zoals een tablet of computer.
                 </p>
             </section>
         );

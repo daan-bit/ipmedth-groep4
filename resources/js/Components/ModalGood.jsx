@@ -14,9 +14,9 @@ export default function ModalGood({
             content={
                 <React.Fragment>
                     <section data-status="good" className="wrapper">
-                        <h2>Goed gedaan</h2>
-                        <AiOutlineCheck size={100} color={"#06D6A0"} />
-                        <section className="button_wrapper">
+                        <h2 className="u_zindex">Goed gedaan</h2>
+                        <AiOutlineCheck size={100} color={"#06D6A0"} className="u_zindex" />
+                        <section className="button_wrapper u_zindex">
                             <button
                                 className="button button-primary"
                                 onClick={() => updateDrawing()}
@@ -24,11 +24,19 @@ export default function ModalGood({
                                 Volgende
                             </button>
                         </section>
+                        <figure className="mascot__figure">
+                            <img
+                                className="mascot__image"
+                                src="/images/mascot.png"
+                                alt="Afbeeldingen van de mascotten"
+                            />
+                        </figure>
                     </section>
                 </React.Fragment>
             }
             modelState={modelState}
             setModelState={setModelState}
+            bgClosePopUp={false}
         ></Modal>
     );
 }

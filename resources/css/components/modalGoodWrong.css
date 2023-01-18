@@ -37,6 +37,11 @@
     font-size: 2rem;
 }
 
+.backgroundYellow{
+    background-color: var(--color-yellow) !important;
+    color: var(--character-dark) !important;
+}
+
 .mascot__figure{
     position: absolute;
     width: 35rem;

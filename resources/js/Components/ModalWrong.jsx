@@ -19,7 +19,7 @@ export default function ModalWrong({
                         <AiOutlineClose size={100} color={"#DB3069"} className="u_zindex" />
                         <section className="button_wrapper u_zindex">
                             <button
-                                className="button button-primary"
+                                className="button button-primary backgroundYellow"
                                 onClick={() => tryDrawingAgain()}
                             >
                                 Opnieuw
@@ -28,7 +28,7 @@ export default function ModalWrong({
                                 className="button button-primary"
                                 onClick={() => updateDrawing()}
                             >
-                                Volgende
+                                Overslaan
                             </button>
                         </section>
                         <figure className="mascot__figure">

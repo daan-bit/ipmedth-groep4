@@ -75,17 +75,15 @@ export default function AddGroupModel({ closeModel, group_id }) {
                                     <p>{usernameError}</p>
                                 </div>
                             )}
+                            <button
+                                className="group__modal__submit button-primary"
+                                onClick={handleSubmit}
+                                as="button"
+                            >
+                                Leerling toevoegen
+                            </button>
                         </div>
                     </form>
-                </div>
-                <div className="group__modal__footer">
-                    <button
-                        className="group__modal__submit button-primary"
-                        onClick={handleSubmit}
-                        as="button"
-                    >
-                        Leerling toevoegen
-                    </button>
                 </div>
             </div>
         </div>

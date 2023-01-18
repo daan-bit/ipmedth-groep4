@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Result;
 use App\Models\Assignment;
 use App\Models\Drawing;
+use App\Models\Role;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -158,11 +159,55 @@ class EmployeeController extends Controller
     public function getAdmin()
     {
         $employee = Employee::where('user_id', '=', Auth::user()->id)->first();
+        $role_id = Role::where('name', '=', 'docent')->first()->id;
+        $teachers = Employee::where('role_id', '=', $role_id)->get();
 
-        return Inertia::render('Admin/Overview', ['employee' => $employee]);
+        return Inertia::render('Admin/Overview', ['employee' => $employee, 'teachers' => $teachers]);
     }
 
-    public function getAdminSettings(){
-        return Inertia::render('Admin/Settings');
+    public function createTeacher(Request $request)
+    {
+        $user = new User();
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        $employee = new Employee();
+        $employee->first_name = $request->username;
+        $employee->last_name = $request->lastname;
+        $employee->email = $request->email;
+        $employee->school_id = $request->school_id;
+        $employee->user_id = $user->id;
+        $employee->role_id = 2;
+        $employee->save();
+
+        return redirect()->back();
+    }
+
+    public function updateTeacher(Request $request, $user_id)
+    {
+        $user = User::where('id', '=', $user_id)->first();
+        $user->username = $request->username;
+        $user->save();
+
+        $employee = Employee::where('user_id', '=', $user_id)->first();
+        $employee->first_name = $request->username;
+        $employee->last_name = $request->lastname;
+        $employee->email = $request->email;
+        $employee->save();
+
+        return redirect()->back();
+    }
+
+    public function deleteTeacher($user_id)
+    {
+        $user = User::where('id', '=', $user_id)->first();
+
+        if ($user) {
+            $user->delete();
+            return redirect()->back()->with('success', 'Docent verwijderd');
+        }
+
+        return redirect()->back()->with('error', 'Er is iets fout gegaan');
     }
 }

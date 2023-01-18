@@ -114,35 +114,35 @@ export default function GroupStatistics(props) {
             <section className="OverviewPerGroupPage__statisticContainer">
                 <section className="statisticContainer__statistic">
                     <section className="statistic__titleContainer">
-                        <h3 className="bold">Gemiddelde</h3>
+                        <h3 className="bold">Student is gemiddeld bij:</h3>
                     </section>
                     <section className="statistic__contentContainer">
-                        <h3>{average ? average : "-"}</h3>
+                        <h3>Opdracht {average ? average : "-"}</h3>
                     </section>
                 </section>
                 <section className="statisticContainer__statistic">
                     <section className="statistic__titleContainer">
-                        <h3 className="bold">Mediaan</h3>
+                        <h3 className="bold">Mediaan van voortgang:</h3>
                     </section>
                     <section className="statistic__contentContainer">
-                        <h3>{median ? median : "-"}</h3>
+                        <h3>Opdracht {median ? median : "-"}</h3>
                     </section>
                 </section>
-                <section className="statisticContainer__statistic">
+                {/* <section className="statisticContainer__statistic">
                     <section className="statistic__titleContainer">
-                        <h3 className="bold">Modus</h3>
+                        <h3 className="bold">De meeste o</h3>
                     </section>
                     <section className="statistic__contentContainer">
                         <h3>{mode === 0 ? "-" : mode}</h3>
                     </section>
-                </section>
+                </section> */}
                 <section className="statisticContainer__statistic">
                     <section className="statistic__titleContainer">
                         <h3 className="bold">Min / Max</h3>
                     </section>
                     <section className="statistic__contentContainer">
                         <h3>
-                            {min === Infinity ? "-" : min} / {max === -Infinity ? "-" : max}
+                           Opdracht {min === Infinity ? "-" : min} / {max === -Infinity ? "-" : max}
                         </h3>
                     </section>
                 </section>

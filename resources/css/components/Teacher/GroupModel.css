@@ -21,12 +21,12 @@
 }
 
 .group__modal__content {
+    position: relative;
     min-width: 500px;
     width: 50%;
     max-width: 700px;
-    min-height: 300px;
-    height: 50%;
-    max-height: 450px;
+    height: max-content;
+    max-height: 700px;
     position: relative;
     background-color: var(--color-card-white);
     border-radius: 1rem;
@@ -60,6 +60,7 @@
 }
 
 .group__modal__form {
+    margin-top: 1rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -125,6 +126,7 @@
 
 .group__modal__footer {
     width: 100%;
+    margin-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,4 +147,58 @@
 .group__modal__delete {
     margin-right: 2rem;
     background-color: var(--color-red);
+}
+
+.group__modal__deleteConfirmation {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.group__modal__deleteTitle {
+    color: var(--character-dark);
+    text-align: center;
+}
+
+.group__modal__deleteConfirmation__buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.group__modal__deleteConfirmation__button {
+    width: 100%;
+    border: none;
+    border-radius: .5rem;
+    padding: .4rem 2.8rem;
+    font-size: 1rem;
+    color: var(--color-card-white);
+    background-color: var(--color-blue);
+    cursor: pointer;
+}
+
+.group__modal__deleteConfirmation__button--confirm {
+    background-color: var(--color-red);
+    margin-left: 4rem;
+}
+
+.studentDelete__modal__content {
+    position: relative;
+    min-width: 500px;
+    max-width: 700px;
+    height: max-content;
+    position: relative;
+    background-color: var(--color-card-white);
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
 }

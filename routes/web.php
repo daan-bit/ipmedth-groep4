@@ -70,6 +70,10 @@ Route::middleware(['auth'])->group(function () {
 
 //DOCENTEN
 Route::middleware(['auth', 'teacher'])->group(function () {
+    Route::get('/docent', function() {
+        return redirect()->intended('/docent/overzicht');
+    });
+
     //Docent overzichtspagina > redirect naar /docent/login (zelfde pagina als admin)
     Route::get('/docent/overzicht', [App\Http\Controllers\EmployeeController::class, 'getTeacherOverview'])->name('docent.overzicht');
 
@@ -106,8 +110,10 @@ Route::middleware(['auth', 'teacher', 'teacherHasGroup'])->group(function () {
 //ADMIN
 //Admin overzichtspagina > redirect naar /admin/login (zelfde pagina als docent)
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/overzicht', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
-    Route::get('/admin/instellingen', [App\Http\Controllers\EmployeeController::class, 'getAdminSettings']);
+    Route::get('/admin', [App\Http\Controllers\EmployeeController::class, 'getAdmin']);
+    Route::post('/docent', [App\Http\Controllers\EmployeeController::class, 'createTeacher']);
+    Route::put('/docent/{user_id}', [App\Http\Controllers\EmployeeController::class, 'updateTeacher']);
+    Route::delete('/docent/{user_id}', [App\Http\Controllers\EmployeeController::class, 'deleteTeacher']);
 });
 
 

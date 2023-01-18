@@ -11,6 +11,8 @@ export default function GroupOverview(props) {
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState(["", ""]);
     const [selectedStudent, setSelectedStudent] = useState("");
+    const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+    const [studentToDelete, setStudentToDelete] = useState("");
     let allResults = props.allResults;
     let allStudents = props.students;
     let totalAssignments = props.assignments.length;
@@ -69,6 +71,7 @@ export default function GroupOverview(props) {
 
     const deleteUser = (userId) => {
         Inertia.delete(`/docent/overzicht/${props.group.id}/${userId}`);
+        setShowDeleteConfirmation(false);
     };
 
     const viewPassword = (password, student) => {
@@ -101,7 +104,13 @@ export default function GroupOverview(props) {
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
-        link.setAttribute("download", `wachtwoorden_${props.group.school_group.replace(/\s/g, '_')}_${day}-${month}-${year}.csv`);
+        link.setAttribute(
+            "download",
+            `wachtwoorden_${props.group.school_group.replace(
+                /\s/g,
+                "_"
+            )}_${day}-${month}-${year}.csv`
+        );
         document.body.appendChild(link); // Required for FF
 
         link.click();
@@ -150,6 +159,41 @@ export default function GroupOverview(props) {
                 }
                 modelState={showPassword}
                 setModelState={setShowPassword}
+            />
+
+            <Modal
+                content={
+                    <React.Fragment>
+                        <>
+                            <div className="studentDelete__modal__content">
+                                <div className="group__modal__deleteConfirmation">
+                                    <h2 className="group__modal__deleteTitle">
+                                        Weet je zeker dat je deze leerling wilt
+                                        verwijderen?
+                                    </h2>
+                                    <div className="group__modal__deleteConfirmation__buttons">
+                                        <button
+                                            className="group__modal__deleteConfirmation__button group__modal__deleteConfirmation__button--cancel"
+                                            onClick={() =>
+                                                setShowDeleteConfirmation(false)
+                                            }
+                                        >
+                                            Annuleer
+                                        </button>
+                                        <button
+                                            className="group__modal__deleteConfirmation__button group__modal__deleteConfirmation__button--confirm"
+                                            onClick={() => deleteUser(studentToDelete)}
+                                        >
+                                            Verwijder leerling
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    </React.Fragment>
+                }
+                modelState={showDeleteConfirmation}
+                setModelState={setShowDeleteConfirmation}
             />
 
             <section className="student__table__header">
@@ -236,7 +280,10 @@ export default function GroupOverview(props) {
                                 </button>
                                 <button
                                     className="student__item__button student__item__button--delete"
-                                    onClick={() => deleteUser(student.user_id)}
+                                    onClick={() => {
+                                        setStudentToDelete(student.id);
+                                        setShowDeleteConfirmation(true);
+                                    }}
                                 >
                                     <span className="material-symbols-outlined">
                                         delete

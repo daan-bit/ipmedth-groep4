@@ -25,7 +25,7 @@ class CheckIfTeacher
         if($employee_role_id == $teacher_id){
             return $next($request);
         }else{
-            return redirect()->intended('/admin/overzicht');
+            return redirect()->intended('/admin');
         }
        
 

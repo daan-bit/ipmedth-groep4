@@ -15,7 +15,14 @@ class Employee extends Model
     ];
     public $timestamps = false;
 
+    // Add group_count column to the employees table
+    protected $appends = ['group_count'];
 
+    // get the number of groups that belong to the teacher
+    public function getGroupCountAttribute()
+    {
+        return $this->groups()->count();
+    }
 
     // get all the groups that belong to the teacher from the employees_has_groups table
     public function groups()

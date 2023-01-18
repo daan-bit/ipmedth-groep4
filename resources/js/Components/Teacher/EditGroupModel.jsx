@@ -14,6 +14,8 @@ export default function EditGroupModel({
     const [schoolGroupError, setSchoolGroupError] = React.useState(false);
     const [year, setYear] = React.useState(school_year);
     const [group, setGroup] = React.useState(school_group);
+    const [showDeleteConfirmation, setShowDeleteConfirmation] =
+        React.useState(false);
 
     const getFormData = () => {
         const formData = new FormData(addGroupModelForm.current);
@@ -128,112 +130,144 @@ export default function EditGroupModel({
         <div className="group__modal">
             <div className="group__modal__overlay" onClick={closeModel}></div>
             <div className="group__modal__content">
-                <div className="group__modal__header">
-                    <h2 className="group__modal__title">Wijzig groep</h2>
-                    <button
-                        className="group__modal__closeButton"
-                        onClick={closeModel}
-                    >
-                        X
-                    </button>
-                </div>
-                <div className="group__modal__body">
-                    <form
-                        className="group__modal__form"
-                        name="groupModelForm"
-                        ref={addGroupModelForm}
-                    >
-                        <div className="group__modal__form__group">
-                            <label
-                                className="group__modal__form__label"
-                                htmlFor="school_year"
+                {showDeleteConfirmation ? (
+                    <div className="group__modal__deleteConfirmation">
+                        <h2 className="group__modal__deleteTitle">
+                            Weet je zeker dat je deze groep wilt verwijderen?
+                        </h2>
+                        <div className="group__modal__deleteConfirmation__buttons">
+                            <button
+                                className="group__modal__deleteConfirmation__button group__modal__deleteConfirmation__button--cancel"
+                                onClick={() => setShowDeleteConfirmation(false)}
                             >
-                                Schooljaar
-                            </label>
-                            {/* school_year need to be formatted like 2022-2023 use a mask for this */}
-                            <input
-                                className={`group__modal__form__input ${
-                                    schoolYearError && "invalid"
-                                }`}
-                                type="text"
-                                name="school_year"
-                                id="school_year"
-                                onChange={(e) => {
-                                    setYear(school_year_mask(e.target.value));
-                                }}
-                                placeholder={
-                                    new Date().getFullYear() +
-                                    "-" +
-                                    (new Date().getFullYear() + 1)
-                                }
-                                value={year}
-                            />
-                            {/* Add a place for a error message, and render only when there is something wrong in this form field */}
-                            {schoolYearError && (
-                                <div className="group__modal__form__error">
-                                    <p>{schoolYearError}</p>
-                                </div>
-                            )}
-                        </div>
-                        <div className="group__modal__form__group">
-                            <label
-                                className="group__modal__form__label"
-                                htmlFor="school_group"
+                                Annuleer
+                            </button>
+                            <button
+                                className="group__modal__deleteConfirmation__button group__modal__deleteConfirmation__button--confirm"
+                                onClick={handleDelete}
                             >
-                                Groep
-                            </label>
-                            <input
-                                className={`group__modal__form__input ${
-                                    schoolGroupError && "invalid"
-                                }`}
-                                type="text"
-                                name="school_group"
-                                id="school_group"
-                                placeholder="Groep 3A"
-                                onChange={(e) => {
-                                    setGroup(school_group_mask(e.target.value));
-                                }}
-                                onClick={(e) => {
-                                    if (e.target.value.length == 0) {
-                                        e.target.value = "Groep ";
-                                    }
-                                }}
-                                onFocus={(e) => {
-                                    if (e.target.value.length == 0) {
-                                        e.target.value = "Groep ";
-                                    }
-                                }}
-                                onBlur={(e) => {
-                                    if (e.target.value == "Groep ") {
-                                        e.target.value = "";
-                                    }
-                                }}
-                                value={group}
-                            />
-                            {schoolGroupError && (
-                                <div className="group__modal__form__error">
-                                    <p>{schoolGroupError}</p>
-                                </div>
-                            )}
+                                Verwijder groep
+                            </button>
                         </div>
-                    </form>
-                </div>
-                <div className="group__modal__footer">
-                    <button
-                        className="group__modal__delete button-secondary"
-                        onClick={handleDelete}
-                        as="button"
-                    >
-                        Verwijder groep
-                    </button>
-                    <button
-                        className="group__modal__submit button-primary"
-                        onClick={handleSubmit}
-                        as="button"
-                    >
-                        Wijzig groep
-                    </button>
-                </div>
+                    </div>
+                ) : (
+                    <>
+                        <div className="group__modal__header">
+                            <h2 className="group__modal__title">
+                                Wijzig groep
+                            </h2>
+                            <button
+                                className="group__modal__closeButton"
+                                onClick={closeModel}
+                            >
+                                X
+                            </button>
+                        </div>
+                        <div className="group__modal__body">
+                            <form
+                                className="group__modal__form"
+                                name="groupModelForm"
+                                ref={addGroupModelForm}
+                            >
+                                <div className="group__modal__form__group">
+                                    <label
+                                        className="group__modal__form__label"
+                                        htmlFor="school_year"
+                                    >
+                                        Schooljaar
+                                    </label>
+                                    {/* school_year need to be formatted like 2022-2023 use a mask for this */}
+                                    <input
+                                        className={`group__modal__form__input ${
+                                            schoolYearError && "invalid"
+                                        }`}
+                                        type="text"
+                                        name="school_year"
+                                        id="school_year"
+                                        onChange={(e) => {
+                                            setYear(
+                                                school_year_mask(e.target.value)
+                                            );
+                                        }}
+                                        placeholder={
+                                            new Date().getFullYear() +
+                                            "-" +
+                                            (new Date().getFullYear() + 1)
+                                        }
+                                        value={year}
+                                    />
+                                    {/* Add a place for a error message, and render only when there is something wrong in this form field */}
+                                    {schoolYearError && (
+                                        <div className="group__modal__form__error">
+                                            <p>{schoolYearError}</p>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="group__modal__form__group">
+                                    <label
+                                        className="group__modal__form__label"
+                                        htmlFor="school_group"
+                                    >
+                                        Groep
+                                    </label>
+                                    <input
+                                        className={`group__modal__form__input ${
+                                            schoolGroupError && "invalid"
+                                        }`}
+                                        type="text"
+                                        name="school_group"
+                                        id="school_group"
+                                        placeholder="Groep 3A"
+                                        onChange={(e) => {
+                                            setGroup(
+                                                school_group_mask(
+                                                    e.target.value
+                                                )
+                                            );
+                                        }}
+                                        onClick={(e) => {
+                                            if (e.target.value.length == 0) {
+                                                e.target.value = "Groep ";
+                                            }
+                                        }}
+                                        onFocus={(e) => {
+                                            if (e.target.value.length == 0) {
+                                                e.target.value = "Groep ";
+                                            }
+                                        }}
+                                        onBlur={(e) => {
+                                            if (e.target.value == "Groep ") {
+                                                e.target.value = "";
+                                            }
+                                        }}
+                                        value={group}
+                                    />
+                                    {schoolGroupError && (
+                                        <div className="group__modal__form__error">
+                                            <p>{schoolGroupError}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </form>
+                        </div>
+                        <div className="group__modal__footer">
+                            <button
+                                className="group__modal__delete button-secondary"
+                                onClick={() => setShowDeleteConfirmation(true)}
+                                as="button"
+                            >
+                                Verwijder groep
+                            </button>
+                            <button
+                                className="group__modal__submit button-primary"
+                                onClick={handleSubmit}
+                                as="button"
+                            >
+                                Wijzig groep
+                            </button>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );

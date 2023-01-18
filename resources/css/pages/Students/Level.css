@@ -8,9 +8,28 @@
     overflow: auto;
 }
 
+.level__nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+}
+
+.level__return_button{
+    border-style: none;
+    color: var(--character-light);
+    background-color: var(--color-blue);
+    border-radius: .5rem;
+    padding: .6rem 1.8rem;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .level__description {
     padding: 1rem;
-    margin: 2rem 0 0 2rem;
     width: fit-content;
     color: var(--character-light);
     background-color: rgba(54, 55, 64, 0.5);

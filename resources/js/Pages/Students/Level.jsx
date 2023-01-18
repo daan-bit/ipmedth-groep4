@@ -14,7 +14,8 @@ import ModalGood from "@/Components/ModalGood";
 import ModalWrong from "@/Components/ModalWrong";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BsFillEraserFill } from "react-icons/bs";
-import { BiQuestionMark } from "react-icons/bi"
+import { BiQuestionMark } from "react-icons/bi";
+import { FiArrowLeft } from "react-icons/fi";
 
 export default function Level() {
     const { level } = usePage().props;
@@ -59,9 +60,17 @@ export default function Level() {
     return (
         <article className="level__container">
             <Head title={level.name} />
-            <h3 className="level__description u__z_index2">
-                {level.description}
-            </h3>
+            <section className="level__nav">
+                <button
+                    className="level__return_button u__z_index2"
+                    onClick={() => Inertia.get(route("student.overview"))}
+                >
+                    {<FiArrowLeft size="32" />}&nbsp;Terug
+                </button>
+                <h3 className="level__description u__z_index2">
+                    {level.description}
+                </h3>
+            </section>
             <section className="canvas__container">
                 <AICanvas id="canvas" mode="level" prompt={level.prompt} />
             </section>
@@ -146,7 +155,9 @@ export default function Level() {
 
             <section onClick={() => setTutorialWindow(false)}>
                 {tutorialWindow ? (
-                    <Tutorial text={`yo ho ho, je kan op het witte vierkant tekenen. Boven staat wat je moet tekenen(${level.prompt}). Maak een ${level.prompt} die ik probeer te raden, als ik het goed🟢 heb dan heb jij het level gehaald. succes!`} />
+                    <Tutorial
+                        text={`yo ho ho, je kan op het witte vierkant tekenen. Boven staat wat je moet tekenen(${level.prompt}). Maak een ${level.prompt} die ik probeer te raden, als ik het goed🟢 heb dan heb jij het level gehaald. succes!`}
+                    />
                 ) : null}
             </section>
         </article>

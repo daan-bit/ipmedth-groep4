@@ -15,8 +15,8 @@ class EmployeesTableSeeder extends Seeder
     public function run()
     {
         DB::table('employees')->insert([
-            'first_name' => 'Teacher 1',
-            'last_name' => 'teacher1',
+            'first_name' => 'Harold',
+            'last_name' => 'Heijden',
             'email' => 'teacher1@gmail.com',
             'school_id' => 1,
             'user_id' => 7,
@@ -42,8 +42,8 @@ class EmployeesTableSeeder extends Seeder
         ]);
 
         DB::table('employees')->insert([
-            'first_name' => 'admin',
-            'last_name' => 'admin',
+            'first_name' => 'Veronique',
+            'last_name' => 'van Hagen',
             'email' => 'admin@gmail.com',
             'school_id' => 1,
             'user_id' => 6,

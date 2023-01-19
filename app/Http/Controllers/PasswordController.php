@@ -13,15 +13,14 @@ class PasswordController extends Controller
 {
     
     public function updatePassword(Request $request){
+        
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required',
         ]);
 
         if(!Hash::check($request->old_password, auth()->user()->password)){
-            return inertia('Admin/Settings', [
-                'message' => 'Wachtwoord onjuist',
-            ]);
+            return;
         }
 
         User::whereId(auth()->user()->id)->update([

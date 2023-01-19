@@ -16,6 +16,8 @@ function Settings(props) {
         new_password_confirm: "",
     });
 
+    const [errorMessage, setErrorMessage] = useState("");
+
     const [passwordConfirmError, setpasswordConfirmError] = useState("");
 
     useEffect(() => {
@@ -32,15 +34,22 @@ function Settings(props) {
     }
 
     function handleSubmit(e) {
+        setErrorMessage("");
         if (values.new_password != values.new_password_confirm) {
             setpasswordConfirmError(
-                "De ingevoerde wachtwoorden komen niet overeen, probeer het opnieuw"
+                "De wachtwoorden komen niet overeen"
             );
             e.preventDefault();
             return;
+        }else if(values.new_password == "" || values.new_password_confirm == ""){
+            setpasswordConfirmError("Vul beide velden in");
+            e.preventDefault();
+            return;
         }
+
         e.preventDefault();
         Inertia.post("/change-password", values);
+        setErrorMessage("Het wachtwoord is onjuist");      
     }
 
     return (
@@ -79,8 +88,8 @@ function Settings(props) {
                                         isFocused={true}
                                         handleChange={handleChange}
                                     />
-                                    {props.message && (
-                                        <InputError message={props.message} />
+                                    {errorMessage && (
+                                        <InputError message={errorMessage} />
                                     )}
                                 </section>
 

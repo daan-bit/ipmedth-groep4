@@ -1,0 +1,1 @@
+import{a as n}from"./app.81bb8d2d.js";function c({content:o,modelState:a=!1,setModelState:r=!1,bgClosePopUp:e=!0}){return(()=>a?n("section",{className:"background",onClick:()=>r(!e),children:n("section",{onClick:s=>s.stopPropagation(),className:"container",children:o})}):null)()}export{c as M};

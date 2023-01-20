@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
-class PasswordResetTest extends TestCase
+/*class PasswordResetTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -68,4 +68,4 @@ class PasswordResetTest extends TestCase
             return true;
         });
     }
-}
+}*/

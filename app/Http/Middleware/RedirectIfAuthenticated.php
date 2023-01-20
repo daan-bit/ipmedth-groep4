@@ -6,6 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Employee;
 
 class RedirectIfAuthenticated
 {
@@ -23,7 +24,13 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if(Employee::where('user_id', '=', Auth::user()->id)->exists()){
+                    return redirect()->intended('docent/overzicht');
+                }else{
+                    //Dan is het een student
+                    return redirect()->intended('world/1');
+                }
+                    
             }
         }
 

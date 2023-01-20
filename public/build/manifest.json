@@ -1,0 +1,578 @@
+{
+  "public/images/background/table.svg": {
+    "file": "assets/table.3549b86e.svg",
+    "src": "public/images/background/table.svg"
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app.81bb8d2d.js",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Admin/Overview.jsx",
+      "resources/js/Pages/Admin/Settings.jsx",
+      "resources/js/Pages/Album/Overview.jsx",
+      "resources/js/Pages/Auth/ConfirmPassword.jsx",
+      "resources/js/Pages/Auth/ForgotPassword.jsx",
+      "resources/js/Pages/Auth/Login.jsx",
+      "resources/js/Pages/Auth/Register.jsx",
+      "resources/js/Pages/Auth/ResetPassword.jsx",
+      "resources/js/Pages/Auth/VerifyEmail.jsx",
+      "resources/js/Pages/Dashboard.jsx",
+      "resources/js/Pages/Students/Level.jsx",
+      "resources/js/Pages/Students/Login.jsx",
+      "resources/js/Pages/Students/Sandbox.jsx",
+      "resources/js/Pages/Students/UserLogin.jsx",
+      "resources/js/Pages/Teachers/Group.jsx",
+      "resources/js/Pages/Teachers/Overview.jsx",
+      "resources/js/Pages/Teachers/OverviewPerGroup.jsx",
+      "resources/js/Pages/Teachers/StudentResults.jsx",
+      "resources/js/Pages/Test/Test.jsx",
+      "resources/js/Pages/Welcome.jsx",
+      "resources/js/Pages/Worlds/World.jsx"
+    ],
+    "css": [
+      "assets/app.4e949bf5.css"
+    ]
+  },
+  "resources/js/Pages/Admin/Overview.jsx": {
+    "file": "assets/Overview.9215c0ae.js",
+    "src": "resources/js/Pages/Admin/Overview.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GroupModel.36e6fcc8.js",
+      "_ResponsiveNavLink.1d13fd40.js",
+      "_adminSettings.3ff4c90c.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js",
+      "_InputError.0bfe9544.js"
+    ],
+    "css": [
+      "assets/Overview.f4de03b1.css",
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "_GroupModel.36e6fcc8.js": {
+    "file": "assets/GroupModel.36e6fcc8.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_ResponsiveNavLink.1d13fd40.js",
+      "_adminSettings.3ff4c90c.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js",
+      "_InputError.0bfe9544.js"
+    ],
+    "css": [
+      "assets/GroupModel.5b035513.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "_ResponsiveNavLink.1d13fd40.js": {
+    "file": "assets/ResponsiveNavLink.1d13fd40.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/button.ae508b95.css"
+    ]
+  },
+  "_adminSettings.3ff4c90c.js": {
+    "file": "assets/adminSettings.3ff4c90c.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/adminSettings.21805eed.css"
+    ]
+  },
+  "_PrimaryButton.22deef5d.js": {
+    "file": "assets/PrimaryButton.22deef5d.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/button.ae508b95.css"
+    ]
+  },
+  "_TextInput.d0d15259.js": {
+    "file": "assets/TextInput.d0d15259.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "_InputError.0bfe9544.js": {
+    "file": "assets/InputError.0bfe9544.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/InputError.41f9b72b.css"
+    ]
+  },
+  "resources/js/Pages/Admin/Settings.jsx": {
+    "file": "assets/Settings.cee2d1af.js",
+    "src": "resources/js/Pages/Admin/Settings.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_ResponsiveNavLink.1d13fd40.js",
+      "_adminSettings.3ff4c90c.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js",
+      "_InputError.0bfe9544.js"
+    ],
+    "css": [
+      "assets/input.c1ee5127.css",
+      "assets/button.ae508b95.css"
+    ]
+  },
+  "resources/js/Pages/Album/Overview.jsx": {
+    "file": "assets/Overview.aae7b5f3.js",
+    "src": "resources/js/Pages/Album/Overview.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_index.esm.6dd73f11.js",
+      "_Modal.788b00cf.js",
+      "_iconBase.292e5d42.js"
+    ],
+    "css": [
+      "assets/Overview.d2b8d19f.css"
+    ],
+    "assets": [
+      "assets/table.3549b86e.svg"
+    ]
+  },
+  "_index.esm.6dd73f11.js": {
+    "file": "assets/index.esm.6dd73f11.js",
+    "imports": [
+      "_iconBase.292e5d42.js"
+    ]
+  },
+  "_Modal.788b00cf.js": {
+    "file": "assets/Modal.788b00cf.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/Modal.94a1424a.css"
+    ]
+  },
+  "_iconBase.292e5d42.js": {
+    "file": "assets/iconBase.292e5d42.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Auth/ConfirmPassword.jsx": {
+    "file": "assets/ConfirmPassword.6c445ba4.js",
+    "src": "resources/js/Pages/Auth/ConfirmPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError.0bfe9544.js",
+      "_InputLabel.916aa99e.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js"
+    ],
+    "css": [
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "_InputLabel.916aa99e.js": {
+    "file": "assets/InputLabel.916aa99e.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/InputLabel.1530b7b6.css"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.jsx": {
+    "file": "assets/ForgotPassword.d408614b.js",
+    "src": "resources/js/Pages/Auth/ForgotPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError.0bfe9544.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js"
+    ],
+    "css": [
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "resources/js/Pages/Auth/Login.jsx": {
+    "file": "assets/Login.8b88d009.js",
+    "src": "resources/js/Pages/Auth/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError.0bfe9544.js",
+      "_InputLabel.916aa99e.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js"
+    ],
+    "css": [
+      "assets/Login.fbfcab58.css",
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.jsx": {
+    "file": "assets/Register.bbfc75ec.js",
+    "src": "resources/js/Pages/Auth/Register.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError.0bfe9544.js",
+      "_InputLabel.916aa99e.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js"
+    ],
+    "css": [
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.jsx": {
+    "file": "assets/ResetPassword.d0f40797.js",
+    "src": "resources/js/Pages/Auth/ResetPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError.0bfe9544.js",
+      "_InputLabel.916aa99e.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js"
+    ],
+    "css": [
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "resources/js/Pages/Auth/VerifyEmail.jsx": {
+    "file": "assets/VerifyEmail.58b4b89e.js",
+    "src": "resources/js/Pages/Auth/VerifyEmail.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_PrimaryButton.22deef5d.js"
+    ],
+    "css": [
+      "assets/button.ae508b95.css"
+    ]
+  },
+  "resources/js/Pages/Dashboard.jsx": {
+    "file": "assets/Dashboard.a056b442.js",
+    "src": "resources/js/Pages/Dashboard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_ResponsiveNavLink.1d13fd40.js"
+    ],
+    "css": [
+      "assets/button.ae508b95.css"
+    ]
+  },
+  "resources/js/Pages/Students/Level.jsx": {
+    "file": "assets/Level.a3dbb088.js",
+    "src": "resources/js/Pages/Students/Level.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_Modal.788b00cf.js",
+      "_AICanvas.cc80cd07.js",
+      "_index.esm.e1c09f35.js",
+      "_index.esm.ccb2e1f0.js",
+      "_iconBase.292e5d42.js",
+      "_index.esm.6dd73f11.js"
+    ],
+    "css": [
+      "assets/Level.9338a74d.css",
+      "assets/button.ae508b95.css"
+    ],
+    "assets": [
+      "assets/table.3549b86e.svg"
+    ]
+  },
+  "_AICanvas.cc80cd07.js": {
+    "file": "assets/AICanvas.cc80cd07.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/AICanvas.250358e1.css"
+    ]
+  },
+  "_index.esm.e1c09f35.js": {
+    "file": "assets/index.esm.e1c09f35.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_iconBase.292e5d42.js"
+    ],
+    "css": [
+      "assets/index.251b0b7e.css"
+    ]
+  },
+  "_index.esm.ccb2e1f0.js": {
+    "file": "assets/index.esm.ccb2e1f0.js",
+    "imports": [
+      "_iconBase.292e5d42.js"
+    ]
+  },
+  "resources/js/Pages/Students/Login.jsx": {
+    "file": "assets/Login.147aebd9.js",
+    "src": "resources/js/Pages/Students/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_StudentCardItem.cefd8207.js"
+    ],
+    "css": [
+      "assets/Login.8eb2e5f9.css"
+    ],
+    "assets": [
+      "assets/table.3549b86e.svg"
+    ]
+  },
+  "_StudentCardItem.cefd8207.js": {
+    "file": "assets/StudentCardItem.cefd8207.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/StudentCardItem.062c13a3.css"
+    ]
+  },
+  "resources/js/Pages/Students/Sandbox.jsx": {
+    "file": "assets/Sandbox.bf2c8d14.js",
+    "src": "resources/js/Pages/Students/Sandbox.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AICanvas.cc80cd07.js"
+    ]
+  },
+  "resources/js/Pages/Students/UserLogin.jsx": {
+    "file": "assets/UserLogin.d7894c97.js",
+    "src": "resources/js/Pages/Students/UserLogin.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_index.esm.6dd73f11.js",
+      "_index.esm.ccb2e1f0.js",
+      "_Modal.788b00cf.js",
+      "_StudentCardItem.cefd8207.js",
+      "_iconBase.292e5d42.js"
+    ],
+    "css": [
+      "assets/UserLogin.d6512caa.css",
+      "assets/input.c1ee5127.css"
+    ],
+    "assets": [
+      "assets/table.3549b86e.svg"
+    ]
+  },
+  "resources/js/Pages/Teachers/Group.jsx": {
+    "file": "assets/Group.d2aabcfc.js",
+    "src": "resources/js/Pages/Teachers/Group.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GroupModel.36e6fcc8.js",
+      "_StackedBarChart.b9508351.js",
+      "_Modal.788b00cf.js",
+      "_ResponsiveNavLink.1d13fd40.js",
+      "_adminSettings.3ff4c90c.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js",
+      "_InputError.0bfe9544.js"
+    ],
+    "css": [
+      "assets/Group.ec8e1e16.css",
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "_StackedBarChart.b9508351.js": {
+    "file": "assets/StackedBarChart.b9508351.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Teachers/Overview.jsx": {
+    "file": "assets/Overview.aac85b5c.js",
+    "src": "resources/js/Pages/Teachers/Overview.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_ResponsiveNavLink.1d13fd40.js",
+      "_GroupModel.36e6fcc8.js",
+      "_adminSettings.3ff4c90c.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js",
+      "_InputError.0bfe9544.js"
+    ],
+    "css": [
+      "assets/Overview.4d7206d7.css",
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "resources/js/Pages/Teachers/OverviewPerGroup.jsx": {
+    "file": "assets/OverviewPerGroup.2bff8b2a.js",
+    "src": "resources/js/Pages/Teachers/OverviewPerGroup.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_StackedBarChart.b9508351.js"
+    ]
+  },
+  "resources/js/Pages/Teachers/StudentResults.jsx": {
+    "file": "assets/StudentResults.3e233edb.js",
+    "src": "resources/js/Pages/Teachers/StudentResults.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GroupModel.36e6fcc8.js",
+      "_Modal.788b00cf.js",
+      "_ResponsiveNavLink.1d13fd40.js",
+      "_adminSettings.3ff4c90c.js",
+      "_PrimaryButton.22deef5d.js",
+      "_TextInput.d0d15259.js",
+      "_InputError.0bfe9544.js"
+    ],
+    "css": [
+      "assets/StudentResults.827041da.css",
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "resources/js/Pages/Test/Test.jsx": {
+    "file": "assets/Test.f40180ac.js",
+    "src": "resources/js/Pages/Test/Test.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput.d0d15259.js",
+      "_PrimaryButton.22deef5d.js",
+      "_Modal.788b00cf.js"
+    ],
+    "css": [
+      "assets/button.ae508b95.css",
+      "assets/input.c1ee5127.css"
+    ]
+  },
+  "resources/js/Pages/Welcome.jsx": {
+    "file": "assets/Welcome.237abfa5.js",
+    "src": "resources/js/Pages/Welcome.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Worlds/World.jsx": {
+    "file": "assets/World.9dd4d31d.js",
+    "src": "resources/js/Pages/Worlds/World.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.esm.e1c09f35.js",
+      "resources/js/app.jsx",
+      "_iconBase.292e5d42.js"
+    ],
+    "css": [
+      "assets/World.f1034459.css"
+    ]
+  },
+  "button.css": {
+    "file": "assets/button.ae508b95.css",
+    "src": "button.css"
+  },
+  "GroupModel.css": {
+    "file": "assets/GroupModel.5b035513.css",
+    "src": "GroupModel.css"
+  },
+  "resources/js/Pages/Students/Level.css": {
+    "file": "assets/Level.9338a74d.css",
+    "src": "resources/js/Pages/Students/Level.css"
+  },
+  "InputLabel.css": {
+    "file": "assets/InputLabel.1530b7b6.css",
+    "src": "InputLabel.css"
+  },
+  "resources/js/Pages/Auth/Login.css": {
+    "file": "assets/Login.fbfcab58.css",
+    "src": "resources/js/Pages/Auth/Login.css"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app.4e949bf5.css",
+    "src": "resources/js/app.css"
+  },
+  "index.css": {
+    "file": "assets/index.251b0b7e.css",
+    "src": "index.css"
+  },
+  "resources/js/Pages/Teachers/Group.css": {
+    "file": "assets/Group.ec8e1e16.css",
+    "src": "resources/js/Pages/Teachers/Group.css"
+  },
+  "resources/js/Pages/Album/Overview.css": {
+    "file": "assets/Overview.d2b8d19f.css",
+    "src": "resources/js/Pages/Album/Overview.css"
+  },
+  "StudentCardItem.css": {
+    "file": "assets/StudentCardItem.062c13a3.css",
+    "src": "StudentCardItem.css"
+  },
+  "resources/js/Pages/Admin/Overview.css": {
+    "file": "assets/Overview.f4de03b1.css",
+    "src": "resources/js/Pages/Admin/Overview.css"
+  },
+  "resources/js/Pages/Students/UserLogin.css": {
+    "file": "assets/UserLogin.d6512caa.css",
+    "src": "resources/js/Pages/Students/UserLogin.css"
+  },
+  "resources/js/Pages/Students/Login.css": {
+    "file": "assets/Login.8eb2e5f9.css",
+    "src": "resources/js/Pages/Students/Login.css"
+  },
+  "resources/js/Pages/Teachers/Overview.css": {
+    "file": "assets/Overview.4d7206d7.css",
+    "src": "resources/js/Pages/Teachers/Overview.css"
+  },
+  "InputError.css": {
+    "file": "assets/InputError.41f9b72b.css",
+    "src": "InputError.css"
+  },
+  "resources/js/Pages/Worlds/World.css": {
+    "file": "assets/World.f1034459.css",
+    "src": "resources/js/Pages/Worlds/World.css"
+  },
+  "input.css": {
+    "file": "assets/input.c1ee5127.css",
+    "src": "input.css"
+  },
+  "adminSettings.css": {
+    "file": "assets/adminSettings.21805eed.css",
+    "src": "adminSettings.css"
+  },
+  "resources/js/Pages/Teachers/StudentResults.css": {
+    "file": "assets/StudentResults.827041da.css",
+    "src": "resources/js/Pages/Teachers/StudentResults.css"
+  },
+  "Modal.css": {
+    "file": "assets/Modal.94a1424a.css",
+    "src": "Modal.css"
+  },
+  "AICanvas.css": {
+    "file": "assets/AICanvas.250358e1.css",
+    "src": "AICanvas.css"
+  }
+}

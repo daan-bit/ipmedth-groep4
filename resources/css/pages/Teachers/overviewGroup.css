@@ -1,0 +1,55 @@
+.group__overview__container {
+    width: 100%;
+    height: 7.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 2rem 0;
+    background-color: var(--background-light);
+}
+
+.group__overview__container-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.group__overview__title {
+    height: 2rem;
+    display: flex;
+    font-size: 2rem;
+    color: var(--character-dark);
+    font-weight: 600;
+}
+
+.group__overview__backButton {
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.group__overview__menu {
+    width: 100%;
+    height: 100%;
+    margin-top: 1rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.group__overview__menuItem {
+    background: none;
+    border: none;
+    padding: .1rem 0;
+    font-size: 1.3rem;
+    color: var(--character-dark);
+    cursor: pointer;
+    border-bottom: 0.2rem solid var(--color-grey-border);
+}
+
+.group__overview__menuItem.active,
+.group__overview__menuItem:hover {
+    border-bottom: 0.2rem solid var(--color-dark-blue);
+    color: var(--color-dark-blue);
+}

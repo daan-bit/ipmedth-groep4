@@ -1,10 +1,40 @@
-import React from 'react'
-import '../../css/input.css'
+import React, { useEffect, useRef } from 'react';
+import '../../css/components/input.css'
 
-function TextInput(props) {
-  return (
-    <input className="input" placeholder={props.placeholder}></input>
-  )
+export default function TextInput({
+    type = 'text',
+    name,
+    value,
+    id,
+    className,
+    placeholder,
+    autoComplete,
+    required,
+    isFocused,
+    handleChange,
+}) {
+    const input = useRef();
+
+    useEffect(() => {
+        if (isFocused) {
+            input.current.focus();
+        }
+    }, []);
+
+    return (
+        <div>
+            <input
+                id={id}
+            	className={`input ${className}`}
+                type={type}
+                name={name}
+                value={value}
+                ref={input}
+                autoComplete={autoComplete}
+                required={required}
+                onChange={(e) => handleChange(e)}
+                placeholder={placeholder}
+            />
+        </div>
+    );
 }
-
-export default TextInput

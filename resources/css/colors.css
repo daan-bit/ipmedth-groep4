@@ -8,6 +8,7 @@
     --color-green: #06D6A0;
     --color-blue: #118AB2;
     --color-dark-blue: #073B4C;
+    --color-grey: #787879;
 
     --color-primary-hover: #0D6380;
     --color-primary-active: #0A4F66;
@@ -17,4 +18,8 @@
 
     --character-light: #EEEEEE;
     --character-dark: #202020;
+
+    --color-card-white: #FFFFFF;
+
+    --color-grey-border: #DFE0EB;
 }

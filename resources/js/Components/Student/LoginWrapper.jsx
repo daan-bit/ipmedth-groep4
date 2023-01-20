@@ -1,0 +1,80 @@
+import React from "react";
+import ImageAsPassword from "../ImageAsPassword";
+
+//CSS is in UserLogin.jsx
+export default function LoginWrapper({passwordState, setPasswordState}) {
+    return (
+        <section className="student__login__form__image_wrapper">
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"vogel.png"}
+                data={"Vogel"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"boom.png"}
+                data={"Boom"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"dog.png"}
+                data={"Hondje"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"kat.png"}
+                data={"Katje"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"fiets.png"}
+                data={"Fiets"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"jongen.png"}
+                data={"Jongen"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"meisje.png"}
+                data={"Meisje"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"olifant.png"}
+                data={"Olifant"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"leeuw.png"}
+                data={"Leeuw"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+            <ImageAsPassword
+                className={"student__login__form__picture"}
+                src={"papagaai.png"}
+                data={"Papegaai"}
+                passwordState={passwordState}
+                setPasswordState={setPasswordState}
+            />
+        </section>
+    );
+}

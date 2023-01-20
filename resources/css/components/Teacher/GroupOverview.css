@@ -1,0 +1,198 @@
+.student__table__container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - (7.5rem + 5rem + 2.5rem));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: var(--background-light);
+}
+
+.student__table__header > button:nth-child(2) {
+    margin-left: 1rem;
+}
+
+.student__table__header {
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 2rem;
+    background-color: var(--background-light);
+}
+
+.student__item__figure {
+    width: 3rem;
+    height: 3rem;
+}
+
+.student__table {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    background-color: var(--background-light);
+}
+
+
+.student__table__row {
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    border-bottom: 0.15rem solid var(--color-grey-border);
+    list-style: none;
+}
+
+.student__table__heading {
+    font-weight: 800;
+    font-size: 1.1rem;
+    height: 2.5rem;
+    border-bottom: 0.3rem solid var(--color-grey-border);
+}
+
+/* .student__table__row > * {
+    width: 10%;
+} */
+
+.student__table__row > *:nth-child(1) {
+    width: 5%;
+}
+
+.student__table__row > *:nth-child(2) {
+    width: 20%;
+}
+
+.student__table__row > *:nth-child(3) {
+    width: 25%;
+}
+
+.student__table__row > *:nth-child(4) {
+    width: 8rem;
+}
+
+.student__item__name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--character-dark);
+}
+
+.progress__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress__bar {
+    width: 70%;
+    height: 1.5rem;
+    background-color: var(--color-grey-border);
+    border-radius: 1rem;
+}
+
+.progress__bar__progress {
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-green);
+    border-radius: 1rem;
+}
+
+.progress__text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--character-dark);
+    width: 30%;
+    text-align: right;
+}
+
+.student__item__button__wrapper {
+    display: flex;
+}
+
+.student__item__button {
+    /* remove all standart button styling */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    /* add custom styling */
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.student__item__button__wrapper > .student__item__button:nth-child(1) {
+    margin-left: 0;
+}
+
+.student__item__button--delete {
+    color: var(--color-red);
+}
+
+.student__item__button--delete:hover {
+    color: var(--color-red);
+}
+
+.viewpassword__modal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 2.5rem;
+    width: 40rem;
+}
+
+.viewpassword__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--character-dark);
+}
+
+.viewpassword__password__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.viewpassword__password {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--character-dark);
+}
+
+.viewpassword__password--2 {
+    margin-top: 1rem;
+}
+
+.password--bold {
+    font-weight: 600;
+}
+
+.viewpassword__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-weight: 600;
+    color: var(--character-dark);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.viewpassword__close > span {
+    font-size: 2rem;
+}

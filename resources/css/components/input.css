@@ -1,0 +1,12 @@
+input{
+    padding: 0.8rem;
+    border-radius: 5px;
+    margin-top: 0.2rem;
+    width: 20rem;
+}
+
+input:focus{
+    outline: none;
+    border:none;
+    box-shadow: 0 3px 0 0 var(--color-blue);
+}

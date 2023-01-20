@@ -1,15 +1,23 @@
-/* @tailwind base; */
-/* @tailwind components; */
-/* @tailwind utilities; */
+@import 'colors.css';
+
 *, *::before, *::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-p, h1, h2, h3, h4, h5, h6, button, input{
+p, h1, h2, h3, h4, h5, h6, button, input, label, .normal_text, .is-open, .is-closed{
     font-family: 'Montserrat', sans-serif;
     margin: 0;
+}
+
+.p, button, input, label, .normal_text, .is-open, .is-closed{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.bold{
+    font-weight: 600;
 }
 
 h1{
@@ -22,12 +30,20 @@ h2{
     font-weight: 400;
 }
 
-p, input, button{
-    font-size: 1.2rem;
+h3{
+    font-size: 1.5rem;
     font-weight: 400;
 }
 
-h3{
+.small_text{
     font-size: 0.8rem;
     font-weight: 400;
+}
+
+a{
+    color: var(--color-blue);
+}
+
+.a:active{
+    color: var(--color-dark-blue);
 }

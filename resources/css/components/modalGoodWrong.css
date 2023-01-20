@@ -1,0 +1,58 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+    border-radius: 15px;
+    overflow: hidden;
+    min-width: 40vw;
+}
+
+.wrapper[data-status="wrong"] {
+    background-color: #fcdae2;
+}
+
+.wrapper[data-status="good"] {
+    background-color: #cdf7ec;
+}
+
+.wrapper > h2 {
+    background-color: rgba(54, 55, 64, 0.5);
+    color: var(--character-light);
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.button_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.button_wrapper > button {
+    font-size: 2rem;
+}
+
+.backgroundYellow{
+    background-color: var(--color-yellow) !important;
+    color: var(--character-dark) !important;
+}
+
+.mascot__figure{
+    position: absolute;
+    width: 35rem;
+    left: -30%;
+    bottom: -40%;
+}
+
+.mascot__image{
+    width: 100%;
+}
+
+.u_zindex {
+    z-index: 2;
+}

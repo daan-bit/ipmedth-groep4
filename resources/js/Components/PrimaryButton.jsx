@@ -1,10 +1,18 @@
-import React from 'react'
-import '../../css/button.css'
+import React from 'react';
+import '../../css/components/button.css'
 
-function PrimaryButton(props) {
-  return (
-    <button  className="button button-primary" type="button">{props.text}</button>
-  )
+export default function PrimaryButton({ type = 'submit', className = 'button button-primary', processing, children }) {
+    return (
+        <button
+            type={type}
+            className={
+                ` ${
+                    processing
+                } ` + className
+            }
+            disabled={processing}
+        >
+            {children}
+        </button>
+    );
 }
-
-export default PrimaryButton

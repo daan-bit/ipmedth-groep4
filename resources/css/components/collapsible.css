@@ -1,0 +1,33 @@
+.Collapsible {
+    background-color: var(--color-card-white);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  .Collapsible__contentInner {
+    height: auto;
+    padding: 2rem 0 2rem 0;
+    border: 1px solid lightGrey;
+    border-top: 0;
+    background-color: var(--background-light);
+  }
+  
+  .Collapsible__trigger{
+    display: block;
+    text-decoration: none;
+    position: relative;
+    padding: 1rem;
+    background: var(--color-card-white);
+    border: 1px solid grey;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  .Collapsible__trigger:hover{
+      /* background-color: var(--background-light); */
+      cursor: pointer;
+  }
+  
+  .is-open{
+      /* background-color: var(--background-light); */
+  }

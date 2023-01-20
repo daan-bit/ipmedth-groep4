@@ -1,0 +1,77 @@
+.album {
+    background-color: var(--background-light);
+    background-image: url("/public/images/background/table.svg");
+    background-position: center;
+    background-repeat: repeat;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.album__return_button{
+    position: absolute;
+    top: 2rem;
+    left: 5%;
+    border-style: none;
+    color: var(--character-light);
+    background-color: var(--color-blue);
+    border-radius: .5rem;
+    padding: .6rem 1.8rem;
+    cursor: pointer;
+    float: right;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.album__header {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawings {
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    width: 60%;
+    margin: 0;
+}
+
+.drawings__item {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.model__figure,
+.model__image,
+.drawings__item__figure__image,
+.drawings__item__figure {
+    width: 100%;
+}
+
+.drawings__item__section{
+    background-color: var(--background-dark-primary);
+    color: var(--character-light);
+    padding: 1rem;
+}
+
+.model {
+    color: var(--character-light);
+    position: relative;
+}
+
+.model__info{
+    position: absolute;
+    padding: 1rem;
+    bottom: .3rem;
+    width: 100%;
+    background-color: rgba(62, 64, 73, .8);
+}

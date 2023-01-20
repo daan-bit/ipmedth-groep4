@@ -1,0 +1,125 @@
+.level__container {
+    background-color: var(--background-light);
+    background-image: url("/public/images/background/table.svg");
+    background-position: center;
+    background-repeat: repeat;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+}
+
+.level__nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+}
+
+.level__return_button{
+    border-style: none;
+    color: var(--character-light);
+    background-color: var(--color-blue);
+    border-radius: .5rem;
+    padding: .6rem 1.8rem;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.level__description {
+    padding: 1rem;
+    width: fit-content;
+    color: var(--character-light);
+    background-color: rgba(54, 55, 64, 0.5);
+    border-radius: 5px;
+}
+
+.button_container{
+    margin: 2rem 0 0 2rem;
+    gap: 1rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 4rem;
+}
+
+.level__button {
+    border-radius: 100%;
+    padding: .5rem;
+    border: none;
+    cursor: pointer;
+    transition: .3s box-shadow;
+}
+
+.level__button:hover {
+    box-shadow: 0 0 1rem var(--background-dark-primary) inset;
+}
+
+.level__button[data-bgcolor="red"] {
+    background-color: var(--color-red);
+}
+
+.level__button[data-bgcolor="green"] {
+    background-color: var(--color-green);
+}
+
+.level__button[data-bgcolor="yellow"] {
+    background-color: var(--color-yellow);
+}
+
+.canvas__container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--character-light);
+}
+
+.popup_titel {
+    font-size: 4rem;
+}
+
+.popup_subtitel {
+    font-size: 2.5rem;
+}
+
+.popup_figure_holder {
+    margin: 2rem 0;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+.popup_figure {
+    width: 100%;
+}
+
+.popup_figure > img {
+    width: 100%;
+}
+
+.popup_start {
+    font-size: 2rem;
+}
+
+.u__z_index2 {
+    z-index: 2;
+    position: relative;
+}

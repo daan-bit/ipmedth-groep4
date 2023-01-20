@@ -1,7 +1,7 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import "../../../css/components/header.css";
-import Settings from "@/Components/Teacher/Settings";
+import Settings from "@/Components/Employee/Settings";
 
 export default function Header({ first_name }) {
     const [showMenu, setShowMenu] = React.useState(false);

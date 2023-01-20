@@ -281,7 +281,7 @@ export default function GroupOverview(props) {
                                 <button
                                     className="student__item__button student__item__button--delete"
                                     onClick={() => {
-                                        setStudentToDelete(student.id);
+                                        setStudentToDelete(student.user_id);
                                         setShowDeleteConfirmation(true);
                                     }}
                                 >
